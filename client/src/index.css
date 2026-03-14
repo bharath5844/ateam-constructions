@@ -1,0 +1,110 @@
+:root {
+  --yellow: #FFD700;
+  --yellow-deep: #E6AC00;
+  --yellow-light: #FFF9C4;
+  --black: #0A0A0A;
+  --dark: #111111;
+  --dark2: #161616;
+  --gray: #1E1E1E;
+  --border: rgba(255,215,0,0.12);
+  --white: #FFFFFF;
+  --muted: #888888;
+  --text: #DDDDDD;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--yellow); border-radius: 3px; }
+
+a { text-decoration: none; color: inherit; }
+button { font-family: 'DM Sans', sans-serif; cursor: pointer; }
+img { max-width: 100%; display: block; }
+
+.container {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 12px;
+}
+.section-tag::before {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: var(--yellow);
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(38px, 5vw, 68px);
+  line-height: 0.95;
+  letter-spacing: 1px;
+  color: var(--white);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--yellow);
+  color: var(--black);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border: 2px solid var(--yellow);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.btn-primary:hover {
+  background: transparent;
+  color: var(--yellow);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--white);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.btn-outline:hover {
+  border-color: var(--yellow);
+  color: var(--yellow);
+}

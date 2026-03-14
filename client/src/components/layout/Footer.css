@@ -1,0 +1,127 @@
+.footer {
+  background: var(--black);
+  border-top: 2px solid var(--border);
+  padding-top: 20px;
+}
+.footer-devotion {
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #444;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  margin-bottom: 56px;
+}
+.footer-devotion span { color: var(--yellow); }
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.2fr 1.2fr;
+  gap: 48px;
+  padding-bottom: 56px;
+}
+.footer-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.footer-logo { height: 52px; width: auto; }
+.footer-brand-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  color: var(--yellow);
+  letter-spacing: 2px;
+}
+.footer-brand-sub {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.footer-brand p {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.footer-team { display: flex; flex-direction: column; gap: 12px; }
+.footer-person {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px;
+  background: rgba(255,215,0,0.04);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.footer-person-role {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--yellow);
+}
+.footer-person-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--white);
+}
+.footer-person a {
+  font-size: 13px;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.footer-person a:hover { color: var(--yellow); }
+.footer-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 20px;
+}
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 8px; }
+.footer-links button {
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 13px;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0;
+  text-align: left;
+}
+.footer-links button:hover { color: var(--yellow); }
+.footer-contact-items { display: flex; flex-direction: column; gap: 12px; }
+.footer-contact-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 13px;
+  color: #555;
+}
+.footer-contact-item a { color: #555; transition: color 0.2s; }
+.footer-contact-item a:hover { color: var(--yellow); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 20px 0;
+}
+.footer-bottom-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.footer-bottom p { font-size: 12px; color: #3a3a3a; }
+.footer-bottom span { color: var(--yellow); }
+@media (max-width: 1100px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+@media (max-width: 600px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .footer-bottom-inner { flex-direction: column; text-align: center; }
+}
