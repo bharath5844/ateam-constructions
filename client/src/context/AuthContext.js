@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import { loginAdmin, logoutAdmin, onAuthChange } from '../firebaseService';
 
 const AuthContext = createContext(null);
 
@@ -8,34 +8,12 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem('ateam_token');
-    if (token) {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      axios.get('/api/auth/verify')
-        .then(r => setAdmin(r.data.admin))
-        .catch(() => localStorage.removeItem('ateam_token'))
-        .finally(() => setLoading(false));
-    } else {
-      setLoading(false);
-    }
+    const unsub = onAuthChange(user => { setAdmin(user); setLoading(false); });
+    return unsub;
   }, []);
 
-  const login = async (username, password) => {
-    const { data } = await axios.post('/api/auth/login', { username, password });
-    localStorage.setItem('ateam_token', data.token);
-    axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
-    setAdmin({ username: data.username });
-    return data;
-  };
-
-  const logout = () => {
-    localStorage.removeItem('ateam_token');
-    delete axios.defaults.headers.common['Authorization'];
-    setAdmin(null);
-  };
-
   return (
-    <AuthContext.Provider value={{ admin, login, logout, loading }}>
+    <AuthContext.Provider value={{ admin, login: loginAdmin, logout: logoutAdmin, loading }}>
       {children}
     </AuthContext.Provider>
   );
