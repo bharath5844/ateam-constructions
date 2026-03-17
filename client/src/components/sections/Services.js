@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import axios from 'axios';
+import { getServices } from '../../firebaseService';
 import { vastuImg, elevationImg, interiorImg, municipalImg, grampanchayatImg, realestateImg, developmentImg } from '../../assets';
 import './Services.css';
 
@@ -20,7 +20,9 @@ export default function Services() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    axios.get('/api/services').then(r => setServices(r.data)).catch(() => {});
+    getServices().then(data => {
+      setServices(Array.isArray(data) ? data : []);
+    }).catch(() => setServices([]));
     const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setVisible(true); }, { threshold: 0.1 });
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
@@ -32,25 +34,16 @@ export default function Services() {
         <div className="services-header">
           <div className="section-tag">What We Offer</div>
           <h2 className="section-title">Our Services</h2>
-          <p className="services-desc">Comprehensive architectural and construction solutions tailored to your needs, delivered with precision and expertise.</p>
+          <p className="services-desc">Comprehensive architectural and construction solutions tailored to your needs.</p>
         </div>
-
         <div className="services-grid">
           {services.filter(s => s.active).map((service, i) => (
-            <div
-              key={service.id}
-              className={`service-card ${active === service.id ? 'active' : ''}`}
+            <div key={service.id} className={`service-card ${active === service.id ? 'active' : ''}`}
               style={{ animationDelay: `${i * 0.07}s` }}
               onMouseEnter={() => setActive(service.id)}
-              onMouseLeave={() => setActive(null)}
-            >
+              onMouseLeave={() => setActive(null)}>
               <div className="service-img-wrap">
-                <img
-                  src={DEFAULT_IMAGES[service.name] || ''}
-                  alt={service.name}
-                  className="service-img"
-                  onError={e => { e.target.style.display='none'; }}
-                />
+                <img src={DEFAULT_IMAGES[service.name] || ''} alt={service.name} className="service-img" />
                 <div className="service-img-overlay" />
               </div>
               <div className="service-content">

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import axios from 'axios';
+import { getProjects } from '../../firebaseService';
 import './Projects.css';
 
 const CATEGORIES = ['All', 'Residential', 'Commercial', 'Interior', 'Development'];
@@ -12,13 +12,15 @@ export default function Projects() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    axios.get('/api/projects').then(r => setProjects(r.data)).catch(() => {});
+    getProjects().then(data => {
+      setProjects(Array.isArray(data) ? data : []);
+    }).catch(() => setProjects([]));
     const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setVisible(true); }, { threshold: 0.1 });
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
   }, []);
 
-  const filtered = filter === 'All' ? projects : projects.filter(p => p.category.toLowerCase() === filter.toLowerCase());
+  const filtered = filter === 'All' ? projects : projects.filter(p => p.category?.toLowerCase() === filter.toLowerCase());
 
   return (
     <section id="projects" className="projects" ref={ref}>
@@ -34,7 +36,6 @@ export default function Projects() {
             ))}
           </div>
         </div>
-
         {filtered.length === 0 ? (
           <div className="projects-empty">
             <div className="empty-icon">🏗️</div>
@@ -44,8 +45,10 @@ export default function Projects() {
         ) : (
           <div className="projects-masonry">
             {filtered.map((p, i) => (
-              <div key={p.id} className={`project-item ${i % 5 === 0 ? 'wide' : ''}`} onClick={() => setLightbox(p)} style={{ animationDelay: `${i * 0.06}s` }}>
-                <img src={`http://localhost:5000${p.image}`} alt={p.title} className="project-img" />
+              <div key={p.id} className={`project-item ${i % 5 === 0 ? 'wide' : ''}`}
+                onClick={() => setLightbox(p)}
+                style={{ animationDelay: `${i * 0.06}s` }}>
+                <img src={p.image} alt={p.title} className="project-img" />
                 <div className="project-info">
                   <div className="project-cat">{p.category}</div>
                   <div className="project-title">{p.title}</div>
@@ -57,17 +60,15 @@ export default function Projects() {
           </div>
         )}
       </div>
-
       {lightbox && (
         <div className="lightbox" onClick={() => setLightbox(null)}>
           <div className="lightbox-inner" onClick={e => e.stopPropagation()}>
             <button className="lightbox-close" onClick={() => setLightbox(null)}>✕</button>
-            <img src={`http://localhost:5000${lightbox.image}`} alt={lightbox.title} />
+            <img src={lightbox.image} alt={lightbox.title} />
             <div className="lightbox-meta">
               <span className="lightbox-cat">{lightbox.category}</span>
               <h3>{lightbox.title}</h3>
               {lightbox.location && <p>📍 {lightbox.location}</p>}
-              {lightbox.description && <p>{lightbox.description}</p>}
             </div>
           </div>
         </div>
