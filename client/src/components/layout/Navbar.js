@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { logoImg } from '../../assets';
+import { "/logo.png" } from '../../assets';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -30,7 +30,7 @@ export default function Navbar() {
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="nav-inner">
           <Link to="/" className="nav-brand">
-            <img src={logoImg} alt="A-Team Logo" className="nav-logo-img" />
+            <img src={"/logo.png"} alt="A-Team Logo" className="nav-logo-img" />
             <div className="nav-brand-text">
               <span className="nav-brand-name">A-Team Constructions</span>
               <span className="nav-brand-sub">Architect & Interior Designs</span>
