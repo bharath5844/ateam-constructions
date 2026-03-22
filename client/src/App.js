@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import useScrollReveal from './hooks/useScrollReveal';
+import './animations.css';
 
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
@@ -16,6 +18,7 @@ import AdminLogin from './components/admin/AdminLogin';
 import AdminDashboard from './components/admin/AdminDashboard';
 
 function Home() {
+  useScrollReveal();
   return (
     <>
       <Navbar />

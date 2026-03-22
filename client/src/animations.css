@@ -1,0 +1,54 @@
+/* ═══════════════════════════════════════
+   GLOBAL SMOOTH SCROLL ANIMATIONS
+   Add class="reveal" to any element
+   ═══════════════════════════════════════ */
+
+/* Base reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* Delay variants */
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+.reveal-d4 { transition-delay: 0.4s; }
+.reveal-d5 { transition-delay: 0.5s; }
+
+/* Left slide */
+.reveal-left {
+  opacity: 0; transform: translateX(-40px);
+  transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+/* Right slide */
+.reveal-right {
+  opacity: 0; transform: translateX(40px);
+  transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+/* Scale up */
+.reveal-scale {
+  opacity: 0; transform: scale(0.92);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+/* Section visible/hidden utility */
+.section-hidden { opacity: 0; transform: translateY(40px); }
+.section-visible {
+  opacity: 1; transform: translateY(0);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+/* Page transition */
+body { animation: pageLoad 0.5s ease; }
+@keyframes pageLoad { from { opacity: 0; } to { opacity: 1; } }
+
+/* Smooth scrolling */
+html { scroll-behavior: smooth; }
