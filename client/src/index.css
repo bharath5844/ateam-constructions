@@ -108,3 +108,16 @@ img { max-width: 100%; display: block; }
   border-color: var(--yellow);
   color: var(--yellow);
 }
+
+/* Fix logo black background everywhere */
+img[alt="A-Team Logo"],
+img[alt="A-Team"],
+.nav-logo-img,
+.hero-logo-img,
+.about-logo,
+.footer-logo,
+.sidebar-logo,
+.login-logo img {
+  mix-blend-mode: lighten !important;
+  background: transparent !important;
+}
