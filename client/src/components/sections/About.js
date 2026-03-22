@@ -3,7 +3,14 @@ import { getAbout } from '../../firebaseService';
 import './About.css';
 
 const AREAS = [
-  { region: 'Telangana', cities: ['Hyderabad', 'Gachibowli', 'Kokapet', 'Narsingi', 'Shankarpally', 'Miyapur', 'Manikonda', 'Tellapur'] },
+  {
+    region: 'Telangana',
+    cities: ['Hyderabad', 'Gachibowli', 'Kokapet', 'Narsingi', 'Shankarpally', 'Miyapur', 'Manikonda', 'Tellapur', 'Kondapur', 'Bachupally', 'Nizampet', 'Kukatpally']
+  },
+  {
+    region: 'Andhra Pradesh',
+    cities: ['Vijayawada', 'Guntur', 'Visakhapatnam', 'Tirupati', 'Nellore', 'Amaravati', 'Rajahmundry', 'Kakinada']
+  },
 ];
 
 const why = [
@@ -37,8 +44,6 @@ export default function About() {
             <p className="about-desc">
               {about?.description || 'A-Team Constructions is a premier architectural and construction firm based in Telangana, delivering exceptional residential and commercial projects across the region.'}
             </p>
-
-            {/* Stats */}
             <div className="about-stats">
               {(about?.stats || []).map((s, i) => (
                 <div key={i} className="about-stat">
@@ -66,7 +71,7 @@ export default function About() {
           </div>
         </div>
 
-        {/* Areas We Serve */}
+        {/* Areas We Serve - now with 2 cards */}
         <div className="areas-section">
           <div className="areas-header">
             <div className="section-tag">Coverage</div>
