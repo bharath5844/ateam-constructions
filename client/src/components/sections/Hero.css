@@ -262,3 +262,8 @@
   background: transparent !important;
 }
 .hero-logo-rings { display: none; }
+
+.hero-logo-img {
+  width: 300px !important;
+  height: auto !important;
+}
