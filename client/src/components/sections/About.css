@@ -1,15 +1,113 @@
-/* Areas We Serve - improved with more regions */
+.about { padding: 100px 0; background: var(--dark); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.about-desc {
+  font-size: 16px; color: #888;
+  line-height: 1.75; margin: 16px 0 28px;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+.about-stat {
+  background: var(--dark);
+  padding: 16px 8px;
+  text-align: center;
+  transition: background 0.2s;
+}
+.about-stat:hover { background: rgba(255,215,0,0.06); }
+.about-stat-value {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 30px; color: var(--yellow); line-height: 1;
+}
+.about-stat-label {
+  font-size: 9px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--muted); margin-top: 4px;
+}
+
+/* RIGHT SIDE */
+.about-right { display: flex; flex-direction: column; gap: 20px; }
+
+.about-logo-card {
+  position: relative;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  height: 180px;
+}
+.about-logo {
+  width: 140px;
+  height: auto;
+  position: relative;
+  z-index: 2;
+  mix-blend-mode: lighten;
+  filter: drop-shadow(0 0 20px rgba(255,215,0,0.3));
+}
+.about-logo-glow {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(255,215,0,0.08) 0%, transparent 70%);
+  animation: pulse 3s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:0.6} 50%{opacity:1} }
+
+/* WHY GRID - 2 columns of cards */
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.why-card {
+  padding: 16px 18px;
+  background: rgba(255,215,0,0.03);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+.why-card:hover {
+  background: rgba(255,215,0,0.07);
+  border-color: rgba(255,215,0,0.25);
+  transform: translateY(-2px);
+}
+.why-icon { font-size: 22px; margin-bottom: 8px; display: block; }
+.why-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--white); margin-bottom: 6px;
+}
+.why-text { font-size: 12px; color: #666; line-height: 1.6; }
+
+/* AREAS WE SERVE */
 .areas-section {
   margin-top: 80px;
   padding-top: 60px;
   border-top: 1px solid var(--border);
 }
 .areas-header { text-align: center; margin-bottom: 40px; }
-.areas-desc { font-size: 16px; color: #888; max-width: 500px; margin: 12px auto 0; line-height: 1.7; }
-
+.areas-desc {
+  font-size: 16px; color: #888;
+  max-width: 500px; margin: 12px auto 0; line-height: 1.7;
+}
 .areas-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 .area-card {
@@ -32,7 +130,6 @@
   margin-bottom: 20px;
   padding-bottom: 14px;
   border-bottom: 1px solid var(--border);
-  letter-spacing: 0.5px;
 }
 .area-flag { font-size: 22px; }
 .area-cities { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -51,4 +148,15 @@
   color: var(--black);
   border-color: var(--yellow);
   transform: translateY(-1px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  .about-stats { grid-template-columns: repeat(2, 1fr); }
+  .areas-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 500px) {
+  .why-grid { grid-template-columns: 1fr; }
+  .about-stats { grid-template-columns: repeat(2, 1fr); }
 }
