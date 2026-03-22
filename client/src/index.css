@@ -121,3 +121,14 @@ img[alt="A-Team"],
   mix-blend-mode: lighten !important;
   background: transparent !important;
 }
+
+/* Fix logo black background everywhere */
+.nav-logo-img,
+.hero-logo-img,
+.about-logo,
+.footer-logo,
+.sidebar-logo,
+.login-logo img {
+  mix-blend-mode: lighten !important;
+  background: transparent !important;
+}
