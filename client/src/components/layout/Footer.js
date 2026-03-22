@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './Footer.css';
 
 export default function Footer() {
@@ -23,18 +22,6 @@ export default function Footer() {
             </div>
           </div>
           <p>Building dreams with passion, precision, and purpose. Your trusted partner for all architectural, interior, and construction needs across Andhra Pradesh & Telangana.</p>
-          <div className="footer-team">
-            <div className="footer-person">
-              <span className="footer-person-role">CEO</span>
-              <span className="footer-person-name">Bharath Reddy Machannagari</span>
-              <a href="tel:+919866515444">+91 98665 15444</a>
-            </div>
-            <div className="footer-person">
-              <span className="footer-person-role">Founder</span>
-              <span className="footer-person-name">Bhargav Reddy Machannagari</span>
-              <a href="tel:+919550595000">+91 95505 95000</a>
-            </div>
-          </div>
         </div>
 
         <div>

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import axios from 'axios';
+import { submitEnquiry } from '../../firebaseService';
 import toast from 'react-hot-toast';
 import './Contact.css';
 
@@ -21,20 +21,14 @@ export default function Contact() {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    if (!form.name || !form.phone || !form.service) {
-      toast.error('Please fill in all required fields');
-      return;
-    }
+    if (!form.name || !form.phone || !form.service) { toast.error('Please fill all required fields'); return; }
     setLoading(true);
     try {
-      await axios.post('/api/enquiries', form);
-      toast.success('Enquiry submitted! We\'ll contact you within 24 hours.');
+      await submitEnquiry(form);
+      toast.success("Enquiry submitted! We'll contact you within 24 hours.");
       setForm({ name:'', phone:'', email:'', service:'', message:'' });
-    } catch {
-      toast.error('Something went wrong. Please call us directly.');
-    } finally {
-      setLoading(false);
-    }
+    } catch { toast.error('Something went wrong. Please call us directly.'); }
+    finally { setLoading(false); }
   };
 
   return (
@@ -45,7 +39,6 @@ export default function Contact() {
             <div className="section-tag">Get In Touch</div>
             <h2 className="section-title">Let's Build<br />Something<br />Great Together</h2>
             <p className="contact-desc">Ready to start your project? Reach out for a free consultation. Our team responds within 24 hours.</p>
-
             <div className="contact-details">
               {[
                 { icon:'📞', label:'CEO — Bharath Reddy', value:'+91 98665 15444', href:'tel:+919866515444' },
@@ -60,20 +53,17 @@ export default function Contact() {
                     <div className="contact-detail-label">{d.label}</div>
                     {d.href
                       ? <a href={d.href} className="contact-detail-value">{d.value}</a>
-                      : <div className="contact-detail-value" style={{whiteSpace:'pre-line'}}>{d.value}</div>
-                    }
+                      : <div className="contact-detail-value" style={{whiteSpace:'pre-line'}}>{d.value}</div>}
                   </div>
                 </div>
               ))}
             </div>
-
             <div className="contact-whatsapp">
               <a href="https://wa.me/919866515444" target="_blank" rel="noreferrer" className="whatsapp-btn">
                 <span>💬</span> WhatsApp Us Now
               </a>
             </div>
           </div>
-
           <div className="contact-right">
             <div className="contact-form-card">
               <div className="form-header">

@@ -1,10 +1,18 @@
 import React, { useEffect, useState, useRef } from 'react';
-import axios from 'axios';
-
+import { getAbout } from '../../firebaseService';
 import './About.css';
 
 const AREAS = [
   { region: 'Telangana', cities: ['Hyderabad', 'Gachibowli', 'Kokapet', 'Narsingi', 'Shankarpally', 'Miyapur', 'Manikonda', 'Tellapur'] },
+];
+
+const why = [
+  { icon: '🏆', title: 'Proven Expertise', text: '10+ years delivering residential & commercial projects across AP & Telangana.' },
+  { icon: '📐', title: 'Vastu Certified', text: 'All house plans designed with deep Vastu knowledge ensuring harmony and prosperity.' },
+  { icon: '⚡', title: 'On-Time Delivery', text: 'We deliver plans, designs, and approvals on time — your schedule matters to us.' },
+  { icon: '🔄', title: 'End-to-End Service', text: 'From concept to completion — design, approvals, construction under one roof.' },
+  { icon: '💰', title: 'Transparent Pricing', text: 'No hidden costs. Clear, honest quotes and detailed breakdowns before any work begins.' },
+  { icon: '🌟', title: '500+ Happy Clients', text: 'Our growing family of satisfied clients across the region speaks for our quality.' },
 ];
 
 export default function About() {
@@ -13,20 +21,11 @@ export default function About() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    axios.get('/api/about').then(r => setAbout(r.data)).catch(() => {});
+    getAbout().then(setAbout).catch(() => {});
     const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setVisible(true); }, { threshold: 0.1 });
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
   }, []);
-
-  const why = [
-    { icon: '🏆', title: 'Proven Expertise', text: '10+ years delivering residential & commercial projects across AP & Telangana with excellence.' },
-    { icon: '📐', title: 'Vastu Certified', text: 'All house plans designed with deep Vastu knowledge ensuring harmony, health and prosperity.' },
-    { icon: '⚡', title: 'On-Time Delivery', text: 'We deliver plans, designs, and approvals on time, every time — your schedule matters to us.' },
-    { icon: '🔄', title: 'End-to-End Service', text: 'From concept to completion — design, approvals, construction managed under one roof.' },
-    { icon: '💰', title: 'Transparent Pricing', text: 'No hidden costs. Clear, honest quotes and detailed breakdowns before any work begins.' },
-    { icon: '🌟', title: '500+ Happy Clients', text: 'Our growing family of satisfied clients across the region speaks for our quality and trust.' },
-  ];
 
   return (
     <section id="about" className="about" ref={ref}>
@@ -36,28 +35,10 @@ export default function About() {
             <div className="section-tag">Who We Are</div>
             <h2 className="section-title">Built On Trust,<br />Driven By<br />Excellence</h2>
             <p className="about-desc">
-              {about?.description || 'A-Team Constructions is a premier architectural and construction firm based in Andhra Pradesh, delivering exceptional residential and commercial projects across the region.'}
+              {about?.description || 'A-Team Constructions is a premier architectural and construction firm based in Telangana, delivering exceptional residential and commercial projects across the region.'}
             </p>
 
-            <div className="about-team">
-              <div className="about-person">
-                <div className="about-person-avatar">BM</div>
-                <div>
-                  <div className="about-person-role">CEO</div>
-                  <div className="about-person-name">Bharath Reddy Machannagari</div>
-                  <a href="tel:+919866515444" className="about-person-phone">+91 98665 15444</a>
-                </div>
-              </div>
-              <div className="about-person">
-                <div className="about-person-avatar founder">BM</div>
-                <div>
-                  <div className="about-person-role">Founder</div>
-                  <div className="about-person-name">Bhargav Reddy Machannagari</div>
-                  <a href="tel:+919550595000" className="about-person-phone">+91 95505 95000</a>
-                </div>
-              </div>
-            </div>
-
+            {/* Stats */}
             <div className="about-stats">
               {(about?.stats || []).map((s, i) => (
                 <div key={i} className="about-stat">
