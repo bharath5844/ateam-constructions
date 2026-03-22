@@ -10,6 +10,8 @@ import Services from './components/sections/Services';
 import Projects from './components/sections/Projects';
 import About from './components/sections/About';
 import Contact from './components/sections/Contact';
+import WhatsAppButton from './components/ui/WhatsAppButton';
+import GoogleMap from './components/ui/GoogleMap';
 import AdminLogin from './components/admin/AdminLogin';
 import AdminDashboard from './components/admin/AdminDashboard';
 
@@ -22,7 +24,9 @@ function Home() {
       <Projects />
       <About />
       <Contact />
+      <GoogleMap />
       <Footer />
+      <WhatsAppButton />
     </>
   );
 }
@@ -42,9 +46,7 @@ function AppRoutes() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/admin" element={<AdminLogin />} />
-      <Route path="/admin/dashboard" element={
-        <ProtectedRoute><AdminDashboard /></ProtectedRoute>
-      } />
+      <Route path="/admin/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
