@@ -257,3 +257,8 @@
   .hero-buttons { flex-direction: column; }
   .hero-buttons .btn-primary, .hero-buttons .btn-outline { width: 100%; justify-content: center; }
 }
+
+.hero-logo-wrap {
+  background: transparent !important;
+}
+.hero-logo-rings { display: none; }
