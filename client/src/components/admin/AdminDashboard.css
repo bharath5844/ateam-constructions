@@ -15,7 +15,7 @@
   padding: 20px 16px;
   border-bottom: 1px solid var(--border);
 }
-.sidebar-logo { height: 40px; width: auto; }
+.sidebar-logo { height: 40px; width: auto; mix-blend-mode: lighten; }
 .sidebar-brand-name {
   font-family: 'Bebas Neue', sans-serif; font-size: 18px;
   color: var(--yellow); letter-spacing: 2px;

@@ -57,7 +57,7 @@
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;
 }
-.about-logo { width: 180px; height: auto; position: relative; z-index: 2; filter: drop-shadow(0 0 20px rgba(255,215,0,0.3)); }
+.about-logo { width: 180px; height: auto; position: relative; z-index: 2; mix-blend-mode: lighten; filter: drop-shadow(0 0 20px rgba(255,215,0,0.3)); }
 
 /* Areas We Serve */
 .areas-section {
