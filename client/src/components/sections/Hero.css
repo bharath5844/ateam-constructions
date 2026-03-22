@@ -273,3 +273,37 @@
   height: auto !important;
   max-width: 100% !important;
 }
+
+/* Mobile: Show logo centered below text */
+@media (max-width: 1000px) {
+  .hero-right {
+    display: flex !important;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .hero-logo-wrap {
+    align-items: center;
+  }
+  .hero-logo-img {
+    width: 180px !important;
+  }
+  .hero-floating-tags {
+    display: none;
+  }
+  .hero-logo-rings {
+    display: none;
+  }
+  .hero-brand-text {
+    text-align: center;
+  }
+  .hero-content {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+  .hero-team {
+    justify-content: center;
+  }
+  .hero-buttons {
+    justify-content: center;
+  }
+}
