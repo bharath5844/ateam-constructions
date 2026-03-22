@@ -307,3 +307,42 @@
     justify-content: center;
   }
 }
+
+/* Fix empty gap on mobile */
+@media (max-width: 1000px) {
+  .hero-brand-text { display: none; }
+  .hero-right {
+    min-height: unset !important;
+    padding: 0 !important;
+    margin-top: 0 !important;
+  }
+  .hero-logo-wrap { gap: 0 !important; }
+  .hero-logo-img {
+    width: 140px !important;
+    margin: 0 auto;
+  }
+}
+
+/* Call Now button - mobile only */
+.btn-call-mobile {
+  display: none;
+}
+@media (max-width: 1000px) {
+  .btn-call-mobile {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #25D366;
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding: 14px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+}

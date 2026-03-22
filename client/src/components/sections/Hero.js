@@ -49,7 +49,7 @@ export default function Hero() {
               <a href="tel:+919550595000" className="hero-person-phone">+91 95505 95000</a>
             </div>
           </div>
-          <div className="hero-buttons">
+          <div className="hero-buttons"><a href="tel:+919866515444" className="btn-call-mobile">📞 Call Now</a>
             <button className="btn-primary" onClick={() => scrollTo('contact')}>Free Consultation →</button>
             <button className="btn-outline" onClick={() => scrollTo('projects')}>View Our Work</button>
           </div>

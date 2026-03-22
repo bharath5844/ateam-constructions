@@ -160,3 +160,17 @@
   .why-grid { grid-template-columns: 1fr; }
   .about-stats { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* Fix About empty gap on mobile */
+@media (max-width: 1000px) {
+  .about { padding: 60px 0 !important; }
+  .about-grid { gap: 24px !important; }
+  .about-logo-card { height: 120px !important; }
+  .about-logo { width: 90px !important; }
+  .why-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .why-card { padding: 12px !important; }
+  .why-title { font-size: 11px !important; }
+  .why-text { font-size: 11px !important; }
+}
