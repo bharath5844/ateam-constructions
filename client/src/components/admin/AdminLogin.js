@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { logoImg } from '../../assets';
+
 import toast from 'react-hot-toast';
 import './AdminLogin.css';
 
@@ -30,7 +30,7 @@ export default function AdminLogin() {
       <div className="login-bg" />
       <div className="login-card">
         <div className="login-logo">
-          <img src={logoImg} alt="A-Team" />
+          <img src="/logo.png" alt="A-Team" />
           <div>
             <div className="login-brand">A-Team Constructions</div>
             <div className="login-sub">Admin Panel</div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
-import { logoImg } from '../../assets';
+
 import './About.css';
 
 const AREAS = [
@@ -70,7 +70,7 @@ export default function About() {
 
           <div className="about-right">
             <div className="about-logo-card">
-              <img src={logoImg} alt="A-Team" className="about-logo" />
+              <img src="/logo.png" alt="A-Team" className="about-logo" />
               <div className="about-logo-glow" />
             </div>
             <div className="why-grid">

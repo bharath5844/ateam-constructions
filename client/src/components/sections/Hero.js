@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { logoImg } from '../../assets';
+
 import './Hero.css';
 
 const stats = [
@@ -81,7 +81,7 @@ export default function Hero() {
               <div className="ring ring-2" />
               <div className="ring ring-3" />
             </div>
-            <img src={logoImg} alt="A-Team Logo" className="hero-logo-img" />
+            <img src="/logo.png" alt="A-Team Logo" className="hero-logo-img" />
             <div className="hero-brand-text">
               <div className="hero-brand-main">A-Team Constructions</div>
               <div className="hero-brand-sub">Architect & Interior Designs</div>

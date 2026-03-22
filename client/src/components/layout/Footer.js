@@ -1,5 +1,5 @@
 import React from 'react';
-import { logoImg } from '../../assets';
+
 import './Footer.css';
 
 export default function Footer() {
@@ -16,7 +16,7 @@ export default function Footer() {
       <div className="container footer-grid">
         <div className="footer-brand">
           <div className="footer-logo-wrap">
-            <img src={logoImg} alt="A-Team Logo" className="footer-logo" />
+            <img src="/logo.png" alt="A-Team Logo" className="footer-logo" />
             <div>
               <div className="footer-brand-name">A-Team Constructions</div>
               <div className="footer-brand-sub">Architect & Interior Designs</div>

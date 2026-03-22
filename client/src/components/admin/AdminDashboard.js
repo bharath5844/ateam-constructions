@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext';
-import { logoImg } from '../../assets';
+
 import toast from 'react-hot-toast';
 import './AdminDashboard.css';
 
@@ -26,7 +26,7 @@ export default function AdminDashboard() {
       {/* Sidebar */}
       <aside className="admin-sidebar">
         <div className="sidebar-brand">
-          <img src={logoImg} alt="Logo" className="sidebar-logo" />
+          <img src="/logo.png" alt="Logo" className="sidebar-logo" />
           <div>
             <div className="sidebar-brand-name">A-Team</div>
             <div className="sidebar-brand-sub">Admin Panel</div>
