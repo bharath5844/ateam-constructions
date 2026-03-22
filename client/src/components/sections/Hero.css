@@ -267,3 +267,9 @@
   width: 300px !important;
   height: auto !important;
 }
+
+.hero-logo-img {
+  width: 420px !important;
+  height: auto !important;
+  max-width: 100% !important;
+}
