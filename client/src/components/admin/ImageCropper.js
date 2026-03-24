@@ -33,10 +33,17 @@ export default function ImageCropper({ imageSrc, onCropDone, onCancel, aspect = 
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [currentAspect, setCurrentAspect] = useState(aspect);
 
   const onCropComplete = useCallback((_, croppedAreaPixels) => {
     setCroppedAreaPixels(croppedAreaPixels);
   }, []);
+
+  const handleAspectChange = (newAspect) => {
+    setCurrentAspect(newAspect);
+    setCrop({ x: 0, y: 0 });
+    setZoom(1);
+  };
 
   const handleDone = async () => {
     setLoading(true);
@@ -63,7 +70,7 @@ export default function ImageCropper({ imageSrc, onCropDone, onCancel, aspect = 
             image={imageSrc}
             crop={crop}
             zoom={zoom}
-            aspect={aspect}
+            aspect={currentAspect}
             onCropChange={setCrop}
             onZoomChange={setZoom}
             onCropComplete={onCropComplete}
@@ -79,9 +86,21 @@ export default function ImageCropper({ imageSrc, onCropDone, onCancel, aspect = 
         {/* Aspect ratio presets */}
         <div className="cropper-presets">
           <span className="cropper-presets-label">Aspect Ratio:</span>
-          <button className={`preset-btn ${aspect === 4/3 ? 'active' : ''}`} onClick={() => {}}>4:3 Standard</button>
-          <button className="preset-btn" onClick={() => {}}>16:9 Wide</button>
-          <button className="preset-btn" onClick={() => {}}>1:1 Square</button>
+          <button
+            className={`preset-btn ${currentAspect === 4/3 ? 'active' : ''}`}
+            onClick={() => handleAspectChange(4/3)}>
+            4:3 Standard
+          </button>
+          <button
+            className={`preset-btn ${currentAspect === 16/9 ? 'active' : ''}`}
+            onClick={() => handleAspectChange(16/9)}>
+            16:9 Wide
+          </button>
+          <button
+            className={`preset-btn ${currentAspect === 1 ? 'active' : ''}`}
+            onClick={() => handleAspectChange(1)}>
+            1:1 Square
+          </button>
         </div>
 
         {/* Zoom slider */}
