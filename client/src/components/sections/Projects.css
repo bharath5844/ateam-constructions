@@ -249,3 +249,12 @@
   .lightbox { padding: 20px 10px !important; }
   .lightbox-inner img { max-height: 300px !important; }
 }
+
+/* Fix lightbox - show FULL image without cropping */
+.lightbox-inner img {
+  max-height: unset !important;
+  height: auto !important;
+  width: 100% !important;
+  object-fit: contain !important;
+  background: #0a0a0a;
+}
