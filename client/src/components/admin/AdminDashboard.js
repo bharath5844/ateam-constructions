@@ -117,18 +117,17 @@ function Overview({ setTab }) {
   );
 }
 
-// Replace the ProjectsAdmin function in AdminDashboard.js with this:
-
 function ProjectsAdmin() {
   const [projects, setProjects] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState({title:'', category:'residential', location:'', description:''});
-  const [rawImageSrc, setRawImageSrc] = useState(null);  // original image for cropper
-  const [croppedFile, setCroppedFile] = useState(null);  // cropped blob
-  const [croppedPreview, setCroppedPreview] = useState(null); // preview URL
+  const [rawImageSrc, setRawImageSrc] = useState(null);
+  const [croppedFile, setCroppedFile] = useState(null);
+  const [croppedPreview, setCroppedPreview] = useState(null);
   const [showCropper, setShowCropper] = useState(false);
   const [progress, setProgress] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [editingId, setEditingId] = useState(null); 
   const fileRef = useRef();
 
   const load = () => getProjects().then(data => setProjects(Array.isArray(data) ? data : [])).catch(() => setProjects([]));
@@ -140,10 +139,10 @@ function ProjectsAdmin() {
     const reader = new FileReader();
     reader.onload = () => {
       setRawImageSrc(reader.result);
-      setShowCropper(true); // Open cropper
+      setShowCropper(true);
     };
     reader.readAsDataURL(f);
-    e.target.value = ''; // reset input
+    e.target.value = '';
   };
 
   const handleCropDone = (blob) => {
@@ -153,20 +152,57 @@ function ProjectsAdmin() {
     setRawImageSrc(null);
   };
 
+  const handleEdit = (p) => {
+    setForm({ title: p.title, category: p.category, location: p.location || '', description: p.description || '' });
+    setCroppedPreview(p.image); // Display existing image in preview
+    setEditingId(p.id);
+    setCroppedFile(null); // Reset cropped file since we're editing
+    setShowForm(true);
+  };
+
+  const resetForm = () => {
+    setShowForm(false);
+    setForm({title:'', category:'residential', location:'', description:''});
+    setCroppedFile(null);
+    setCroppedPreview(null);
+    setRawImageSrc(null);
+    setProgress(0);
+    setEditingId(null);
+  };
+
   const handleSubmit = async e => {
     e.preventDefault();
-    if (!croppedFile) { toast.error('Please select and crop an image'); return; }
+    if (!editingId && !croppedFile) { toast.error('Please select and crop an image'); return; }
     if (!form.title) { toast.error('Please enter a project title'); return; }
     setLoading(true); setProgress(0);
+    
     try {
-      await addProject(form, croppedFile, setProgress);
-      toast.success('Project uploaded successfully!');
-      setShowForm(false);
-      setForm({title:'', category:'residential', location:'', description:''});
-      setCroppedFile(null); setCroppedPreview(null); setProgress(0);
+      if (editingId) {
+        // Handle Edit Update
+        let updatedData = { ...form };
+        
+        if (croppedFile) {
+          // If a new image was cropped, convert it to base64 and update it
+          const base64 = await new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = (e) => resolve(e.target.result);
+            reader.onerror = reject;
+            reader.readAsDataURL(croppedFile);
+          });
+          updatedData.image = base64;
+        }
+
+        await updateDoc(doc(db, 'projects', editingId), updatedData);
+        toast.success('Project updated successfully!');
+      } else {
+        // Handle New Upload
+        await addProject(form, croppedFile, setProgress);
+        toast.success('Project uploaded successfully!');
+      }
+      resetForm();
       load();
     } catch(err) {
-      toast.error('Upload failed: ' + err.message);
+      toast.error((editingId ? 'Update' : 'Upload') + ' failed: ' + err.message);
     } finally { setLoading(false); }
   };
 
@@ -180,10 +216,9 @@ function ProjectsAdmin() {
     <div className="admin-section">
       <div className="admin-section-header">
         <p>{projects.length} project(s) uploaded</p>
-        <button className="btn-primary" onClick={() => setShowForm(true)}>+ Upload New Project</button>
+        <button className="btn-primary" onClick={() => { resetForm(); setShowForm(true); }}>+ Upload New Project</button>
       </div>
 
-      {/* Cropper */}
       {showCropper && rawImageSrc && (
         <ImageCropper
           imageSrc={rawImageSrc}
@@ -193,12 +228,12 @@ function ProjectsAdmin() {
         />
       )}
 
-      {showForm && (
-        <div className="modal-overlay" onClick={() => setShowForm(false)}>
+      {showForm && !showCropper && (
+        <div className="modal-overlay" onClick={resetForm}>
           <div className="modal" onClick={e => e.stopPropagation()}>
             <div className="modal-header">
-              <h3>Upload New Project</h3>
-              <button className="modal-close" onClick={() => setShowForm(false)}>✕</button>
+              <h3>{editingId ? 'Edit Project' : 'Upload New Project'}</h3>
+              <button className="modal-close" onClick={resetForm}>✕</button>
             </div>
             <form onSubmit={handleSubmit} className="modal-form">
               <div className="upload-zone" onClick={() => fileRef.current?.click()}>
@@ -220,7 +255,7 @@ function ProjectsAdmin() {
                 <input ref={fileRef} type="file" accept="image/*" onChange={handleFile} style={{display:'none'}} />
               </div>
 
-              {loading && (
+              {loading && progress > 0 && !editingId && (
                 <div className="upload-progress">
                   <div className="progress-bar-wrap">
                     <div className="progress-bar-fill" style={{width:`${progress}%`}} />
@@ -252,9 +287,9 @@ function ProjectsAdmin() {
                 <textarea value={form.description} onChange={e => setForm(f=>({...f,description:e.target.value}))} rows={3} placeholder="Brief description..." />
               </div>
               <div className="modal-actions">
-                <button type="button" className="btn-outline" onClick={() => setShowForm(false)}>Cancel</button>
+                <button type="button" className="btn-outline" onClick={resetForm}>Cancel</button>
                 <button type="submit" className="btn-primary" disabled={loading}>
-                  {loading ? `Uploading ${progress}%...` : 'Upload Project'}
+                  {loading ? 'Saving...' : (editingId ? 'Save Changes' : 'Upload Project')}
                 </button>
               </div>
             </form>
@@ -268,12 +303,15 @@ function ProjectsAdmin() {
             <div className="pac-img-wrap">
               <img src={p.image} alt={p.title} className="pac-img" onError={e => e.target.style.opacity='0.3'} />
               <div className="pac-cat">{p.category}</div>
+              <div className="pac-actions">
+                <button className="pac-edit" onClick={() => handleEdit(p)} title="Edit Project">✏️</button>
+                <button className="pac-delete" onClick={() => handleDelete(p.id)} title="Delete Project">🗑️</button>
+              </div>
             </div>
             <div className="pac-body">
               <div className="pac-title">{p.title}</div>
               {p.location && <div className="pac-loc">📍 {p.location}</div>}
             </div>
-            <button className="pac-delete" onClick={() => handleDelete(p.id)}>🗑️</button>
           </div>
         ))}
         {projects.length === 0 && (
