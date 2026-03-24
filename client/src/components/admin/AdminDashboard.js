@@ -1,3 +1,4 @@
+import ImageCropper from './ImageCropper';
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
@@ -114,12 +115,16 @@ function Overview({ setTab }) {
   );
 }
 
+// Replace the ProjectsAdmin function in AdminDashboard.js with this:
+
 function ProjectsAdmin() {
   const [projects, setProjects] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState({title:'', category:'residential', location:'', description:''});
-  const [file, setFile] = useState(null);
-  const [preview, setPreview] = useState(null);
+  const [rawImageSrc, setRawImageSrc] = useState(null);  // original image for cropper
+  const [croppedFile, setCroppedFile] = useState(null);  // cropped blob
+  const [croppedPreview, setCroppedPreview] = useState(null); // preview URL
+  const [showCropper, setShowCropper] = useState(false);
   const [progress, setProgress] = useState(0);
   const [loading, setLoading] = useState(false);
   const fileRef = useRef();
@@ -130,30 +135,42 @@ function ProjectsAdmin() {
   const handleFile = e => {
     const f = e.target.files[0];
     if (!f) return;
-    setFile(f);
-    setPreview(URL.createObjectURL(f));
+    const reader = new FileReader();
+    reader.onload = () => {
+      setRawImageSrc(reader.result);
+      setShowCropper(true); // Open cropper
+    };
+    reader.readAsDataURL(f);
+    e.target.value = ''; // reset input
+  };
+
+  const handleCropDone = (blob) => {
+    setCroppedFile(blob);
+    setCroppedPreview(URL.createObjectURL(blob));
+    setShowCropper(false);
+    setRawImageSrc(null);
   };
 
   const handleSubmit = async e => {
     e.preventDefault();
-    if (!file) { toast.error('Please select an image'); return; }
+    if (!croppedFile) { toast.error('Please select and crop an image'); return; }
     if (!form.title) { toast.error('Please enter a project title'); return; }
     setLoading(true); setProgress(0);
     try {
-      await addProject(form, file, setProgress);
+      await addProject(form, croppedFile, setProgress);
       toast.success('Project uploaded successfully!');
       setShowForm(false);
       setForm({title:'', category:'residential', location:'', description:''});
-      setFile(null); setPreview(null); setProgress(0);
+      setCroppedFile(null); setCroppedPreview(null); setProgress(0);
       load();
     } catch(err) {
       toast.error('Upload failed: ' + err.message);
     } finally { setLoading(false); }
   };
 
-  const handleDelete = async (id, imagePath) => {
+  const handleDelete = async (id) => {
     if (!window.confirm('Delete this project?')) return;
-    try { await deleteProject(id, imagePath); toast.success('Deleted'); load(); }
+    try { await deleteProject(id); toast.success('Deleted'); load(); }
     catch { toast.error('Failed to delete'); }
   };
 
@@ -164,6 +181,16 @@ function ProjectsAdmin() {
         <button className="btn-primary" onClick={() => setShowForm(true)}>+ Upload New Project</button>
       </div>
 
+      {/* Cropper */}
+      {showCropper && rawImageSrc && (
+        <ImageCropper
+          imageSrc={rawImageSrc}
+          onCropDone={handleCropDone}
+          onCancel={() => { setShowCropper(false); setRawImageSrc(null); }}
+          aspect={4/3}
+        />
+      )}
+
       {showForm && (
         <div className="modal-overlay" onClick={() => setShowForm(false)}>
           <div className="modal" onClick={e => e.stopPropagation()}>
@@ -173,13 +200,18 @@ function ProjectsAdmin() {
             </div>
             <form onSubmit={handleSubmit} className="modal-form">
               <div className="upload-zone" onClick={() => fileRef.current?.click()}>
-                {preview
-                  ? <img src={preview} alt="preview" className="upload-preview" />
+                {croppedPreview
+                  ? (
+                    <div className="upload-preview-wrap">
+                      <img src={croppedPreview} alt="preview" className="upload-preview" />
+                      <div className="upload-preview-change">Click to change & re-crop</div>
+                    </div>
+                  )
                   : (
                     <div className="upload-placeholder">
                       <div className="upload-icon">📁</div>
-                      <div>Click to select project image</div>
-                      <div className="upload-hint">JPG, PNG up to 10MB</div>
+                      <div>Click to select image</div>
+                      <div className="upload-hint">You'll crop it next • JPG, PNG up to 10MB</div>
                     </div>
                   )
                 }
@@ -239,7 +271,7 @@ function ProjectsAdmin() {
               <div className="pac-title">{p.title}</div>
               {p.location && <div className="pac-loc">📍 {p.location}</div>}
             </div>
-            <button className="pac-delete" onClick={() => handleDelete(p.id, p.imagePath)}>🗑️</button>
+            <button className="pac-delete" onClick={() => handleDelete(p.id)}>🗑️</button>
           </div>
         ))}
         {projects.length === 0 && (
