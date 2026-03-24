@@ -272,3 +272,41 @@
 .progress-bar-wrap { height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; overflow: hidden; margin-bottom: 6px; }
 .progress-bar-fill { height: 100%; background: var(--yellow); border-radius: 3px; transition: width 0.3s; }
 .upload-progress span { font-size: 12px; color: var(--muted); }
+
+.pac-actions {
+  position: absolute; top: 8px; right: 8px;
+  display: flex; gap: 6px;
+  opacity: 0; transition: opacity 0.2s;
+}
+.project-admin-card:hover .pac-actions { opacity: 1; }
+.pac-edit {
+  background: rgba(255,215,0,0.9); border: none;
+  font-size: 14px; width: 32px; height: 32px;
+  border-radius: 4px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.pac-edit:hover { background: var(--yellow); transform: scale(1.1); }
+.pac-delete {
+  background: rgba(255,59,59,0.8); border: none;
+  font-size: 14px; width: 32px; height: 32px;
+  border-radius: 4px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; opacity: 1;
+}
+.pac-delete:hover { background: rgba(255,59,59,1); transform: scale(1.1); }
+.edit-image-note {
+  font-size: 12px; color: var(--muted);
+  padding: 8px 12px; background: rgba(255,215,0,0.05);
+  border: 1px solid var(--border); border-radius: 4px;
+  margin-bottom: 12px;
+}
+.upload-preview-wrap { position: relative; width: 100%; }
+.upload-preview-change {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: rgba(0,0,0,0.7); color: var(--yellow);
+  text-align: center; padding: 8px;
+  font-size: 12px; font-weight: 600;
+  opacity: 0; transition: opacity 0.2s;
+}
+.upload-zone:hover .upload-preview-change { opacity: 1; }

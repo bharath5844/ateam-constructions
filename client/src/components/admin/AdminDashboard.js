@@ -1,3 +1,5 @@
+import { doc, updateDoc } from 'firebase/firestore';
+import { db } from '../../firebase';
 import ImageCropper from './ImageCropper';
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
