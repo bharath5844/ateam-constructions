@@ -1,11 +1,54 @@
 import { db, auth } from './firebase';
-import { collection, doc, getDocs, addDoc, updateDoc, deleteDoc, query, orderBy, serverTimestamp, getDoc, setDoc } from 'firebase/firestore';
-import { signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
+import {
+  collection, doc, getDocs, addDoc, updateDoc, deleteDoc,
+  query, orderBy, serverTimestamp, getDoc, setDoc
+} from 'firebase/firestore';
+import {
+  signInWithEmailAndPassword, signOut, onAuthStateChanged
+} from 'firebase/auth';
 
-export const loginAdmin = (email, password) => signInWithEmailAndPassword(auth, email, password);
+// ─── AUTH ───────────────────────────────────────────────
+export const loginAdmin = (email, password) =>
+  signInWithEmailAndPassword(auth, email, password);
 export const logoutAdmin = () => signOut(auth);
 export const onAuthChange = (cb) => onAuthStateChanged(auth, cb);
 
+// ─── PROJECTS ───────────────────────────────────────────
+export const getProjects = async () => {
+  try {
+    const q = query(collection(db, 'projects'), orderBy('createdAt', 'desc'));
+    const snap = await getDocs(q);
+    return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+  } catch { return []; }
+};
+
+export const addProject = async (data, file, onProgress) => {
+  return new Promise((resolve, reject) => {
+    if (onProgress) onProgress(10);
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+      try {
+        if (onProgress) onProgress(50);
+        const base64 = e.target.result;
+        const docRef = await addDoc(collection(db, 'projects'), {
+          ...data,
+          image: base64,
+          createdAt: serverTimestamp()
+        });
+        if (onProgress) onProgress(100);
+        resolve({ id: docRef.id, ...data, image: base64 });
+      } catch(err) { reject(err); }
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+};
+
+export const deleteProject = async (id) => {
+  await deleteDoc(doc(db, 'projects', id));
+};
+
+// ─── SERVICES ───────────────────────────────────────────
 const DEFAULT_SERVICES = [
   { id:'1', name:'Vastu House Plans', icon:'🧭', description:'Scientifically designed Vastu-compliant floor plans that ensure harmony, prosperity, and positive energy flow in your home.', active:true },
   { id:'2', name:'3D Elevation Design', icon:'🏠', description:'Stunning photorealistic 3D exterior elevations that let you visualize your dream home before the first brick is laid.', active:true },
@@ -17,59 +60,83 @@ const DEFAULT_SERVICES = [
   { id:'8', name:'Structural Design', icon:'📐', description:'Safe, durable, and cost-optimized structural engineering solutions for buildings of all sizes.', active:true }
 ];
 
-export const getProjects = async () => {
-  const q = query(collection(db,'projects'), orderBy('createdAt','desc'));
-  const snap = await getDocs(q);
-  return snap.docs.map(d => ({ id:d.id, ...d.data() }));
-};
-
-export const deleteProject = async (id) => {
-  await deleteDoc(doc(db,'projects',id));
-};
-
 export const getServices = async () => {
-  const snap = await getDocs(collection(db,'services'));
-  if (snap.empty) {
-    for (const s of DEFAULT_SERVICES) await setDoc(doc(db,'services',s.id), s);
-    return DEFAULT_SERVICES;
-  }
-  return snap.docs.map(d => ({ id:d.id, ...d.data() }));
+  try {
+    const snap = await getDocs(collection(db, 'services'));
+    if (snap.empty) {
+      for (const s of DEFAULT_SERVICES) {
+        await setDoc(doc(db, 'services', s.id), s);
+      }
+      return DEFAULT_SERVICES;
+    }
+    return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+  } catch { return DEFAULT_SERVICES; }
 };
 
-export const updateService = async (id, data) => updateDoc(doc(db,'services',id), data);
-export const addService = async (data) => { const r = await addDoc(collection(db,'services'), data); return { id:r.id, ...data }; };
-export const deleteService = async (id) => deleteDoc(doc(db,'services',id));
+export const updateService = async (id, data) => {
+  await updateDoc(doc(db, 'services', id), data);
+};
 
+export const addService = async (data) => {
+  const ref = await addDoc(collection(db, 'services'), data);
+  return { id: ref.id, ...data };
+};
+
+export const deleteService = async (id) => {
+  await deleteDoc(doc(db, 'services', id));
+};
+
+// ─── ENQUIRIES ──────────────────────────────────────────
 export const submitEnquiry = async (data) => {
-  await addDoc(collection(db,'enquiries'), { ...data, status:'new', createdAt:serverTimestamp() });
+  await addDoc(collection(db, 'enquiries'), {
+    ...data, status: 'new', createdAt: serverTimestamp()
+  });
 };
 
 export const getEnquiries = async () => {
-  const q = query(collection(db,'enquiries'), orderBy('createdAt','desc'));
-  const snap = await getDocs(q);
-  return snap.docs.map(d => ({ id:d.id, ...d.data(), createdAt:d.data().createdAt?.toDate?.()?.toISOString() || new Date().toISOString() }));
+  try {
+    const q = query(collection(db, 'enquiries'), orderBy('createdAt', 'desc'));
+    const snap = await getDocs(q);
+    return snap.docs.map(d => ({
+      id: d.id, ...d.data(),
+      createdAt: d.data().createdAt?.toDate?.()?.toISOString() || new Date().toISOString()
+    }));
+  } catch { return []; }
 };
 
-export const updateEnquiry = async (id, data) => updateDoc(doc(db,'enquiries',id), data);
-export const deleteEnquiry = async (id) => deleteDoc(doc(db,'enquiries',id));
+export const updateEnquiry = async (id, data) => {
+  await updateDoc(doc(db, 'enquiries', id), data);
+};
 
+export const deleteEnquiry = async (id) => {
+  await deleteDoc(doc(db, 'enquiries', id));
+};
+
+// ─── ABOUT ──────────────────────────────────────────────
 const DEFAULT_ABOUT = {
-  description:'A-Team Constructions is a premier architectural and construction firm based in Andhra Pradesh, delivering exceptional residential and commercial projects across the region.',
-  stats:[
-    { label:'Projects Completed', value:'500+' },
-    { label:'Years Experience', value:'10+' },
-    { label:'Happy Clients', value:'500+' },
-    { label:'Cities Served', value:'20+' }
+  description: 'A-Team Constructions is a premier architectural and construction firm based in Telangana, delivering exceptional residential and commercial projects across the region.',
+  stats: [
+    { label: 'Projects Completed', value: '500+' },
+    { label: 'Years Experience', value: '10+' },
+    { label: 'Happy Clients', value: '500+' },
+    { label: 'Cities Served', value: '20+' }
   ],
-  address:'Shop No 5-144/25/2, Bdl X Road, Shankarpalle, Telangana 501203',
-  email:'info@ateamconstructions.in',
-  workingHours:'Mon – Sat: 9:00 AM – 7:00 PM'
+  address: 'Shop No 5-144/25/2, Bdl X Road, Shankarpalle, Telangana 501203',
+  email: 'info@ateamconstructions.in',
+  workingHours: 'Mon – Sat: 9:00 AM – 7:00 PM'
 };
 
 export const getAbout = async () => {
-  const snap = await getDoc(doc(db,'settings','about'));
-  if (!snap.exists()) { await setDoc(doc(db,'settings','about'), DEFAULT_ABOUT); return DEFAULT_ABOUT; }
-  return snap.data();
+  try {
+    const snap = await getDoc(doc(db, 'settings', 'about'));
+    if (!snap.exists()) {
+      await setDoc(doc(db, 'settings', 'about'), DEFAULT_ABOUT);
+      return DEFAULT_ABOUT;
+    }
+    return snap.data();
+  } catch { return DEFAULT_ABOUT; }
 };
 
-export const updateAbout = async (data) => setDoc(doc(db,'settings','about'), data, { merge:true });
+export const updateAbout = async (data) => {
+  await setDoc(doc(db, 'settings', 'about'), data, { merge: true });
+};
