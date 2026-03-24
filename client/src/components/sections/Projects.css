@@ -258,3 +258,11 @@
   object-fit: contain !important;
   background: #0a0a0a;
 }
+
+/* Better slideshow height */
+.projects-slideshow {
+  height: 420px !important;
+}
+.slideshow-img {
+  object-position: center 30% !important;
+}
