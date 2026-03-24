@@ -185,3 +185,67 @@
   .project-item.wide { grid-column: span 1; }
   .lightbox-inner img { max-height: 280px; }
 }
+
+/* Fix lightbox scrollable */
+.lightbox {
+  overflow-y: auto !important;
+  align-items: flex-start !important;
+  padding: 40px 20px !important;
+}
+.lightbox-inner {
+  max-height: unset !important;
+  margin: auto;
+}
+.lightbox-inner img {
+  max-height: 500px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+.lightbox-meta {
+  padding: 24px 28px 32px !important;
+}
+.lightbox-meta h3 {
+  font-size: 28px !important;
+  margin: 8px 0 12px !important;
+}
+.lightbox-meta p {
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+  color: #aaa !important;
+  margin-top: 8px !important;
+}
+
+/* Fix slideshow image cropping */
+.slideshow-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+}
+.projects-slideshow {
+  height: 480px !important;
+}
+
+/* Fix slideshow arrows visibility */
+.slideshow-prev,
+.slideshow-next {
+  background: rgba(0,0,0,0.7) !important;
+  border: 2px solid rgba(255,215,0,0.4) !important;
+  color: var(--yellow) !important;
+  font-size: 32px !important;
+  width: 52px !important;
+  height: 52px !important;
+}
+.slideshow-prev { left: 20px !important; }
+.slideshow-next { right: 20px !important; }
+.slideshow-prev:hover, .slideshow-next:hover {
+  background: var(--yellow) !important;
+  color: var(--black) !important;
+  border-color: var(--yellow) !important;
+}
+
+@media (max-width: 768px) {
+  .projects-slideshow { height: 280px !important; }
+  .lightbox { padding: 20px 10px !important; }
+  .lightbox-inner img { max-height: 300px !important; }
+}
