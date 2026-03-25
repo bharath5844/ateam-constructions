@@ -10,7 +10,6 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-devotion">
-        <span>ॐ</span> Sri Anantha Padmanabha Swamy <span>ॐ</span>
       </div>
       <div className="container footer-grid">
         <div className="footer-brand">

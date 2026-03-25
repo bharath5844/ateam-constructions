@@ -104,7 +104,6 @@ export default function Hero() {
         <div className="hero-left">
           <div className={`hero-slide-tag ${animating ? 'slide-out' : 'slide-in'}`}>
             <span className="devotion-dot" />
-            Sri Anantha Padmanabha Swamy
           </div>
 
           <h1 className="hero-title">
