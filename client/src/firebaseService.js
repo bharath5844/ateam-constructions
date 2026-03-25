@@ -118,7 +118,7 @@ const DEFAULT_ABOUT = {
   stats: [
     { label: 'Projects Completed', value: '500+' },
     { label: 'Years Experience', value: '10+' },
-    { label: 'Happy Clients', value: '500+' },
+    { label: 'Client Satisfaction', value: '100%' },
     { label: 'Cities Served', value: '20+' }
   ],
   address: 'Shop No 5-144/25/2, Bdl X Road, Shankarpalle, Telangana 501203',
