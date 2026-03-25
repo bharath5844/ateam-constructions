@@ -30,7 +30,7 @@
   text-decoration: none;
 }
 .nav-logo-img {
-  height: 48px;
+  height: 65px;
   width: auto;
   object-fit: contain;
   mix-blend-mode: lighten;
@@ -38,17 +38,17 @@
   transition: all 0.3s;
   background: transparent;
 }
-.navbar.scrolled .nav-logo-img { height: 38px; }
+.navbar.scrolled .nav-logo-img { height: 52px; }
 .nav-brand-text { display: flex; flex-direction: column; }
 .nav-brand-name {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 20px;
+  font-size: 26px;
   color: var(--yellow);
   letter-spacing: 2px;
   line-height: 1;
 }
 .nav-brand-sub {
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--muted);
@@ -151,6 +151,6 @@
 }
 
 .nav-logo-img {
-  height: 56px !important;
+  height: 70px !important;
   width: auto !important;
 }
