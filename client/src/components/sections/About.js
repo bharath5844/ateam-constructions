@@ -19,7 +19,6 @@ const why = [
   { icon: '⚡', title: 'On-Time Delivery', text: 'We deliver plans, designs, and approvals on time — your schedule matters to us.' },
   { icon: '🔄', title: 'End-to-End Service', text: 'From concept to completion — design, approvals, construction under one roof.' },
   { icon: '💰', title: 'Transparent Pricing', text: 'No hidden costs. Clear, honest quotes and detailed breakdowns before any work begins.' },
-  { icon: '🌟', title: '500+ Happy Clients', text: 'Our growing family of satisfied clients across the region speaks for our quality.' },
 ];
 
 export default function About() {
