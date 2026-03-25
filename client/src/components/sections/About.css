@@ -49,10 +49,10 @@
   padding: 28px;
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;
-  height: 180px;
+  height: 240px;
 }
 .about-logo {
-  width: 140px;
+  width: 200px;
   height: auto;
   position: relative;
   z-index: 2;
@@ -165,8 +165,8 @@
 @media (max-width: 1000px) {
   .about { padding: 60px 0 !important; }
   .about-grid { gap: 24px !important; }
-  .about-logo-card { height: 120px !important; }
-  .about-logo { width: 90px !important; }
+  .about-logo-card { height: 160px !important; }
+  .about-logo { width: 130px !important; }
   .why-grid {
     grid-template-columns: 1fr 1fr !important;
   }
