@@ -33,7 +33,7 @@
   grid-template-columns: 1.1fr 1fr;
   gap: 80px;
   align-items: center;
-  padding: 60px 0 80px;
+  padding: 40px 0 50px;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s ease, transform 0.8s ease;
