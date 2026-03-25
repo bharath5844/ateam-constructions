@@ -103,7 +103,6 @@ export default function Hero() {
       <div className={`hero-content container ${visible ? 'visible' : ''}`}>
         <div className="hero-left">
           <div className={`hero-slide-tag ${animating ? 'slide-out' : 'slide-in'}`}>
-            <span className="devotion-dot" />
           </div>
 
           <h1 className="hero-title">
