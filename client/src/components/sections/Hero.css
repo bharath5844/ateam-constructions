@@ -273,3 +273,8 @@
 @media (max-width: 480px) {
   .hero-title { font-size: clamp(48px, 12vw, 80px); }
 }
+
+/* Remove duplicate stats from Hero section */
+.hero-stats {
+  display: none !important;
+}
