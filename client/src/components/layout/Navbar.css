@@ -154,3 +154,46 @@
   height: 82px !important;
   width: auto !important;
 }
+
+/* --- WIDER BRAND TEXT & LARGER LOGO --- */
+.navbar {
+  height: 100px !important; /* Gives the bigger logo room to breathe */
+}
+
+.nav-logo-img {
+  height: 85px !important;
+}
+
+.navbar.scrolled .nav-logo-img {
+  height: 70px !important;
+}
+
+.nav-brand-name {
+  font-size: 32px !important;
+  letter-spacing: 3px !important; /* Spreads the text horizontally */
+  white-space: nowrap !important;
+}
+
+.nav-brand-sub {
+  font-size: 13px !important;
+  letter-spacing: 6px !important; /* Stretches subtitle to match */
+  white-space: nowrap !important;
+}
+
+/* --- MOBILE SPECIFIC SIZING --- */
+@media (max-width: 900px) {
+  .navbar {
+    height: 90px !important;
+  }
+  .nav-logo-img {
+    height: 75px !important;
+  }
+  .nav-brand-name {
+    font-size: 24px !important;
+    letter-spacing: 1px !important;
+  }
+  .nav-brand-sub {
+    font-size: 10px !important;
+    letter-spacing: 2px !important;
+  }
+}
