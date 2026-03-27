@@ -197,3 +197,30 @@
     letter-spacing: 2px !important;
   }
 }
+
+/* --- FIX MOBILE OVERLAP --- */
+@media (max-width: 600px) {
+  .navbar {
+    height: 75px !important;
+  }
+  
+  .nav-logo-img {
+    height: 50px !important;
+  }
+  
+  .nav-brand-name {
+    font-size: 17px !important; /* Scaled down to fit */
+    letter-spacing: 0px !important; /* Removed extra spacing on mobile */
+  }
+  
+  .nav-brand-sub {
+    font-size: 8px !important;
+    letter-spacing: 1px !important;
+  }
+  
+  .nav-brand {
+    /* Ensures the brand text area stops before the hamburger menu */
+    max-width: calc(100vw - 80px) !important; 
+    overflow: hidden;
+  }
+}
