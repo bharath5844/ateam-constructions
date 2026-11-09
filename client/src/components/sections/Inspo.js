@@ -1,7 +1,7 @@
 import React from 'react';
 import { INSPO_ALL, IMG } from '../site/media';
 
-const ROW1 = [IMG.elevA, ...INSPO_ALL.slice(0, 12), IMG.elevC];
+const ROW1 = [...INSPO_ALL.slice(0, 12), IMG.villa3d];
 const ROW2 = [IMG.ceiling, ...INSPO_ALL.slice(12), IMG.kitchen].reverse();
 
 function Row({ list, rev }) {

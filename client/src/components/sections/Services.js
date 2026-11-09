@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Compass, Home, Sofa, FileCheck2, Landmark, Map, HardHat, Ruler, ArrowUpRight } from 'lucide-react';
 import { getServices, DEFAULT_SERVICES } from '../../firebaseService';
 import { vastuImg, elevationImg, interiorImg, municipalImg, grampanchayatImg, realestateImg, developmentImg } from '../../assets';
-import { IMG } from '../site/media';
+import { IMG, INSPO_FILES } from '../site/media';
 import { scrollToId } from '../site/data';
 
 const IMAGES = {
@@ -11,7 +11,7 @@ const IMAGES = {
   'Municipal Permission': municipalImg, 'Gram Panchayat Approvals': grampanchayatImg,
   'Real Estate': realestateImg, 'Development Projects': developmentImg,
 };
-const PHOTOS = { 'Structural Design': IMG.elevB };
+const PHOTOS = { 'Structural Design': INSPO_FILES[108] };
 const ICONS = {
   'Vastu House Plans': Compass, '3D Elevation Design': Home, 'Interior Design': Sofa,
   'Municipal Permission': FileCheck2, 'Gram Panchayat Approvals': Landmark,

@@ -5,7 +5,7 @@ import { getProjects } from '../../firebaseService';
 import { IMG } from '../site/media';
 import { INSTAGRAM, INSTAGRAM_HANDLE } from '../site/data';
 
-const FALLBACK = [IMG.elevC, IMG.ceiling, IMG.elevB];
+const FALLBACK = [IMG.villa3d, IMG.ceiling, IMG.kitchen];
 
 export default function Instagram() {
   const [imgs, setImgs] = useState(FALLBACK);
