@@ -2,21 +2,28 @@ import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Phone, MessageCircle, ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
 import { getProjects } from '../../firebaseService';
-import { IMG } from '../site/media';
+import { IMG, INSPO_FILES } from '../site/media';
 import { scrollToId, PHONE_CEO, WHATSAPP, INTRO_DELAY } from '../site/data';
 
-const FALLBACK = [
+const ins = (n, title, pos = '50% 50%') => ({ id: 'i' + n, image: INSPO_FILES[n], title, category: 'Design inspiration', pos });
+// Mix of A-Team's own photos and design-inspiration photos (labelled as such).
+const MIX = [
+  ins(101, 'Modern villa elevation', '50% 40%'),
   { id: 'h1', image: IMG.elevA, title: 'Modern Residential Elevation', category: 'Residential', pos: '50% 28%' },
+  ins(59, 'Glass-front dream home at dusk', '50% 55%'),
   { id: 'h2', image: IMG.ceiling, title: 'Designer Interiors', category: 'Interior', pos: '50% 42%' },
+  ins(22, 'Elegant living room', '50% 55%'),
   { id: 'h3', image: IMG.elevC, title: 'Contemporary Facade', category: 'Residential', pos: '50% 38%' },
+  ins(5, 'Villa with a pool', '50% 50%'),
   { id: 'h4', image: IMG.kitchen, title: 'Modular Kitchen', category: 'Interior', pos: '50% 50%' },
-  { id: 'h5', image: IMG.elevB, title: 'Corner Building Elevation', category: 'Residential', pos: '50% 30%' },
+  ins(32, 'Calm master bedroom', '50% 60%'),
+  ins(107, 'Statement facade in wood and glass', '50% 45%'),
 ];
 const SLIDE_MS = 6500;
 const HEADLINE = ['We', 'design', '&', 'build', 'homes', "you'll", 'love.'];
 
 export default function Hero() {
-  const [slides, setSlides] = useState(FALLBACK);
+  const [slides, setSlides] = useState(MIX);
   const [i, setI] = useState(0);
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
@@ -25,7 +32,12 @@ export default function Hero() {
   useEffect(() => {
     getProjects().then(d => {
       const withImg = (Array.isArray(d) ? d : []).filter(p => p.image);
-      if (withImg.length) setSlides(withImg.slice(0, 6));
+      if (withImg.length) {
+        const real = withImg.slice(0, 4);
+        const out = [];
+        MIX.forEach((m, k) => { out.push(m); if (real[k] && k % 2 === 1) out.push(real[k]); });
+        setSlides(out);
+      }
     }).catch(() => {});
   }, []);
 

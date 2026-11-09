@@ -16,3 +16,7 @@ try { if (!sessionStorage.getItem('ateam_intro')) delay = 1.5; } catch (e) { del
 export const INTRO_DELAY = delay;
 export const INSTAGRAM = 'https://www.instagram.com/ateamconstructions/';
 export const INSTAGRAM_HANDLE = '@ateamconstructions';
+
+// Opens WhatsApp chat with the enquiry pre-filled (enquiries arrive on WhatsApp, not email).
+export const waLink = text => `https://wa.me/919866515444?text=${encodeURIComponent(text)}`;
+export const sendToWhatsApp = text => { window.open(waLink(text), '_blank', 'noopener'); };

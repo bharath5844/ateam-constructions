@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Send } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { submitEnquiry } from '../../firebaseService';
+import { sendToWhatsApp } from '../site/data';
 
 export default function FreePlan() {
   const [f, setF] = useState({ name: '', phone: '', plot: '' });
@@ -13,11 +14,11 @@ export default function FreePlan() {
     if (!f.name || !f.phone || !f.plot) { toast.error('Please fill all three fields'); return; }
     setLoading(true);
     try {
-      await submitEnquiry({ name: f.name, phone: f.phone, email: '', service: 'Vastu House Plans', message: `FREE PLOT CONSULTATION — plot size / location: ${f.plot}` });
-      toast.success("Thank you! We'll call you shortly.");
+      submitEnquiry({ name: f.name, phone: f.phone, email: '', service: 'Vastu House Plans', message: `FREE PLOT CONSULTATION — plot size / location: ${f.plot}` }).catch(() => {});
+      sendToWhatsApp(`Hello A-Team Constructions! I would like a free plot consultation.\n\nName: ${f.name}\nPhone: ${f.phone}\nPlot size & location: ${f.plot}`);
+      toast.success('Opening WhatsApp. Just press send.');
       setF({ name: '', phone: '', plot: '' });
-    } catch { toast.error('Something went wrong. Please call us directly.'); }
-    finally { setLoading(false); }
+    } finally { setLoading(false); }
   };
   return (
     <section className="s-offer">
@@ -31,7 +32,7 @@ export default function FreePlan() {
           <input name="name" value={f.name} onChange={change} placeholder="Your name" aria-label="Your name" />
           <input name="phone" value={f.phone} onChange={change} placeholder="Phone number" inputMode="tel" aria-label="Phone number" />
           <input name="plot" value={f.plot} onChange={change} placeholder="Plot size & location (e.g. 150 sq yd, Shankarpalle)" aria-label="Plot size and location" />
-          <button type="submit" className="s-btn s-btn-dark s-btn-lg" disabled={loading}>{loading ? 'Sending…' : <>Get my free idea <Send size={16} /></>}</button>
+          <button type="submit" className="s-btn s-btn-dark s-btn-lg" disabled={loading}>{loading ? 'Sending…' : <>Get my free idea on WhatsApp <Send size={16} /></>}</button>
         </form>
       </motion.div>
     </section>

@@ -12,13 +12,54 @@ export const IMG = {
 };
 
 // Free-to-use stock photos from Unsplash. Design inspiration only, NOT A-Team projects.
+export const INSPO_FILES = {
+  101: '/images/i-101.jpg',
+  107: '/images/i-107.jpg',
+  105: '/images/i-105.jpg',
+  104: '/images/i-104.jpg',
+  3: '/images/i-3.jpg',
+  5: '/images/i-5.jpg',
+  59: '/images/i-59.jpg',
+  61: '/images/i-61.jpg',
+  0: '/images/i-0.jpg',
+  6: '/images/i-6.jpg',
+  108: '/images/i-108.jpg',
+  73: '/images/i-73.jpg',
+  10: '/images/i-10.jpg',
+  22: '/images/i-22.jpg',
+  23: '/images/i-23.jpg',
+  18: '/images/i-18.jpg',
+  25: '/images/i-25.jpg',
+  27: '/images/i-27.jpg',
+  20: '/images/i-20.jpg',
+  112: '/images/i-112.jpg',
+  32: '/images/i-32.jpg',
+  41: '/images/i-41.jpg',
+  31: '/images/i-31.jpg',
+  39: '/images/i-39.jpg',
+  46: '/images/i-46.jpg',
+  52: '/images/i-52.jpg',
+  53: '/images/i-53.jpg',
+  57: '/images/i-57.jpg',
+  51: '/images/i-51.jpg',
+  111: '/images/i-111.jpg',
+  93: '/images/i-93.jpg',
+  87: '/images/i-87.jpg',
+  123: '/images/i-123.jpg',
+  127: '/images/i-127.jpg',
+  132: '/images/i-132.jpg',
+  110: '/images/i-110.jpg',
+};
+const I = n => INSPO_FILES[n];
 export const INSPIRATION = [
-  { id: 'modern', label: 'Modern Villa', line: 'Clean lines, warm lighting, a facade people stop to look at.', img: '/images/inspo-modern-villa.jpg', pos: '50% 55%' },
-  { id: 'duplex', label: 'Contemporary Duplex', line: 'Smart use of a compact plot, with balconies that feel open.', img: '/images/inspo-duplex.jpg', pos: '50% 40%' },
-  { id: 'living', label: 'Luxury Living', line: 'Stone, wood and soft light, a living room you never want to leave.', img: '/images/inspo-living.jpg', pos: '50% 55%' },
-  { id: 'kitchen', label: 'Designer Kitchen', line: 'Storage, lighting and finishes planned around how you cook.', img: '/images/inspo-kitchen.jpg', pos: '50% 50%' },
-  { id: 'warm', label: 'Warm Interiors', line: 'Soft tones and textures that make a house feel like home.', img: '/images/inspo-warm.jpg', pos: '50% 50%' },
+  { id: 'villa', label: 'Modern Villas', line: 'Bold facades, warm lighting, a home people stop to look at.', imgs: [101, 107, 105, 104, 59, 61].map(I) },
+  { id: 'contemporary', label: 'Contemporary Homes', line: 'Clean lines, open balconies and smart use of every plot.', imgs: [3, 5, 6, 108, 73, 0, 10].map(I) },
+  { id: 'living', label: 'Living Rooms', line: 'Stone, wood and soft light, rooms you never want to leave.', imgs: [22, 23, 18, 25, 27, 20, 112, 110].map(I) },
+  { id: 'bedroom', label: 'Bedrooms', line: 'Calm colours, hidden storage and lighting made for rest.', imgs: [32, 41, 31, 39].map(I) },
+  { id: 'kitchen', label: 'Kitchens', line: 'Storage, lighting and finishes planned around how you cook.', imgs: [46, 52, 53, 57, 51, 111].map(I) },
+  { id: 'dining', label: 'Dining & Bath', line: 'Dining rooms and bathrooms that feel like a boutique hotel.', imgs: [93, 87, 123, 127, 132].map(I) },
 ];
+export const INSPO_ALL = INSPIRATION.flatMap(c => c.imgs);
 
 // Shown when the admin has not uploaded projects yet (and mixed in after real ones).
 export const SAMPLE_PROJECTS = [

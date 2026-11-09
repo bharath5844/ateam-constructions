@@ -14,6 +14,7 @@ import About from './components/sections/About';
 import Marquee from './components/sections/Marquee';
 import Story from './components/sections/Story';
 import Dream from './components/sections/Dream';
+import Inspo from './components/sections/Inspo';
 import Reviews from './components/sections/Reviews';
 import Cursor from './components/site/Cursor';
 import Intro from './components/site/Intro';
@@ -43,6 +44,7 @@ function Home() {
       <Marquee />
       <Story />
       <Dream />
+      <Inspo />
       <Services />
       <Projects />
       <Reviews />
