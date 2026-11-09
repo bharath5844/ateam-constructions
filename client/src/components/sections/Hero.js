@@ -77,6 +77,11 @@ export default function Hero() {
           <a href={WHATSAPP} target="_blank" rel="noreferrer" className="s-btn s-btn-glass s-btn-lg"><MessageCircle size={18} /> WhatsApp</a>
           <button className="s-btn s-btn-ghost s-btn-lg" onClick={() => scrollToId('projects')}>View Projects</button>
         </motion.div>
+        <motion.ul className="s-hero-trust" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.9 + INTRO_DELAY, duration: 0.8 }}>
+          <li><b>500+</b> clients served</li>
+          <li><b>12+</b> years field experience</li>
+          <li><b>5.0</b> ★ on Google</li>
+        </motion.ul>
       </div>
 
       <div className="s-hero-bar">

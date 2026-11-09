@@ -3,6 +3,7 @@ import { motion, AnimatePresence, useScroll, useTransform, useMotionValueEvent }
 import { IMG } from '../site/media';
 
 const CHAPTERS = [
+  { tag: '3D Design', title: 'See your home before it exists', text: 'Realistic 3D elevations show your future home in full detail, so every choice is made with confidence.', img: IMG.villa3d, pos: '50% 50%' },
   { tag: 'Elevations', title: 'Facades that turn heads', text: 'Bold, modern elevations planned in 3D first, so you see your home before the first brick is laid.', img: IMG.elevA, pos: '50% 30%' },
   { tag: 'Interiors', title: 'Interiors that feel finished', text: 'Ceilings, lighting and furniture layouts designed together, so every room feels planned and not patched.', img: IMG.ceiling, pos: '50% 45%' },
   { tag: 'Kitchens', title: 'Kitchens made to work', text: 'Smart modular layouts with proper storage, lighting and finishes, built around how you really cook.', img: IMG.kitchen, pos: '50% 50%' },

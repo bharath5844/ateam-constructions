@@ -6,7 +6,7 @@ import { getAbout } from '../../firebaseService';
 const WHY = [
   { Icon: Compass, title: 'Vastu-first planning', text: 'Every house plan is drawn with Vastu in mind, so the home feels right from day one.' },
   { Icon: Layers, title: 'End-to-end service', text: 'Design, approvals and construction — handled by one team, so nothing falls between the cracks.' },
-  { Icon: ShieldCheck, title: 'Hands-on supervision', text: 'Our team brings 10+ years of on-site civil experience to every project.' },
+  { Icon: ShieldCheck, title: 'Hands-on supervision', text: 'Our team brings 12+ years of on-site civil experience to every project.' },
   { Icon: Wallet, title: 'Transparent pricing', text: 'Clear quotes and detailed breakdowns before any work begins. No surprises.' },
 ];
 const AREAS = ['Hyderabad', 'Gachibowli', 'Kokapet', 'Narsingi', 'Shankarpally', 'Miyapur', 'Manikonda', 'Tellapur'];

@@ -16,10 +16,10 @@ function Count({ to, decimals = 0, suffix = '' }) {
 }
 
 const STATS = [
-  { to: 5, dec: 1, label: 'Google rating' },
-  { to: RATING.count, dec: 0, label: 'Google reviews' },
-  { to: 8, dec: 0, label: 'Services under one roof' },
-  { to: 8, dec: 0, label: 'Areas we serve' },
+  { to: 500, dec: 0, suf: '+', label: 'Clients served' },
+  { to: 12, dec: 0, suf: '+', label: 'Years of field experience' },
+  { to: 5, dec: 1, suf: '', label: 'Google rating' },
+  { to: 8, dec: 0, suf: '', label: 'Areas we serve' },
 ];
 
 export default function Reviews() {
@@ -29,7 +29,7 @@ export default function Reviews() {
         <div className="s-stats">
           {STATS.map(s => (
             <div className="s-stat" key={s.label}>
-              <b><Count to={s.to} decimals={s.dec} /></b>
+              <b><Count to={s.to} decimals={s.dec} suffix={s.suf} /></b>
               <span>{s.label}</span>
             </div>
           ))}

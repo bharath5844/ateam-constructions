@@ -13,6 +13,7 @@ import Projects from './components/sections/Projects';
 import About from './components/sections/About';
 import Marquee from './components/sections/Marquee';
 import Story from './components/sections/Story';
+import Dream from './components/sections/Dream';
 import Reviews from './components/sections/Reviews';
 import Cursor from './components/site/Cursor';
 import Intro from './components/site/Intro';
@@ -41,6 +42,7 @@ function Home() {
       <Hero />
       <Marquee />
       <Story />
+      <Dream />
       <Services />
       <Projects />
       <Reviews />

@@ -430,3 +430,35 @@ html.lenis, html.lenis body { height: auto; }
 
 .s-rating { max-width: 100%; flex-wrap: nowrap; font-size: 15px; } .s-rating span:not(.s-stars) { white-space: nowrap; }
 @media (max-width: 400px) { .s-rating { padding: 10px 14px; font-size: 14px; gap: 6px; } .s-stars svg { width: 15px; height: 15px; } }
+
+/* hero trust row */
+.s-hero-trust { list-style: none; margin: 26px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 28px; color: rgba(255,255,255,.92); font-size: 15px; }
+.s-hero-trust li { display: inline-flex; align-items: baseline; gap: 6px; }
+.s-hero-trust b { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 22px; color: var(--yellow); }
+
+/* dream home picker */
+.s-dream { background: var(--soft); }
+.s-dream-grid { display: grid; grid-template-columns: 260px 1fr; gap: clamp(20px, 3vw, 40px); align-items: stretch; }
+.s-dream-pills { display: flex; flex-direction: column; gap: 10px; }
+.s-dream-pills button { position: relative; text-align: left; padding: 18px 22px; border-radius: 18px; background: #fff; border: 1px solid var(--line); font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 18px; transition: border-color .2s, transform .2s; }
+.s-dream-pills button:hover { transform: translateX(6px); border-color: var(--yellow); }
+.s-dream-pills button.on { border-color: var(--yellow); }
+.s-dream-pills button em { position: relative; z-index: 1; font-style: normal; }
+.s-dream-pill { position: absolute; inset: 0; background: var(--yellow); border-radius: 18px; box-shadow: 0 8px 22px rgba(255,212,0,.45); }
+.s-dream-stage { position: relative; border-radius: 28px; overflow: hidden; min-height: clamp(380px, 56vh, 600px); background: #1a1a1a; box-shadow: var(--shadow-lg); }
+.s-dream-img { position: absolute; inset: 0; }
+.s-dream-img img { width: 100%; height: 100%; object-fit: cover; }
+.s-dream-tag { position: absolute; top: 18px; left: 18px; z-index: 2; background: rgba(17,17,17,.7); backdrop-filter: blur(8px); color: #fff; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; }
+.s-dream-cap { position: absolute; z-index: 2; inset: auto 0 0 0; padding: 70px clamp(18px, 3vw, 32px) clamp(18px, 3vw, 28px); background: linear-gradient(transparent, rgba(0,0,0,.82)); color: #fff; display: flex; align-items: flex-end; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+.s-dream-cap b { font-family: 'Outfit', sans-serif; font-size: clamp(24px, 3vw, 36px); font-weight: 800; }
+.s-dream-cap p { margin: 6px 0 0; max-width: 420px; opacity: .9; }
+.s-dream-note { margin: 18px 0 0; text-align: center; color: var(--muted); font-size: 13px; }
+@media (max-width: 900px) {
+  .s-dream-grid { grid-template-columns: 1fr; }
+  .s-dream-pills { flex-direction: row; overflow-x: auto; padding-bottom: 6px; gap: 8px; scrollbar-width: none; }
+  .s-dream-pills button { flex: 0 0 auto; padding: 12px 18px; font-size: 15px; border-radius: 999px; }
+  .s-dream-pill { border-radius: 999px; }
+  .s-dream-pills button:hover { transform: none; }
+  .s-hero-trust { font-size: 13px; gap: 6px 18px; } .s-hero-trust b { font-size: 18px; }
+}
+.site .s-dream-cap .s-btn-yellow { background: var(--yellow); color: #111 !important; }
