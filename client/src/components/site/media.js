@@ -6,6 +6,9 @@ export const IMG = {
   officeBoard: '/images/office-board.jpg',
   officeBalcony: '/images/office-balcony.jpg',
   villa3d: '/images/villa-3d.jpg',
+  projFrame: '/images/project-duplex-frame.jpg',
+  projGate: '/images/project-house-gate.jpg',
+  projFront: '/images/project-house-front.jpg',
 };
 
 // Free-to-use stock photos from Unsplash. Design inspiration only, NOT A-Team projects.
@@ -60,6 +63,9 @@ export const INSPO_ALL = INSPIRATION.flatMap(c => c.imgs);
 
 // Shown when the admin has not uploaded projects yet (and mixed in after real ones).
 export const SAMPLE_PROJECTS = [
+  { id: 'r1', image: IMG.projFrame, title: 'Modern Duplex Elevation', category: 'Residential', pos: '50% 45%' },
+  { id: 'r2', image: IMG.projGate, title: 'Independent House', category: 'Residential', pos: '50% 40%' },
+  { id: 'r3', image: IMG.projFront, title: 'Independent House, Front View', category: 'Residential', pos: '50% 45%' },
   { id: 's0', image: IMG.villa3d, title: '3D Elevation Design', category: '3D Elevation', pos: '50% 50%' },
   { id: 's2', image: IMG.ceiling, title: 'Designer Ceiling & Dining', category: 'Interior', pos: '50% 45%' },
   { id: 's4', image: IMG.kitchen, title: 'Modular Kitchen', category: 'Interior', pos: '50% 50%' },
