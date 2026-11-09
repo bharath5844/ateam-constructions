@@ -1,138 +1,98 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, ChevronLeft, ChevronRight, MapPin, Maximize2 } from 'lucide-react';
 import { getProjects } from '../../firebaseService';
-import './Projects.css';
-
-const CATEGORIES = ['All', 'Residential', 'Commercial', 'Interior', 'Development'];
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
   const [filter, setFilter] = useState('All');
-  const [lightbox, setLightbox] = useState(null);
-  const [lightboxIdx, setLightboxIdx] = useState(0);
-  const [slideshow, setSlideshow] = useState(0);
-  const ref = useRef();
-  const [visible, setVisible] = useState(false);
+  const [open, setOpen] = useState(null); // index in filtered
 
   useEffect(() => {
-    getProjects().then(data => setProjects(Array.isArray(data) ? data : [])).catch(() => setProjects([]));
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setVisible(true); }, { threshold: 0.1 });
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
+    getProjects().then(d => setProjects(Array.isArray(d) ? d : [])).catch(() => setProjects([]));
   }, []);
 
-  const filtered = filter === 'All' ? projects : projects.filter(p => p.category?.toLowerCase() === filter.toLowerCase());
+  const cats = useMemo(() => ['All', ...Array.from(new Set(projects.map(p => p.category).filter(Boolean)))], [projects]);
+  const filtered = filter === 'All' ? projects : projects.filter(p => p.category === filter);
 
-  // Auto slideshow for featured project
+  const step = useCallback((d) => setOpen(o => (o + d + filtered.length) % filtered.length), [filtered.length]);
   useEffect(() => {
-    if (filtered.length <= 1) return;
-    const t = setInterval(() => setSlideshow(s => (s + 1) % filtered.length), 4000);
-    return () => clearInterval(t);
-  }, [filtered.length]);
+    if (open === null) return;
+    const onKey = (e) => { if (e.key === 'Escape') setOpen(null); if (e.key === 'ArrowRight') step(1); if (e.key === 'ArrowLeft') step(-1); };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    return () => { window.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
+  }, [open, step]);
 
-  const openLightbox = useCallback((project, idx) => {
-    setLightbox(project); setLightboxIdx(idx);
-  }, []);
-
-  const navigateLightbox = useCallback((dir) => {
-    const newIdx = (lightboxIdx + dir + filtered.length) % filtered.length;
-    setLightbox(filtered[newIdx]); setLightboxIdx(newIdx);
-  }, [lightboxIdx, filtered]);
+  const p = open !== null ? filtered[open] : null;
 
   return (
-    <section id="projects" className="projects" ref={ref}>
-      <div className={`container ${visible ? 'section-visible' : 'section-hidden'}`}>
-        <div className="projects-header">
-          <div>
-            <div className="section-tag">Portfolio</div>
-            <h2 className="section-title">Our Projects</h2>
-          </div>
-          <div className="project-filters">
-            {CATEGORIES.map(c => (
-              <button key={c} className={`filter-btn ${filter === c ? 'active' : ''}`} onClick={() => { setFilter(c); setSlideshow(0); }}>{c}</button>
-            ))}
-          </div>
+    <section id="projects" className="s-section">
+      <div className="s-container">
+        <div className="s-head s-head-row">
+          <motion.div initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.6 }}>
+            <span className="s-eyebrow">Our work</span>
+            <h2 className="s-h2">Projects we are <span className="s-mark">proud of</span></h2>
+          </motion.div>
+          {cats.length > 2 && (
+            <div className="s-filters">
+              {cats.map(c => (
+                <button key={c} className={filter === c ? 'on' : ''} onClick={() => setFilter(c)}>
+                  {filter === c && <motion.span layoutId="filter-pill" className="s-pill" transition={{ type: 'spring', stiffness: 400, damping: 32 }} />}
+                  <em>{c}</em>
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
-        {filtered.length === 0 ? (
-          <div className="projects-empty">
-            <div className="empty-icon">🏗️</div>
-            <h3>Projects Coming Soon</h3>
-            <p>Upload your project photos via the admin panel to showcase your work here.</p>
-          </div>
+        {projects.length === 0 ? (
+          <div className="s-empty"><b>Projects coming soon</b><span>New work is being added — call us to see our latest sites.</span></div>
         ) : (
-          <>
-            {/* Featured Slideshow */}
-            {filtered.length > 0 && (
-              <div className="projects-slideshow">
-                {filtered.map((p, i) => (
-                  <div key={p.id} className={`slideshow-slide ${i === slideshow ? 'active' : ''}`} onClick={() => openLightbox(p, i)}>
-                    <img src={p.image} alt={p.title} className="slideshow-img" />
-                    <div className="slideshow-overlay">
-                      <div className="slideshow-meta">
-                        <span className="slideshow-cat">{p.category}</span>
-                        <h3 className="slideshow-title">{p.title}</h3>
-                        {p.location && <span className="slideshow-loc">📍 {p.location}</span>}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-                {/* Slideshow controls */}
-                <button className="slideshow-prev" onClick={() => setSlideshow(s => (s - 1 + filtered.length) % filtered.length)}>‹</button>
-                <button className="slideshow-next" onClick={() => setSlideshow(s => (s + 1) % filtered.length)}>›</button>
-                <div className="slideshow-dots">
-                  {filtered.map((_, i) => (
-                    <button key={i} className={`slideshow-dot ${i === slideshow ? 'active' : ''}`} onClick={() => setSlideshow(i)} />
-                  ))}
-                </div>
-                <div className="slideshow-counter">{slideshow + 1} / {filtered.length}</div>
-              </div>
-            )}
-
-            {/* Grid */}
-            {filtered.length > 1 && (
-              <div className="projects-masonry">
-                {filtered.map((p, i) => (
-                  <div
-                    key={p.id}
-                    className={`project-item ${i % 5 === 0 ? 'wide' : ''} ${i === slideshow ? 'highlighted' : ''}`}
-                    onClick={() => openLightbox(p, i)}
-                    style={{ animationDelay: `${i * 0.06}s` }}
-                  >
-                    <img src={p.image} alt={p.title} className="project-img" loading="lazy" />
-                    <div className="project-info">
-                      <div className="project-cat">{p.category}</div>
-                      <div className="project-title-sm">{p.title}</div>
-                      {p.location && <div className="project-loc">📍 {p.location}</div>}
-                    </div>
-                    <div className="project-zoom">⤢</div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </>
+          <motion.div layout className="s-gallery">
+            <AnimatePresence mode="popLayout">
+              {filtered.map((pr, k) => (
+                <motion.figure
+                  key={pr.id} layout className="s-tile"
+                  initial={{ opacity: 0, scale: 0.92 }} whileInView={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.92 }}
+                  viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.45, delay: (k % 3) * 0.07 }}
+                  whileHover={{ y: -6 }} onClick={() => setOpen(k)}
+                >
+                  <img src={pr.image} alt={pr.title} loading="lazy" />
+                  <figcaption>
+                    <span className="s-chip">{pr.category}</span>
+                    <b>{pr.title}</b>
+                    {pr.location && <small><MapPin size={12} /> {pr.location}</small>}
+                  </figcaption>
+                  <span className="s-tile-zoom"><Maximize2 size={16} /></span>
+                </motion.figure>
+              ))}
+            </AnimatePresence>
+          </motion.div>
         )}
       </div>
 
-      {/* Lightbox */}
-      {lightbox && (
-        <div className="lightbox" onClick={() => setLightbox(null)}>
-          <div className="lightbox-inner" onClick={e => e.stopPropagation()}>
-            <button className="lightbox-close" onClick={() => setLightbox(null)}>✕</button>
+      <AnimatePresence>
+        {p && (
+          <motion.div className="s-lightbox" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setOpen(null)}>
+            <button className="s-lb-close" aria-label="Close" onClick={() => setOpen(null)}><X size={22} /></button>
             {filtered.length > 1 && <>
-              <button className="lightbox-prev" onClick={() => navigateLightbox(-1)}>‹</button>
-              <button className="lightbox-next" onClick={() => navigateLightbox(1)}>›</button>
+              <button className="s-lb-nav l" aria-label="Previous" onClick={(e) => { e.stopPropagation(); step(-1); }}><ChevronLeft size={26} /></button>
+              <button className="s-lb-nav r" aria-label="Next" onClick={(e) => { e.stopPropagation(); step(1); }}><ChevronRight size={26} /></button>
             </>}
-            <img src={lightbox.image} alt={lightbox.title} />
-            <div className="lightbox-meta">
-              <span className="lightbox-cat">{lightbox.category}</span>
-              <h3>{lightbox.title}</h3>
-              {lightbox.location && <p>📍 {lightbox.location}</p>}
-              {lightbox.description && <p>{lightbox.description}</p>}
-              <span className="lightbox-counter">{lightboxIdx + 1} / {filtered.length}</span>
-            </div>
-          </div>
-        </div>
-      )}
+            <motion.div key={p.id} className="s-lb-box" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} onClick={e => e.stopPropagation()}>
+              <img src={p.image} alt={p.title} />
+              <div className="s-lb-meta">
+                <span className="s-chip">{p.category}</span>
+                <h3>{p.title}</h3>
+                {p.location && <p><MapPin size={14} /> {p.location}</p>}
+                {p.description && <p>{p.description}</p>}
+                <small>{open + 1} / {filtered.length}</small>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

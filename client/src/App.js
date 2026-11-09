@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import useScrollReveal from './hooks/useScrollReveal';
-import './animations.css';
+import { MotionConfig } from 'framer-motion';
+import './site.css';
 
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
@@ -18,9 +18,12 @@ import AdminLogin from './components/admin/AdminLogin';
 import AdminDashboard from './components/admin/AdminDashboard';
 
 function Home() {
-  useScrollReveal();
+  useEffect(() => {
+    document.body.classList.add('site-body');
+    return () => document.body.classList.remove('site-body');
+  }, []);
   return (
-    <>
+    <div className="site">
       <Navbar />
       <Hero />
       <Services />
@@ -30,7 +33,7 @@ function Home() {
       <GoogleMap />
       <Footer />
       <WhatsAppButton />
-    </>
+    </div>
   );
 }
 
@@ -57,6 +60,7 @@ function AppRoutes() {
 
 export default function App() {
   return (
+    <MotionConfig reducedMotion="user">
     <BrowserRouter>
       <AuthProvider>
         <Toaster position="top-right" toastOptions={{
@@ -66,5 +70,6 @@ export default function App() {
         <AppRoutes />
       </AuthProvider>
     </BrowserRouter>
+    </MotionConfig>
   );
 }

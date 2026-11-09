@@ -1,87 +1,62 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { getServices } from '../../firebaseService';
+import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { Compass, Home, Sofa, FileCheck2, Landmark, Map, HardHat, Ruler, ArrowUpRight } from 'lucide-react';
+import { getServices, DEFAULT_SERVICES } from '../../firebaseService';
 import { vastuImg, elevationImg, interiorImg, municipalImg, grampanchayatImg, realestateImg, developmentImg } from '../../assets';
-import './Services.css';
+import { scrollToId } from '../site/data';
 
-const DEFAULT_IMAGES = {
-  'Vastu House Plans': vastuImg,
-  '3D Elevation Design': elevationImg,
-  'Interior Design': interiorImg,
-  'Municipal Permission': municipalImg,
-  'Gram Panchayat Approvals': grampanchayatImg,
-  'Real Estate': realestateImg,
-  'Development Projects': developmentImg,
+const IMAGES = {
+  'Vastu House Plans': vastuImg, '3D Elevation Design': elevationImg, 'Interior Design': interiorImg,
+  'Municipal Permission': municipalImg, 'Gram Panchayat Approvals': grampanchayatImg,
+  'Real Estate': realestateImg, 'Development Projects': developmentImg,
+};
+const ICONS = {
+  'Vastu House Plans': Compass, '3D Elevation Design': Home, 'Interior Design': Sofa,
+  'Municipal Permission': FileCheck2, 'Gram Panchayat Approvals': Landmark,
+  'Real Estate': Map, 'Development Projects': HardHat, 'Structural Design': Ruler,
 };
 
-const SERVICE_ICONS_BIG = {
-  'Vastu House Plans': '🧭',
-  '3D Elevation Design': '🏠',
-  'Interior Design': '🛋️',
-  'Municipal Permission': '📋',
-  'Gram Panchayat Approvals': '✅',
-  'Real Estate': '🏘️',
-  'Development Projects': '🏗️',
-  'Structural Design': '📐',
-};
+const grid = { hidden: {}, show: { transition: { staggerChildren: 0.09 } } };
+const card = { hidden: { opacity: 0, y: 36 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } } };
 
 export default function Services() {
   const [services, setServices] = useState([]);
-  const [flipped, setFlipped] = useState(null);
-  const ref = useRef();
-  const [visible, setVisible] = useState(false);
-
   useEffect(() => {
-    getServices().then(data => setServices(Array.isArray(data) ? data : [])).catch(() => setServices([]));
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setVisible(true); }, { threshold: 0.1 });
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
+    let done = false;
+    const t = setTimeout(() => { if (!done) setServices(s => (s.length ? s : DEFAULT_SERVICES)); }, 2500);
+    getServices().then(d => { done = true; setServices(Array.isArray(d) ? d : DEFAULT_SERVICES); }).catch(() => setServices(DEFAULT_SERVICES));
+    return () => clearTimeout(t);
   }, []);
+  const list = services.filter(s => s.active);
 
   return (
-    <section id="services" className="services" ref={ref}>
-      <div className={`container ${visible ? 'section-visible' : 'section-hidden'}`}>
-        <div className="services-header">
-          <div className="section-tag">What We Offer</div>
-          <h2 className="section-title">Our Services</h2>
-          <p className="services-desc">Hover on any service to learn more. Tap to explore all we offer.</p>
-        </div>
-        <div className="services-grid">
-          {services.filter(s => s.active).map((service, i) => (
-            <div
-              key={service.id}
-              className={`flip-card ${flipped === service.id ? 'flipped' : ''}`}
-              style={{ animationDelay: `${i * 0.07}s` }}
-              onMouseEnter={() => setFlipped(service.id)}
-              onMouseLeave={() => setFlipped(null)}
-              onClick={() => setFlipped(flipped === service.id ? null : service.id)}
-            >
-              <div className="flip-inner">
-                {/* FRONT */}
-                <div className="flip-front">
-                  <div className="service-img-wrap">
-                    <img src={DEFAULT_IMAGES[service.name] || ''} alt={service.name} className="service-img" />
-                    <div className="service-img-overlay" />
-                  </div>
-                  <div className="service-content">
-                    <div className="service-icon">{service.icon}</div>
-                    <h3 className="service-name">{service.name}</h3>
-                    <div className="flip-hint">Hover to learn more →</div>
-                  </div>
-                  <div className="service-top-bar" />
+    <section id="services" className="s-section s-soft">
+      <div className="s-container">
+        <motion.div className="s-head" initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.6 }}>
+          <span className="s-eyebrow">What we do</span>
+          <h2 className="s-h2">Everything your build needs, <span className="s-mark">under one roof</span></h2>
+          <p className="s-lead">From the first Vastu plan to the final handover — design, approvals and construction handled by one team.</p>
+        </motion.div>
+
+        <motion.div className="s-services" variants={grid} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-60px' }}>
+          {list.map(s => {
+            const Icon = ICONS[s.name];
+            const img = IMAGES[s.name];
+            return (
+              <motion.article key={s.id} className="s-card" variants={card} whileHover={{ y: -8 }} transition={{ type: 'spring', stiffness: 300, damping: 22 }}>
+                <div className={`s-card-media ${img ? '' : 'no-img'}`}>
+                  {img ? <img src={img} alt={s.name} loading="lazy" /> : <span className="s-card-bigicon">{Icon ? <Icon size={54} strokeWidth={1.5} /> : s.icon}</span>}
+                  <span className="s-card-icon">{Icon ? <Icon size={20} /> : s.icon}</span>
                 </div>
-                {/* BACK */}
-                <div className="flip-back">
-                  <div className="flip-back-icon">{SERVICE_ICONS_BIG[service.name] || service.icon}</div>
-                  <h3 className="flip-back-title">{service.name}</h3>
-                  <p className="flip-back-desc">{service.description}</p>
-                  <button className="flip-back-btn" onClick={e => { e.stopPropagation(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}>
-                    Get a Quote →
-                  </button>
+                <div className="s-card-body">
+                  <h3>{s.name}</h3>
+                  <p>{s.description}</p>
+                  <button className="s-link" onClick={() => scrollToId('contact')}>Get a quote <ArrowUpRight size={16} /></button>
                 </div>
-              </div>
-            </div>
-          ))}
-        </div>
+              </motion.article>
+            );
+          })}
+        </motion.div>
       </div>
     </section>
   );
