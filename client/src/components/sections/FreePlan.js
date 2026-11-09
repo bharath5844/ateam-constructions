@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Send } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { submitEnquiry } from '../../firebaseService';
-import { sendToWhatsApp } from '../site/data';
+import { sendToWhatsApp, cleanPhone } from '../site/data';
 
 export default function FreePlan() {
   const [f, setF] = useState({ name: '', phone: '', plot: '' });
@@ -12,10 +12,12 @@ export default function FreePlan() {
   const submit = async e => {
     e.preventDefault();
     if (!f.name || !f.phone || !f.plot) { toast.error('Please fill all three fields'); return; }
+    const ph = cleanPhone(f.phone);
+    if (!ph) { toast.error('Please enter a valid 10-digit mobile number'); return; }
     setLoading(true);
     try {
-      submitEnquiry({ name: f.name, phone: f.phone, email: '', service: 'Vastu House Plans', message: `FREE PLOT CONSULTATION — plot size / location: ${f.plot}` }).catch(() => {});
-      sendToWhatsApp(`Hello A-Team Constructions! I would like a free plot consultation.\n\nName: ${f.name}\nPhone: ${f.phone}\nPlot size & location: ${f.plot}`);
+      submitEnquiry({ name: f.name, phone: ph, email: '', service: 'Vastu House Plans', message: `FREE PLOT CONSULTATION — plot size / location: ${f.plot}` }).catch(() => {});
+      sendToWhatsApp(`Hello A-Team Constructions! I would like a free plot consultation.\n\nName: ${f.name}\nPhone: ${ph}\nPlot size & location: ${f.plot}`);
       toast.success('Opening WhatsApp. Just press send.');
       setF({ name: '', phone: '', plot: '' });
     } finally { setLoading(false); }
@@ -30,7 +32,7 @@ export default function FreePlan() {
         </div>
         <form onSubmit={submit} className="s-offer-form">
           <input name="name" value={f.name} onChange={change} placeholder="Your name" aria-label="Your name" />
-          <input name="phone" value={f.phone} onChange={change} placeholder="Phone number" inputMode="tel" aria-label="Phone number" />
+          <input name="phone" value={f.phone} onChange={change} placeholder="10-digit mobile number" inputMode="tel" maxLength={16} aria-label="Phone number" />
           <input name="plot" value={f.plot} onChange={change} placeholder="Plot size & location (e.g. 150 sq yd, Shankarpalle)" aria-label="Plot size and location" />
           <button type="submit" className="s-btn s-btn-dark s-btn-lg" disabled={loading}>{loading ? 'Sending…' : <>Get my free idea on WhatsApp <Send size={16} /></>}</button>
         </form>
