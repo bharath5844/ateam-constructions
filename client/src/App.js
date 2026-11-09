@@ -11,6 +11,12 @@ import Hero from './components/sections/Hero';
 import Services from './components/sections/Services';
 import Projects from './components/sections/Projects';
 import About from './components/sections/About';
+import Marquee from './components/sections/Marquee';
+import Story from './components/sections/Story';
+import Reviews from './components/sections/Reviews';
+import Cursor from './components/site/Cursor';
+import Intro from './components/site/Intro';
+import useSmoothScroll from './components/site/Smooth';
 import Process from './components/sections/Process';
 import Instagram from './components/sections/Instagram';
 import FAQ from './components/sections/FAQ';
@@ -22,6 +28,7 @@ import AdminLogin from './components/admin/AdminLogin';
 import AdminDashboard from './components/admin/AdminDashboard';
 
 function Home() {
+  useSmoothScroll();
   useEffect(() => {
     document.body.classList.add('site-body');
     return () => document.body.classList.remove('site-body');
@@ -29,10 +36,15 @@ function Home() {
   return (
     <div className="site">
       <Navbar />
+      <Intro />
+      <Cursor />
       <Hero />
+      <Marquee />
+      <Story />
       <Services />
-      <Process />
       <Projects />
+      <Reviews />
+      <Process />
       <Instagram />
       <About />
       <FAQ />

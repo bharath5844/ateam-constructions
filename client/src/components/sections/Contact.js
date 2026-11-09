@@ -36,17 +36,17 @@ export default function Contact() {
           <div className="s-people">
             <a href={`tel:${PHONE_CEO.tel}`} className="s-person">
               <span className="s-person-ic"><Phone size={20} /></span>
-              <span><small>CEO</small><b>Bharath Reddy</b><em>{PHONE_CEO.label}</em></span>
+              <span><small>Call</small><b>Bharath Reddy</b><em>{PHONE_CEO.label}</em></span>
             </a>
             <a href={`tel:${PHONE_FOUNDER.tel}`} className="s-person">
               <span className="s-person-ic"><Phone size={20} /></span>
-              <span><small>Founder</small><b>Bhargav Reddy</b><em>{PHONE_FOUNDER.label}</em></span>
+              <span><small>Call</small><b>Bhargav Reddy</b><em>{PHONE_FOUNDER.label}</em></span>
             </a>
           </div>
 
           <ul className="s-info">
             <li><Mail size={18} /><a href="mailto:info@ateamconstructions.in">info@ateamconstructions.in</a></li>
-            <li><MapPin size={18} /><span>Shop No 5-144/25/2, Bdl X Road, Shankarpalle, Telangana 501203</span></li>
+            <li><MapPin size={18} /><span>Shop No 5-144/25/2, BDL X Road (above Universe Bakes & Cakes), Shankarpalle, Telangana 501203</span></li>
             <li><Clock size={18} /><span>Mon–Sat: 9:00 AM – 7:00 PM</span></li>
           </ul>
           <a href={WHATSAPP} target="_blank" rel="noreferrer" className="s-btn s-btn-green s-btn-lg"><MessageCircle size={18} /> Chat on WhatsApp</a>

@@ -2,14 +2,15 @@ import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Phone, MessageCircle, ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
 import { getProjects } from '../../firebaseService';
-import { elevationImg, interiorImg, developmentImg, realestateImg } from '../../assets';
-import { scrollToId, PHONE_CEO, WHATSAPP } from '../site/data';
+import { IMG } from '../site/media';
+import { scrollToId, PHONE_CEO, WHATSAPP, INTRO_DELAY } from '../site/data';
 
 const FALLBACK = [
-  { id: 'f1', image: elevationImg, title: '3D Elevation Design', category: 'Elevation', pos: '50% 80%' },
-  { id: 'f2', image: interiorImg, title: 'Interior Design', category: 'Interior', pos: '50% 80%' },
-  { id: 'f3', image: developmentImg, title: 'Development Projects', category: 'Development', pos: '50% 80%' },
-  { id: 'f4', image: realestateImg, title: 'Real Estate', category: 'Real Estate', pos: '50% 80%' },
+  { id: 'h1', image: IMG.elevA, title: 'Modern Residential Elevation', category: 'Residential', pos: '50% 28%' },
+  { id: 'h2', image: IMG.ceiling, title: 'Designer Interiors', category: 'Interior', pos: '50% 42%' },
+  { id: 'h3', image: IMG.elevC, title: 'Contemporary Facade', category: 'Residential', pos: '50% 38%' },
+  { id: 'h4', image: IMG.kitchen, title: 'Modular Kitchen', category: 'Interior', pos: '50% 50%' },
+  { id: 'h5', image: IMG.elevB, title: 'Corner Building Elevation', category: 'Residential', pos: '50% 30%' },
 ];
 const SLIDE_MS = 6500;
 const HEADLINE = ['We', 'design', '&', 'build', 'homes', "you'll", 'love.'];
@@ -57,7 +58,7 @@ export default function Hero() {
       <div className="s-hero-shade" />
 
       <div className="s-hero-content">
-        <motion.span className="s-hero-kicker" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.6 }}>
+        <motion.span className="s-hero-kicker" initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 + INTRO_DELAY, duration: 0.6 }}>
           <i /> Architect &amp; Interior Designs · Shankarpalle
         </motion.span>
         <h1 className="s-hero-title" aria-label={HEADLINE.join(' ')}>
@@ -66,12 +67,12 @@ export default function Hero() {
               <motion.span
                 className={w === 'build' || w === 'love.' ? 's-word s-hl' : 's-word'}
                 initial={{ y: '110%' }} animate={{ y: 0 }}
-                transition={{ delay: 0.7 + k * 0.09, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ delay: 0.7 + INTRO_DELAY + k * 0.09, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               >{w}</motion.span>
             </span>
           ))}
         </h1>
-        <motion.div className="s-hero-cta" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.5, duration: 0.6 }}>
+        <motion.div className="s-hero-cta" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.5 + INTRO_DELAY, duration: 0.6 }}>
           <a href={`tel:${PHONE_CEO.tel}`} className="s-btn s-btn-yellow s-btn-lg"><Phone size={18} /> Call Now</a>
           <a href={WHATSAPP} target="_blank" rel="noreferrer" className="s-btn s-btn-glass s-btn-lg"><MessageCircle size={18} /> WhatsApp</a>
           <button className="s-btn s-btn-ghost s-btn-lg" onClick={() => scrollToId('projects')}>View Projects</button>

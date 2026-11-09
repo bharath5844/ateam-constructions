@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Instagram as IgIcon, ArrowUpRight, Play } from 'lucide-react';
 import { getProjects } from '../../firebaseService';
-import { elevationImg, interiorImg, developmentImg } from '../../assets';
+import { IMG } from '../site/media';
 import { INSTAGRAM, INSTAGRAM_HANDLE } from '../site/data';
 
-const FALLBACK = [elevationImg, interiorImg, developmentImg];
+const FALLBACK = [IMG.elevC, IMG.ceiling, IMG.elevB];
 
 export default function Instagram() {
   const [imgs, setImgs] = useState(FALLBACK);

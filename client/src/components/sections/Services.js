@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Compass, Home, Sofa, FileCheck2, Landmark, Map, HardHat, Ruler, ArrowUpRight } from 'lucide-react';
 import { getServices, DEFAULT_SERVICES } from '../../firebaseService';
 import { vastuImg, elevationImg, interiorImg, municipalImg, grampanchayatImg, realestateImg, developmentImg } from '../../assets';
+import { IMG } from '../site/media';
 import { scrollToId } from '../site/data';
 
 const IMAGES = {
@@ -10,14 +11,36 @@ const IMAGES = {
   'Municipal Permission': municipalImg, 'Gram Panchayat Approvals': grampanchayatImg,
   'Real Estate': realestateImg, 'Development Projects': developmentImg,
 };
+const PHOTOS = { 'Structural Design': IMG.elevB };
 const ICONS = {
   'Vastu House Plans': Compass, '3D Elevation Design': Home, 'Interior Design': Sofa,
   'Municipal Permission': FileCheck2, 'Gram Panchayat Approvals': Landmark,
   'Real Estate': Map, 'Development Projects': HardHat, 'Structural Design': Ruler,
 };
 
-const grid = { hidden: {}, show: { transition: { staggerChildren: 0.09 } } };
-const card = { hidden: { opacity: 0, y: 36 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } } };
+function StackCard({ s, i }) {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.93]);
+  const Icon = ICONS[s.name];
+  const img = PHOTOS[s.name] || IMAGES[s.name];
+  const photo = !!PHOTOS[s.name];
+  return (
+    <div className="s-stack-item" ref={ref} style={{ top: `calc(var(--nav-h) + 14px + ${i * 12}px)` }}>
+      <motion.article className="s-stack-card" style={{ scale }}>
+        <div className={`s-stack-media ${img ? '' : 'no-img'}`}>
+          {img ? <img src={img} alt={s.name} loading="lazy" style={{ objectPosition: photo ? '50% 30%' : '50% 82%' }} /> : <span>{Icon ? <Icon size={64} strokeWidth={1.4} /> : s.icon}</span>}
+        </div>
+        <div className="s-stack-body">
+          <span className="s-stack-ic">{Icon ? <Icon size={22} /> : s.icon}</span>
+          <h3>{s.name}</h3>
+          <p>{s.description}</p>
+          <button className="s-link" onClick={() => scrollToId('contact')}>Get a quote <ArrowUpRight size={16} /></button>
+        </div>
+      </motion.article>
+    </div>
+  );
+}
 
 export default function Services() {
   const [services, setServices] = useState([]);
@@ -37,26 +60,9 @@ export default function Services() {
           <h2 className="s-h2">Everything your build needs, <span className="s-mark">under one roof</span></h2>
           <p className="s-lead">From the first Vastu plan to the final handover — design, approvals and construction handled by one team.</p>
         </motion.div>
-
-        <motion.div className="s-services" variants={grid} initial="hidden" whileInView="show" viewport={{ once: true, margin: '-60px' }}>
-          {list.map(s => {
-            const Icon = ICONS[s.name];
-            const img = IMAGES[s.name];
-            return (
-              <motion.article key={s.id} className="s-card" variants={card} whileHover={{ y: -8 }} transition={{ type: 'spring', stiffness: 300, damping: 22 }}>
-                <div className={`s-card-media ${img ? '' : 'no-img'}`}>
-                  {img ? <img src={img} alt={s.name} loading="lazy" /> : <span className="s-card-bigicon">{Icon ? <Icon size={54} strokeWidth={1.5} /> : s.icon}</span>}
-                  <span className="s-card-icon">{Icon ? <Icon size={20} /> : s.icon}</span>
-                </div>
-                <div className="s-card-body">
-                  <h3>{s.name}</h3>
-                  <p>{s.description}</p>
-                  <button className="s-link" onClick={() => scrollToId('contact')}>Get a quote <ArrowUpRight size={16} /></button>
-                </div>
-              </motion.article>
-            );
-          })}
-        </motion.div>
+        <div className="s-stack">
+          {list.map((s, i) => <StackCard key={s.id} s={s} i={i} />)}
+        </div>
       </div>
     </section>
   );

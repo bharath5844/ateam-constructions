@@ -30,7 +30,7 @@ export default function Footer() {
           <ul className="s-foot-contact">
             <li><Phone size={16} /><span><a href={`tel:${PHONE_CEO.tel}`}>{PHONE_CEO.label}</a><br /><a href={`tel:${PHONE_FOUNDER.tel}`}>{PHONE_FOUNDER.label}</a></span></li>
             <li><Mail size={16} /><a href="mailto:info@ateamconstructions.in">info@ateamconstructions.in</a></li>
-            <li><MapPin size={16} /><span>Shop No 5-144/25/2, Bdl X Road, Shankarpalle, Telangana 501203</span></li>
+            <li><MapPin size={16} /><span>Shop No 5-144/25/2, BDL X Road (above Universe Bakes & Cakes), Shankarpalle, Telangana 501203</span></li>
             <li><Clock size={16} /><span>Mon–Sat: 9 AM – 7 PM</span></li>
           </ul>
         </div>
