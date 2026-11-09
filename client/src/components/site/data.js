@@ -20,3 +20,9 @@ export const INSTAGRAM_HANDLE = '@ateamconstructions';
 // Opens WhatsApp chat with the enquiry pre-filled (enquiries arrive on WhatsApp, not email).
 export const waLink = text => `https://wa.me/919866515444?text=${encodeURIComponent(text)}`;
 export const sendToWhatsApp = text => { window.open(waLink(text), '_blank', 'noopener'); };
+
+// Accepts Indian mobile numbers: 10 digits starting 6-9, optional +91 / 0 prefix and spaces or dashes.
+export const cleanPhone = v => {
+  const d = String(v).replace(/[^0-9]/g, '').replace(/^(91|0)(?=\d{10}$)/, '');
+  return /^[6-9]\d{9}$/.test(d) ? d : null;
+};

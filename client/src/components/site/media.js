@@ -1,8 +1,5 @@
 // Photos from the A-Team Constructions Google Business listing (served from /public/images).
 export const IMG = {
-  elevA: '/images/elevation-a.jpg',
-  elevB: '/images/elevation-b.jpg',
-  elevC: '/images/elevation-c.jpg',
   ceiling: '/images/interior-ceiling.jpg',
   kitchen: '/images/interior-kitchen.jpg',
   officeFront: '/images/office-front.jpg',
@@ -64,11 +61,8 @@ export const INSPO_ALL = INSPIRATION.flatMap(c => c.imgs);
 // Shown when the admin has not uploaded projects yet (and mixed in after real ones).
 export const SAMPLE_PROJECTS = [
   { id: 's0', image: IMG.villa3d, title: '3D Elevation Design', category: '3D Elevation', pos: '50% 50%' },
-  { id: 's1', image: IMG.elevA, title: 'Modern Residential Elevation', category: 'Residential', pos: '50% 35%' },
   { id: 's2', image: IMG.ceiling, title: 'Designer Ceiling & Dining', category: 'Interior', pos: '50% 45%' },
-  { id: 's3', image: IMG.elevC, title: 'Contemporary Facade', category: 'Residential', pos: '50% 40%' },
   { id: 's4', image: IMG.kitchen, title: 'Modular Kitchen', category: 'Interior', pos: '50% 50%' },
-  { id: 's5', image: IMG.elevB, title: 'Corner Building Elevation', category: 'Residential', pos: '50% 30%' },
   { id: 's6', image: IMG.officeFront, title: 'A-Team Office, Shankarpalle', category: 'Our Office', pos: '50% 40%' },
   { id: 's7', image: IMG.officeBalcony, title: 'Office Terrace', category: 'Our Office', pos: '50% 50%' },
 ];

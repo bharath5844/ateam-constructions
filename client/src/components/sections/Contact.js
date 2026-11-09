@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Phone, MapPin, Clock, MessageCircle, Send } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { submitEnquiry } from '../../firebaseService';
-import { PHONE_CEO, PHONE_FOUNDER, WHATSAPP, sendToWhatsApp } from '../site/data';
+import { PHONE_CEO, PHONE_FOUNDER, WHATSAPP, sendToWhatsApp, cleanPhone } from '../site/data';
 
 const SERVICES = ['Vastu House Plans', '3D Elevation Design', 'Interior Design', 'Municipal Permission', 'Gram Panchayat Approvals', 'Real Estate', 'Development Projects', 'Structural Design', 'Other'];
 const fade = (d = 0) => ({ initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-70px' }, transition: { duration: 0.6, delay: d } });
@@ -16,10 +16,12 @@ export default function Contact() {
   const submit = async e => {
     e.preventDefault();
     if (!form.name || !form.phone || !form.service) { toast.error('Please fill all required fields'); return; }
+    const ph = cleanPhone(form.phone);
+    if (!ph) { toast.error('Please enter a valid 10-digit mobile number'); return; }
     setLoading(true);
     try {
-      submitEnquiry({ ...form, email: '' }).catch(() => {});
-      sendToWhatsApp(`Hello A-Team Constructions! New enquiry from the website.\n\nName: ${form.name}\nPhone: ${form.phone}\nService: ${form.service}\nDetails: ${form.message || '-'}`);
+      submitEnquiry({ ...form, phone: ph, email: '' }).catch(() => {});
+      sendToWhatsApp(`Hello A-Team Constructions! New enquiry from the website.\n\nName: ${form.name}\nPhone: ${ph}\nService: ${form.service}\nDetails: ${form.message || '-'}`);
       toast.success('Opening WhatsApp. Just press send and we will reply soon.');
       setForm({ name: '', phone: '', service: '', message: '' });
     } finally { setLoading(false); }
@@ -55,7 +57,7 @@ export default function Contact() {
           <h3>Send us an enquiry</h3>
           <div className="s-row">
             <label>Full name *<input name="name" value={form.name} onChange={change} placeholder="Your name" required /></label>
-            <label>Phone *<input name="phone" value={form.phone} onChange={change} placeholder="+91 XXXXX XXXXX" required /></label>
+            <label>Phone *<input name="phone" value={form.phone} onChange={change} placeholder="10-digit mobile number" inputMode="tel" maxLength={16} required /></label>
           </div>
           <label>Service required *
             <select name="service" value={form.service} onChange={change} required>
