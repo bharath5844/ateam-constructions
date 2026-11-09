@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Navigation } from 'lucide-react';
+import { MapPin, Navigation, Star } from 'lucide-react';
 import { MAPS_LINK } from '../site/data';
 
 export default function GoogleMap() {
@@ -18,6 +18,7 @@ export default function GoogleMap() {
             <b>A-Team Constructions</b>
             <p>Shop No 5-144/25/2, Bdl X Road,<br />Shankarpalle, Telangana 501203</p>
             <a href={MAPS_LINK} target="_blank" rel="noreferrer" className="s-btn s-btn-yellow"><Navigation size={16} /> Get directions</a>
+            <a href={MAPS_LINK} target="_blank" rel="noreferrer" className="s-btn s-btn-outline-dark"><Star size={16} /> Google reviews</a>
           </div>
         </motion.div>
       </div>

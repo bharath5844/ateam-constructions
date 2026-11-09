@@ -6,3 +6,5 @@ export const scrollToId = (id) => {
   const el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: 'smooth' });
 };
+export const INSTAGRAM = 'https://www.instagram.com/ateamconstructions/';
+export const INSTAGRAM_HANDLE = '@ateamconstructions';

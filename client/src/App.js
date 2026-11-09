@@ -11,6 +11,10 @@ import Hero from './components/sections/Hero';
 import Services from './components/sections/Services';
 import Projects from './components/sections/Projects';
 import About from './components/sections/About';
+import Process from './components/sections/Process';
+import Instagram from './components/sections/Instagram';
+import FAQ from './components/sections/FAQ';
+import FreePlan from './components/sections/FreePlan';
 import Contact from './components/sections/Contact';
 import WhatsAppButton from './components/ui/WhatsAppButton';
 import GoogleMap from './components/ui/GoogleMap';
@@ -27,8 +31,12 @@ function Home() {
       <Navbar />
       <Hero />
       <Services />
+      <Process />
       <Projects />
+      <Instagram />
       <About />
+      <FAQ />
+      <FreePlan />
       <Contact />
       <GoogleMap />
       <Footer />
