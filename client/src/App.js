@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import useScrollReveal from './hooks/useScrollReveal';
-import './animations.css';
+import { MotionConfig } from 'framer-motion';
+import './site.css';
 
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
@@ -11,6 +11,18 @@ import Hero from './components/sections/Hero';
 import Services from './components/sections/Services';
 import Projects from './components/sections/Projects';
 import About from './components/sections/About';
+import Marquee from './components/sections/Marquee';
+import Story from './components/sections/Story';
+import Dream from './components/sections/Dream';
+import Inspo from './components/sections/Inspo';
+import Reviews from './components/sections/Reviews';
+import Cursor from './components/site/Cursor';
+import Intro from './components/site/Intro';
+import useSmoothScroll from './components/site/Smooth';
+import Process from './components/sections/Process';
+import Instagram from './components/sections/Instagram';
+import FAQ from './components/sections/FAQ';
+import FreePlan from './components/sections/FreePlan';
 import Contact from './components/sections/Contact';
 import WhatsAppButton from './components/ui/WhatsAppButton';
 import GoogleMap from './components/ui/GoogleMap';
@@ -18,19 +30,34 @@ import AdminLogin from './components/admin/AdminLogin';
 import AdminDashboard from './components/admin/AdminDashboard';
 
 function Home() {
-  useScrollReveal();
+  useSmoothScroll();
+  useEffect(() => {
+    document.body.classList.add('site-body');
+    return () => document.body.classList.remove('site-body');
+  }, []);
   return (
-    <>
+    <div className="site">
       <Navbar />
+      <Intro />
+      <Cursor />
       <Hero />
+      <Marquee />
+      <Story />
+      <Dream />
+      <Inspo />
       <Services />
       <Projects />
+      <Reviews />
+      <Process />
+      <Instagram />
       <About />
+      <FAQ />
+      <FreePlan />
       <Contact />
       <GoogleMap />
       <Footer />
       <WhatsAppButton />
-    </>
+    </div>
   );
 }
 
@@ -57,6 +84,7 @@ function AppRoutes() {
 
 export default function App() {
   return (
+    <MotionConfig reducedMotion="user">
     <BrowserRouter>
       <AuthProvider>
         <Toaster position="top-right" toastOptions={{
@@ -66,5 +94,6 @@ export default function App() {
         <AppRoutes />
       </AuthProvider>
     </BrowserRouter>
+    </MotionConfig>
   );
 }

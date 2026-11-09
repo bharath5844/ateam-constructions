@@ -1,98 +1,60 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { ShieldCheck, Compass, Layers, Wallet, MapPin } from 'lucide-react';
 import { getAbout } from '../../firebaseService';
-import './About.css';
 
-const AREAS = [
-  {
-    region: 'Telangana',
-    cities: ['Hyderabad', 'Gachibowli', 'Kokapet', 'Narsingi', 'Shankarpally', 'Miyapur', 'Manikonda', 'Tellapur', 'Kondapur', 'Bachupally', 'Nizampet', 'Kukatpally']
-  },
-  {
-    region: 'Andhra Pradesh',
-    cities: ['Vijayawada', 'Guntur', 'Visakhapatnam', 'Tirupati', 'Nellore', 'Amaravati', 'Rajahmundry', 'Kakinada']
-  },
+const WHY = [
+  { Icon: Compass, title: 'Vastu-first planning', text: 'Every house plan is drawn with Vastu in mind, so the home feels right from day one.' },
+  { Icon: Layers, title: 'End-to-end service', text: 'Design, approvals and construction — handled by one team, so nothing falls between the cracks.' },
+  { Icon: ShieldCheck, title: 'Hands-on supervision', text: 'Our team brings 12+ years of on-site civil experience to every project.' },
+  { Icon: Wallet, title: 'Transparent pricing', text: 'Clear quotes and detailed breakdowns before any work begins. No surprises.' },
 ];
+const AREAS = ['Hyderabad', 'Gachibowli', 'Kokapet', 'Narsingi', 'Shankarpally', 'Miyapur', 'Manikonda', 'Tellapur'];
 
-const why = [
-  { icon: '🏆', title: 'Proven Expertise', text: '10+ years delivering residential & commercial projects across AP & Telangana.' },
-  { icon: '📐', title: 'Vastu Certified', text: 'All house plans designed with deep Vastu knowledge ensuring harmony and prosperity.' },
-  { icon: '⚡', title: 'On-Time Delivery', text: 'We deliver plans, designs, and approvals on time — your schedule matters to us.' },
-  { icon: '🔄', title: 'End-to-End Service', text: 'From concept to completion — design, approvals, construction under one roof.' },
-  { icon: '💰', title: 'Transparent Pricing', text: 'No hidden costs. Clear, honest quotes and detailed breakdowns before any work begins.' },
-];
+const fade = (d = 0) => ({ initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-70px' }, transition: { duration: 0.6, delay: d } });
 
 export default function About() {
   const [about, setAbout] = useState(null);
-  const ref = useRef();
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    getAbout().then(setAbout).catch(() => {});
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setVisible(true); }, { threshold: 0.1 });
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, []);
+  useEffect(() => { getAbout().then(setAbout).catch(() => {}); }, []);
 
   return (
-    <section id="about" className="about" ref={ref}>
-      <div className={`container ${visible ? 'fade-in' : 'fade-out'}`}>
-        <div className="about-grid">
-          <div className="about-left">
-            <div className="section-tag">Who We Are</div>
-            <h2 className="section-title">Built On Trust,<br />Driven By<br />Excellence</h2>
-            <p className="about-desc">
-              {about?.description || 'A-Team Constructions is a premier architectural and construction firm based in Telangana, delivering exceptional residential and commercial projects across the region.'}
+    <section id="about" className="s-section s-soft">
+      <div className="s-container">
+        <div className="s-about">
+          <motion.div {...fade()}>
+            <span className="s-eyebrow">Who we are</span>
+            <h2 className="s-h2">Built on trust, <span className="s-mark">driven by detail</span></h2>
+            <p className="s-lead left">
+              {about?.description || 'A-Team Constructions is an architecture, interior design and construction firm in Shankarpalle, Telangana — delivering homes and commercial spaces across the western Hyderabad corridor.'}
             </p>
-            <div className="about-stats">
-              {(about?.stats || []).map((s, i) => (
-                <div key={i} className="about-stat">
-                  <div className="about-stat-value">{s.value}</div>
-                  <div className="about-stat-label">{s.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
+            <img src="/logo.png" alt="" className="s-about-logo" aria-hidden="true" />
+          </motion.div>
 
-          <div className="about-right">
-            <div className="about-logo-card">
-              <img src="/logo.png" alt="A-Team" className="about-logo" />
-              <div className="about-logo-glow" />
-            </div>
-            <div className="why-grid">
-              {why.map((w, i) => (
-                <div key={i} className="why-card">
-                  <div className="why-icon">{w.icon}</div>
-                  <div className="why-title">{w.title}</div>
-                  <p className="why-text">{w.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Areas We Serve - now with 2 cards */}
-        <div className="areas-section">
-          <div className="areas-header">
-            <div className="section-tag">Coverage</div>
-            <h2 className="section-title">Areas We Serve</h2>
-            <p className="areas-desc">We provide architectural and construction services across Telangana and Andhra Pradesh.</p>
-          </div>
-          <div className="areas-grid">
-            {AREAS.map((area, i) => (
-              <div key={i} className="area-card">
-                <div className="area-region">
-                  <span className="area-flag">📍</span>
-                  {area.region}
-                </div>
-                <div className="area-cities">
-                  {area.cities.map((city, j) => (
-                    <span key={j} className="area-city">{city}</span>
-                  ))}
-                </div>
-              </div>
+          <div className="s-why">
+            {WHY.map(({ Icon, title, text }, k) => (
+              <motion.div key={title} className="s-why-card" {...fade(k * 0.08)} whileHover={{ y: -6 }}>
+                <span className="s-why-icon"><Icon size={22} /></span>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </motion.div>
             ))}
           </div>
         </div>
+
+        <motion.div className="s-areas" {...fade()}>
+          <div>
+            <span className="s-eyebrow">Coverage</span>
+            <h3 className="s-h3">Areas we serve</h3>
+            <p className="s-lead left small">Based in Shankarpalle and working across Hyderabad's western corridor.</p>
+          </div>
+          <div className="s-area-list">
+            {AREAS.map((a, k) => (
+              <motion.span key={a} className="s-area" initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: k * 0.05 }} whileHover={{ y: -3 }}>
+                <MapPin size={14} /> {a}
+              </motion.span>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

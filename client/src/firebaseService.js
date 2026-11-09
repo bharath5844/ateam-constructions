@@ -49,7 +49,7 @@ export const deleteProject = async (id) => {
 };
 
 // ─── SERVICES ───────────────────────────────────────────
-const DEFAULT_SERVICES = [
+export const DEFAULT_SERVICES = [
   { id:'1', name:'Vastu House Plans', icon:'🧭', description:'Scientifically designed Vastu-compliant floor plans that ensure harmony, prosperity, and positive energy flow in your home.', active:true },
   { id:'2', name:'3D Elevation Design', icon:'🏠', description:'Stunning photorealistic 3D exterior elevations that let you visualize your dream home before the first brick is laid.', active:true },
   { id:'3', name:'Interior Design', icon:'🛋️', description:'Bespoke interior design solutions crafting beautiful, functional spaces that reflect your personality and lifestyle.', active:true },

@@ -1,108 +1,73 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { submitEnquiry } from '../../firebaseService';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Phone, MapPin, Clock, MessageCircle, Send } from 'lucide-react';
 import toast from 'react-hot-toast';
-import './Contact.css';
+import { submitEnquiry } from '../../firebaseService';
+import { PHONE_CEO, PHONE_FOUNDER, WHATSAPP, sendToWhatsApp } from '../site/data';
 
-const SERVICES = ['Vastu House Plans','3D Elevation Design','Interior Design','Municipal Permission','Gram Panchayat Approvals','Real Estate','Development Projects','Structural Design','Other'];
+const SERVICES = ['Vastu House Plans', '3D Elevation Design', 'Interior Design', 'Municipal Permission', 'Gram Panchayat Approvals', 'Real Estate', 'Development Projects', 'Structural Design', 'Other'];
+const fade = (d = 0) => ({ initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-70px' }, transition: { duration: 0.6, delay: d } });
 
 export default function Contact() {
-  const [form, setForm] = useState({ name:'', phone:'', email:'', service:'', message:'' });
+  const [form, setForm] = useState({ name: '', phone: '', service: '', message: '' });
   const [loading, setLoading] = useState(false);
-  const ref = useRef();
-  const [visible, setVisible] = useState(false);
+  const change = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
 
-  useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => { if(e.isIntersecting) setVisible(true); }, { threshold: 0.1 });
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, []);
-
-  const handleChange = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
-
-  const handleSubmit = async e => {
+  const submit = async e => {
     e.preventDefault();
     if (!form.name || !form.phone || !form.service) { toast.error('Please fill all required fields'); return; }
     setLoading(true);
     try {
-      await submitEnquiry(form);
-      toast.success("Enquiry submitted! We'll contact you within 24 hours.");
-      setForm({ name:'', phone:'', email:'', service:'', message:'' });
-    } catch { toast.error('Something went wrong. Please call us directly.'); }
-    finally { setLoading(false); }
+      submitEnquiry({ ...form, email: '' }).catch(() => {});
+      sendToWhatsApp(`Hello A-Team Constructions! New enquiry from the website.\n\nName: ${form.name}\nPhone: ${form.phone}\nService: ${form.service}\nDetails: ${form.message || '-'}`);
+      toast.success('Opening WhatsApp. Just press send and we will reply soon.');
+      setForm({ name: '', phone: '', service: '', message: '' });
+    } finally { setLoading(false); }
   };
 
   return (
-    <section id="contact" className="contact" ref={ref}>
-      <div className={`container ${visible ? 'fade-in' : 'fade-out'}`}>
-        <div className="contact-grid">
-          <div className="contact-left">
-            <div className="section-tag">Get In Touch</div>
-            <h2 className="section-title">Let's Build<br />Something<br />Great Together</h2>
-            <p className="contact-desc">Ready to start your project? Reach out for a free consultation. Our team responds within 24 hours.</p>
-            <div className="contact-details">
-              {[
-                { icon:'📞', label:'CEO — Bharath Reddy', value:'+91 98665 15444', href:'tel:+919866515444' },
-                { icon:'📞', label:'Founder — Bhargav Reddy', value:'+91 95505 95000', href:'tel:+919550595000' },
-                { icon:'✉️', label:'Email', value:'info@ateamconstructions.in', href:'mailto:info@ateamconstructions.in' },
-                { icon:'📍', label:'Office Address', value:'Shop No 5-144/25/2, Bdl X Road,\nShankarpalle, Telangana 501203', href:null },
-                { icon:'🕘', label:'Working Hours', value:'Mon–Sat: 9:00 AM – 7:00 PM', href:null },
-              ].map((d, i) => (
-                <div key={i} className="contact-detail">
-                  <div className="contact-detail-icon">{d.icon}</div>
-                  <div>
-                    <div className="contact-detail-label">{d.label}</div>
-                    {d.href
-                      ? <a href={d.href} className="contact-detail-value">{d.value}</a>
-                      : <div className="contact-detail-value" style={{whiteSpace:'pre-line'}}>{d.value}</div>}
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="contact-whatsapp">
-              <a href="https://wa.me/919866515444" target="_blank" rel="noreferrer" className="whatsapp-btn">
-                <span>💬</span> WhatsApp Us Now
-              </a>
-            </div>
+    <section id="contact" className="s-section">
+      <div className="s-container s-contact">
+        <motion.div {...fade()}>
+          <span className="s-eyebrow">Get in touch</span>
+          <h2 className="s-h2">Let's plan your <span className="s-mark">dream project</span></h2>
+          <p className="s-lead left">Free consultation. Call, WhatsApp or send an enquiry — your enquiry reaches us on WhatsApp.</p>
+
+          <div className="s-people">
+            <a href={`tel:${PHONE_CEO.tel}`} className="s-person">
+              <span className="s-person-ic"><Phone size={20} /></span>
+              <span><small>Call</small><b>Bharath Reddy</b><em>{PHONE_CEO.label}</em></span>
+            </a>
+            <a href={`tel:${PHONE_FOUNDER.tel}`} className="s-person">
+              <span className="s-person-ic"><Phone size={20} /></span>
+              <span><small>Call</small><b>Bhargav Reddy</b><em>{PHONE_FOUNDER.label}</em></span>
+            </a>
           </div>
-          <div className="contact-right">
-            <div className="contact-form-card">
-              <div className="form-header">
-                <h3>Send Us an Enquiry</h3>
-                <p>Fill in the form and we'll get back to you shortly</p>
-              </div>
-              <form onSubmit={handleSubmit} className="contact-form">
-                <div className="form-row">
-                  <div className="form-group">
-                    <label>Full Name *</label>
-                    <input name="name" value={form.name} onChange={handleChange} placeholder="Your Name" required />
-                  </div>
-                  <div className="form-group">
-                    <label>Phone Number *</label>
-                    <input name="phone" value={form.phone} onChange={handleChange} placeholder="+91 XXXXX XXXXX" required />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label>Email Address</label>
-                  <input name="email" type="email" value={form.email} onChange={handleChange} placeholder="your@email.com" />
-                </div>
-                <div className="form-group">
-                  <label>Service Required *</label>
-                  <select name="service" value={form.service} onChange={handleChange} required>
-                    <option value="">Select a service...</option>
-                    {SERVICES.map(s => <option key={s} value={s}>{s}</option>)}
-                  </select>
-                </div>
-                <div className="form-group">
-                  <label>Your Message</label>
-                  <textarea name="message" value={form.message} onChange={handleChange} placeholder="Tell us about your project — plot size, location, budget, timeline..." rows={4} />
-                </div>
-                <button type="submit" className="btn-primary form-submit" disabled={loading}>
-                  {loading ? 'Sending...' : 'Send Enquiry →'}
-                </button>
-              </form>
-            </div>
+
+          <ul className="s-info">
+            <li><MapPin size={18} /><span>Shop No 5-144/25/2, BDL X Road (above Universe Bakes & Cakes), Shankarpalle, Telangana 501203</span></li>
+            <li><Clock size={18} /><span>Mon–Sat: 9:00 AM – 7:00 PM</span></li>
+          </ul>
+          <a href={WHATSAPP} target="_blank" rel="noreferrer" className="s-btn s-btn-green s-btn-lg"><MessageCircle size={18} /> Chat on WhatsApp</a>
+        </motion.div>
+
+        <motion.form className="s-form" onSubmit={submit} {...fade(0.12)}>
+          <h3>Send us an enquiry</h3>
+          <div className="s-row">
+            <label>Full name *<input name="name" value={form.name} onChange={change} placeholder="Your name" required /></label>
+            <label>Phone *<input name="phone" value={form.phone} onChange={change} placeholder="+91 XXXXX XXXXX" required /></label>
           </div>
-        </div>
+          <label>Service required *
+            <select name="service" value={form.service} onChange={change} required>
+              <option value="">Select a service…</option>
+              {SERVICES.map(s => <option key={s} value={s}>{s}</option>)}
+            </select>
+          </label>
+          <label>Message<textarea name="message" rows={4} value={form.message} onChange={change} placeholder="Plot size, location, budget, timeline…" /></label>
+          <button type="submit" className="s-btn s-btn-dark s-btn-lg s-submit" disabled={loading}>
+            {loading ? 'Sending…' : <>Send on WhatsApp <Send size={16} /></>}
+          </button>
+        </motion.form>
       </div>
     </section>
   );
