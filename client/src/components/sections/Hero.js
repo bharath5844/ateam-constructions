@@ -13,7 +13,7 @@ const MIX = [
   ins(32, 'Calm, designer master bedroom', 'Interior', '50% 62%'),
 ];
 const SLIDE_MS = 6500;
-const HEADLINE = ['We', 'design', '&', 'build', 'homes', "you'll", 'love.'];
+const HEADLINE = ['We', 'design', '&', 'build', 'the', 'homes', 'you', 'dream', 'of.'];
 
 export default function Hero() {
   const slides = MIX;
@@ -58,7 +58,7 @@ export default function Hero() {
           {HEADLINE.map((w, k) => (
             <span className="s-word-mask" key={k} aria-hidden="true">
               <motion.span
-                className={w === 'build' || w === 'love.' ? 's-word s-hl' : 's-word'}
+                className={w === 'build' || w === 'dream' ? 's-word s-hl' : 's-word'}
                 initial={{ y: '110%' }} animate={{ y: 0 }}
                 transition={{ delay: 0.7 + INTRO_DELAY + k * 0.09, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               >{w}</motion.span>
