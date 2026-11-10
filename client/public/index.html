@@ -1,17 +1,904 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#FFD700" />
-    <meta name="description" content="A-Team Constructions - Premier Architect & Interior Design firm in Andhra Pradesh. Vastu House Plans, 3D Elevation, Interior Design, Municipal Approvals." />
-    <title>A-Team Constructions | Architect & Interior Designs</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A-Team Constructions | House Construction, Vastu Plans &amp; Interiors in Shankarpalle, Hyderabad</title>
+<link rel="icon" type="image/png" href="/logo.png">
+<link rel="canonical" href="https://ateamconstructions.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="A-Team Constructions">
+<meta property="og:title" content="A-Team Constructions | You do the Bhoomi Pooja. We'll call you for the Gruhapravesam.">
+<meta property="og:description" content="Vastu plans, 3D elevation, interiors and turnkey house construction in Shankarpalle and western Hyderabad. Plans from Rs 1,750 per sq ft.">
+<meta property="og:url" content="https://ateamconstructions.com/">
+<meta property="og:image" content="https://ateamconstructions.com/images/project-duplex-frame.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script>if(/^\/admin/.test(location.pathname))document.documentElement.classList.add('is-admin')</script>
+<meta name="description" content="A-Team Constructions, Shankarpalle, Telangana. Vastu house plans, 3D elevation, interior design, approvals and turnkey house construction across western Hyderabad: Kokapet, Narsingi, Gachibowli, Tellapur, Manikonda, Miyapur. Plans from Rs 1,750 per sq ft.">
+<meta name="theme-color" content="#0A1424">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"GeneralContractor","name":"A-Team Constructions","description":"Architecture, interior design and house construction firm in Shankarpalle, Telangana.","telephone":"+919866515444","url":"https://ateamconstructions.com","address":{"@type":"PostalAddress","streetAddress":"Shop No 5-144/25/2, BDL X Road, above Universe Bakes & Cakes","addressLocality":"Shankarpalle","addressRegion":"Telangana","postalCode":"501203","addressCountry":"IN"},"geo":{"@type":"GeoCoordinates","latitude":17.4533899,"longitude":78.1448588},"areaServed":["Shankarpalle","Kokapet","Narsingi","Gachibowli","Tellapur","Manikonda","Miyapur","Hyderabad"],"sameAs":["https://www.instagram.com/ateamconstructions/"]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&family=Anek+Telugu:wght@400;600;800&family=Bebas+Neue&family=Outfit:wght@400;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+html{--vh:100vh}
+.is-admin #site{display:none!important}
+#site{
+  --ink:#0A1424; --ink2:#12223B; --line:#7FA6D4; --paper:#F5F3EC; --card:#FFFFFF;
+  --text:#0E1625; --muted:#525E72; --on-ink:#EEF3FA; --on-ink-muted:#A9BAD1;
+  --yellow:#FFC81E; --yellow-ink:#7A5A00; --rule:#D8D3C4;
+  --display:"Bricolage Grotesque","Anek Telugu",system-ui,sans-serif;
+  --body:"Manrope","Anek Telugu",system-ui,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --gut:clamp(18px,5vw,72px);
+  color-scheme:light;
+  color:var(--text);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0}
+html:not(.is-admin) body{background:#0A1424;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+:where(#site) h1,:where(#site) h2,:where(#site) h3,:where(#site) p{margin:0}
+:where(#site) h1,:where(#site) h2,:where(#site) h3{font-family:var(--display);text-wrap:balance;line-height:1.02;letter-spacing:-.02em}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.wrap{max-width:1280px;margin:0 auto;padding:0 var(--gut)}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+.eyebrow::before{content:"";width:34px;height:2px;background:var(--yellow)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font-weight:800;font-size:15.5px;border:2px solid transparent;cursor:pointer;font-family:var(--body);transition:transform .25s cubic-bezier(.2,.9,.3,1.4),background .2s}
+.btn:active{transform:scale(.96)}
+.btn-y{background:var(--yellow);color:#0A1424}
+.btn-y:hover{background:#FFD84F}
+.btn-o{border-color:rgba(238,243,250,.7);color:var(--on-ink)}
+.btn-o:hover{background:rgba(238,243,250,.12)}
+.btn-d{background:var(--ink);color:var(--on-ink)}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(127,166,212,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(127,166,212,.13) 1px,transparent 1px),linear-gradient(rgba(127,166,212,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(127,166,212,.06) 1px,transparent 1px);background-size:120px 120px,120px 120px,24px 24px,24px 24px;pointer-events:none}
+
+.tape{position:fixed;top:0;left:0;height:4px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:var(--yellow);z-index:60}
+
+.loader{position:fixed;inset:0;z-index:100;display:none;pointer-events:none}
+.js .loader{display:block}
+.loader .half{position:absolute;left:0;width:100%;height:50.5%;background:var(--ink);transition:transform .9s cubic-bezier(.76,0,.24,1)}
+.loader .half.t{top:0}.loader .half.b{bottom:0}
+.loader .mid{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;color:var(--on-ink);transition:opacity .35s}
+.loader img{width:92px;animation:pop .7s cubic-bezier(.2,.9,.3,1.3) both}
+.loader .bar{width:min(240px,60vw);height:2px;background:rgba(127,166,212,.3);position:relative;overflow:hidden}
+.loader .bar i{position:absolute;inset:0;background:var(--yellow);transform-origin:0 50%;animation:grow 1.3s cubic-bezier(.6,0,.2,1) both}
+.loader.done .half.t{transform:translateY(-101%)}
+.loader.done .half.b{transform:translateY(101%)}
+.loader.done .mid{opacity:0}
+@keyframes pop{from{transform:scale(.4) rotate(-8deg);opacity:0}}
+@keyframes grow{from{transform:scaleX(0)}}
+
+.nav{position:fixed;top:4px;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px var(--gut);color:var(--on-ink);transition:background .3s,box-shadow .3s}
+.nav.solid{background:rgba(10,20,36,.92);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(127,166,212,.25)}
+.brand{display:flex;align-items:center;gap:10px;min-height:44px}
+.brand img{width:38px;height:42px;object-fit:contain}
+.brand b{font-family:var(--display);font-weight:800;font-size:16px;letter-spacing:.02em;line-height:1.1;display:block}
+.brand small{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--yellow);text-transform:uppercase}
+.nav-r{display:flex;align-items:center;gap:10px}
+.nav-links{display:flex;gap:26px;font-weight:700;font-size:14px;margin-right:14px}
+.nav-links a{padding:12px 0;opacity:.85}.nav-links a:hover{opacity:1;color:var(--yellow)}
+.lang{min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid rgba(238,243,250,.55);background:transparent;color:var(--on-ink);font:700 14px var(--body);cursor:pointer}
+.lang:hover{border-color:var(--yellow);color:var(--yellow)}
+.nav .btn{min-height:44px;padding:0 18px;font-size:14px}
+@media(max-width:900px){.nav-links{display:none}}
+@media(max-width:520px){.nav .btn-y{display:none}.brand small{display:none}}
+
+.hero{position:relative;height:calc(var(--vh)*2.3);background:var(--ink);color:var(--on-ink)}
+.stage{position:sticky;top:0;height:var(--vh);overflow:hidden}
+.hero-win{position:absolute;inset:0;clip-path:inset(18% 6% 13% 52% round 22px);will-change:clip-path}
+.hero-win img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.18);transition:opacity 1.4s ease,transform 7s linear}
+.hero-win img.on{opacity:1;transform:scale(1.04)}
+.hero-win .zoom{position:absolute;inset:0;will-change:transform}
+.hero-win .shade{position:absolute;inset:0;background:#07101D;opacity:0}
+.hero-win .tag{position:absolute;right:calc(6% + 14px);top:calc(18% + 14px);z-index:2}
+.tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;background:rgba(7,16,29,.78);color:var(--on-ink);padding:6px 10px;border-radius:4px}
+.hero-copy{position:absolute;left:var(--gut);top:0;bottom:0;width:min(46%,620px);display:flex;flex-direction:column;justify-content:center;gap:22px;padding-top:60px;will-change:transform,opacity}
+.hero h1{font-size:clamp(44px,6.6vw,104px);font-weight:800;text-transform:uppercase}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .ln span{display:block}
+.js .hero h1 .ln span{transform:translateY(110%);transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.js.ready .hero h1 .ln span{transform:none}
+.hero h1 .ln:nth-child(2) span{transition-delay:.12s}.hero h1 .ln:nth-child(3) span{transition-delay:.24s;color:var(--yellow)}
+.hero-copy p{font-size:clamp(15px,1.35vw,18px);color:var(--on-ink-muted);max-width:480px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero-after{position:absolute;left:var(--gut);right:var(--gut);bottom:clamp(28px,7vh,72px);opacity:0;display:flex;flex-direction:column;gap:22px;will-change:transform,opacity}
+.hero-after h2{font-size:clamp(28px,4.6vw,72px);font-weight:800;max-width:20ch;text-transform:uppercase}
+.stats{display:flex;flex-wrap:wrap;gap:14px 44px}
+.stats div{display:flex;flex-direction:column}
+.stats b{font-family:var(--display);font-size:clamp(34px,4vw,56px);font-weight:800;color:var(--yellow);line-height:1;font-variant-numeric:tabular-nums}
+.stats span{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-ink)}
+.hint{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--on-ink-muted);display:flex;flex-direction:column;align-items:center;gap:6px}
+.hint i{width:2px;height:26px;background:var(--yellow);animation:drip 1.6s ease-in-out infinite;transform-origin:50% 0}
+@keyframes drip{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1) translateY(26px);opacity:0}}
+@media(max-width:760px){
+  .hero-win{clip-path:inset(64% 5% 4% 5% round 18px)}
+  .hero-win .tag{right:calc(5% + 10px);top:calc(64% + 10px)}
+  .hero-copy{width:auto;right:var(--gut);justify-content:flex-start;padding-top:86px;gap:14px;bottom:auto}
+  .hero h1{font-size:clamp(34px,10vw,52px)}
+  .hero-after{bottom:88px}
+  .hint{display:none}
+  .cta .btn{min-height:48px;padding:0 20px;font-size:14.5px}
+}
+
+.marq{background:var(--yellow);color:#0A1424;overflow:hidden;padding:16px 0;border-block:2px solid #0A1424}
+.marq-t{display:flex;gap:0;white-space:nowrap;will-change:transform;font-family:var(--display);font-weight:800;font-size:clamp(22px,3.4vw,44px);text-transform:uppercase}
+.marq-t span{display:inline-flex;align-items:center;gap:28px;padding-right:28px}
+.marq-t span::after{content:"";width:14px;height:14px;background:#0A1424;transform:rotate(45deg)}
+
+.build{position:relative;height:calc(var(--vh)*6.4);background:var(--ink);color:var(--on-ink)}
+.build .stage{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px;align-items:center;padding:84px var(--gut) 28px}
+.build-l{display:flex;flex-direction:column;gap:20px;position:relative;z-index:1}
+.build-l h2{font-size:clamp(30px,4vw,60px);font-weight:800;text-transform:uppercase}
+.steps{position:relative;min-height:190px}
+.step{position:absolute;inset:0;display:flex;flex-direction:column;gap:8px;opacity:0;transform:translateY(22px);transition:opacity .45s,transform .45s}
+.step.on{opacity:1;transform:none}
+.step .n{font-family:var(--display);font-weight:800;font-size:clamp(54px,6vw,92px);line-height:.9;color:transparent;-webkit-text-stroke:1.5px var(--yellow)}
+.step h3{font-size:clamp(22px,2.4vw,32px);font-weight:700}
+.step p{color:var(--on-ink-muted);max-width:420px}
+.rail{display:flex;gap:6px}
+.rail i{flex:1;height:4px;background:rgba(127,166,212,.25);border-radius:2px;overflow:hidden;position:relative}
+.rail i b{position:absolute;inset:0;background:var(--yellow);transform-origin:0 50%;transform:scaleX(0)}
+.build-r{position:relative;z-index:1;display:flex;flex-direction:column;gap:8px;min-height:0;height:100%;justify-content:center}
+.build-r svg{width:100%;height:auto;max-height:calc(var(--vh) - 150px);overflow:visible}
+.readout{color:var(--line);display:flex;justify-content:space-between;gap:12px}
+@media(max-width:860px){
+  .build .stage{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);gap:8px;padding:74px var(--gut) 18px;align-items:start}
+  .build-l{order:2;gap:12px}
+  .build-l h2{font-size:24px}
+  .build-r{order:1;height:auto}
+  .build-r svg{max-height:calc(var(--vh)*.42)}
+  .steps{min-height:170px}
+  .step .n{font-size:46px}
+  .step p{font-size:14.5px}
+}
+
+.paper{background:var(--paper);position:relative}
+.sec{padding:clamp(72px,9vw,130px) 0}
+.head{display:flex;flex-direction:column;gap:16px;margin-bottom:clamp(32px,5vw,60px);max-width:820px}
+.head h2{font-size:clamp(34px,5vw,72px);font-weight:800;text-transform:uppercase}
+.head p{font-size:17px;color:var(--muted);max-width:560px}
+.eyebrow.dk{color:var(--yellow-ink)}
+.js [data-r]{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.js [data-r].in{opacity:1;transform:none}
+.js h2[data-r]{transform:translateY(70px) skewY(3deg);transform-origin:0 100%;transition-duration:1s}
+.js h2[data-r].in{transform:none}
+
+.svcs{display:flex;flex-direction:column;gap:22px}
+.svc{position:sticky;top:calc(78px + var(--i)*12px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:400px;background:var(--card);border:2px solid var(--text);border-radius:22px;overflow:hidden;transform-origin:50% 0;will-change:transform}
+.svc-b{padding:clamp(22px,3.4vw,48px);display:flex;flex-direction:column;gap:14px;justify-content:center}
+.svc-b .n{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--yellow-ink);font-weight:700}
+.svc-b h3{font-size:clamp(26px,3.2vw,46px);font-weight:800;text-transform:uppercase}
+.svc-b p{color:var(--muted);max-width:440px}
+.svc-b a{align-self:flex-start;font-weight:800;border-bottom:3px solid var(--yellow);padding:8px 0;min-height:44px;display:inline-flex;align-items:center}
+.svc-m{position:relative;min-height:220px;overflow:hidden}
+.svc-m img{position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover;will-change:transform}
+.svc-m .tag{position:absolute;left:12px;top:12px}
+.svc:nth-child(even) .svc-m{order:-1}
+@media(max-width:760px){.svc{grid-template-columns:minmax(0,1fr);min-height:0}.svc-m{order:-1;height:200px;min-height:0}.svc:nth-child(even) .svc-m{order:-1}}
+
+.work{position:relative;background:var(--ink);color:var(--on-ink)}
+.work .stage{display:flex;flex-direction:column;justify-content:center;gap:clamp(14px,3vh,30px);padding-top:70px}
+.work-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding:0 var(--gut)}
+.work-h h2{font-size:clamp(30px,4.6vw,66px);font-weight:800;text-transform:uppercase}
+.count{font-family:var(--mono);font-size:14px;letter-spacing:.1em;color:var(--yellow);white-space:nowrap;font-variant-numeric:tabular-nums}
+.track{display:flex;gap:clamp(16px,2.4vw,34px);padding:0 var(--gut);will-change:transform;width:max-content}
+.shot{position:relative;width:min(78vw,620px);height:min(calc(var(--vh)*.58),520px);border-radius:20px;overflow:hidden;flex:none;background:var(--ink2)}
+.shot img{position:absolute;top:0;left:-12%;width:124%;max-width:none;height:100%;object-fit:cover;will-change:transform}
+.shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:16px 18px;display:flex;justify-content:space-between;align-items:flex-end;gap:10px;background:rgba(7,16,29,.72);backdrop-filter:blur(6px)}
+.shot figcaption b{font-family:var(--display);font-size:clamp(17px,1.8vw,24px);font-weight:700}
+.shot figcaption span{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow)}
+figure{margin:0}
+.shot.next{background:var(--yellow);color:#0A1424;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(22px,3vw,40px)}
+.shot.next h3{font-size:clamp(32px,4.4vw,60px);font-weight:800;text-transform:uppercase}
+
+.revs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:20px}
+.rev{margin:0;background:var(--card);border-radius:20px;padding:30px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;border:1px solid var(--rule)}
+.rev:first-child{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
+.rev p{font-family:var(--display);font-size:clamp(18px,1.6vw,22px);line-height:1.4;font-weight:500}
+.rev footer{display:flex;align-items:center;gap:12px;font-size:14px}
+.rev footer i{width:44px;height:44px;border-radius:50%;background:var(--yellow);color:#0A1424;display:grid;place-items:center;font:800 18px var(--display);font-style:normal}
+.rev footer small{display:block;opacity:.75}
+.stars{display:flex;gap:3px;color:var(--yellow)}
+.rev:not(:first-child) .stars{color:#C99700}
+.gline{display:inline-flex;align-items:center;gap:10px;font-weight:800;border:2px solid var(--text);border-radius:999px;padding:0 20px;min-height:48px;align-self:flex-start}
+
+.areas{background:var(--ink);color:var(--on-ink);position:relative;overflow:hidden}
+.areas-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:36px;align-items:center;position:relative}
+.areas .head{margin-bottom:22px}
+.areas .head p{color:var(--on-ink-muted)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips span{padding:10px 16px;border:1.5px solid rgba(127,166,212,.5);border-radius:999px;font-weight:700;font-size:14.5px}
+.chips span:first-child{background:var(--yellow);border-color:var(--yellow);color:#0A1424}
+.radar{width:100%;max-width:520px;justify-self:center}
+.radar .ring{fill:none;stroke:var(--line);stroke-opacity:.35}
+.radar .pulse{fill:none;stroke:var(--yellow);transform-origin:120px 150px;animation:pulse 3s ease-out infinite}
+.radar .pulse.b{animation-delay:1.5s}
+@keyframes pulse{from{transform:scale(.2);opacity:.9}to{transform:scale(3.4);opacity:0}}
+.radar text{fill:var(--on-ink);font:700 11px var(--body)}
+.radar .dot{fill:var(--line)}
+.radar .ln{stroke:var(--line);stroke-opacity:.5;stroke-dasharray:3 4}
+
+#services,#estimate,#reviews,#areas,#contact,#faq,.foot{border-radius:34px 34px 0 0;margin-top:-34px;position:relative}
+.head h2,.book h2{position:relative;padding-bottom:26px}
+.head h2::after,.book h2::after{content:"";position:absolute;left:0;bottom:6px;width:min(100%,340px);height:12px;border-inline:2px solid var(--dim,var(--yellow-ink));background:linear-gradient(var(--dim,var(--yellow-ink)),var(--dim,var(--yellow-ink))) center/100% 2px no-repeat;transform-origin:0 50%;transition:transform 1s cubic-bezier(.2,.8,.2,1) .35s}
+.js h2[data-r]::after{transform:scaleX(0)}
+.js h2[data-r].in::after{transform:scaleX(1)}
+.areas,.est{--dim:var(--yellow)}.book{--dim:#0A1424}
+.grid-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx,-999px) var(--my,-999px),rgba(127,166,212,.2),transparent 70%)}
+.crane{position:fixed;top:0;right:5px;width:18px;height:100%;z-index:45;pointer-events:none;transform-origin:50% 0;will-change:transform}
+.crane i{position:absolute;left:8px;top:0;width:2px;background:var(--yellow);height:60px}
+.crane svg{position:absolute;left:0;width:18px;height:30px;top:60px}
+.est{background:var(--ink);color:var(--on-ink);overflow:hidden}
+.est-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:36px 64px;align-items:center;position:relative}
+.est .head{margin-bottom:28px}.est .head p{color:var(--on-ink-muted)}
+.ctl{display:flex;flex-direction:column;gap:22px}
+.ctl label,.ctl .lab{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-ink-muted);display:flex;justify-content:space-between;gap:12px;margin-bottom:10px}
+.ctl output{color:var(--yellow);font-weight:700}
+.ctl input[type=range]{width:100%;height:44px;accent-color:var(--yellow);margin:0}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.seg button{flex:1 1 90px;min-height:50px;border-radius:14px;border:1.5px solid rgba(127,166,212,.45);background:transparent;color:var(--on-ink);font:800 15px var(--body);cursor:pointer;transition:background .25s,color .25s,transform .25s cubic-bezier(.2,.9,.3,1.4)}
+.seg button[aria-pressed=true]{background:var(--yellow);border-color:var(--yellow);color:#0A1424;transform:scale(1.04)}
+.est-out{background:var(--ink2);border:1.5px solid rgba(127,166,212,.35);border-radius:26px;padding:clamp(20px,3vw,36px);display:flex;flex-direction:column;gap:14px}
+.est-out svg{width:100%;height:auto;max-height:230px}
+.est-out .fl{transition:opacity .5s,transform .6s cubic-bezier(.2,.9,.3,1.3);transform-box:fill-box}
+.est-out .fl.off{opacity:0;transform:translateY(-40px)}
+.est-out .bw{transition:transform .5s cubic-bezier(.2,.8,.2,1);transform-origin:150px 200px}
+.price{font-family:var(--display);font-weight:800;font-size:clamp(34px,5vw,60px);line-height:1;color:var(--yellow);font-variant-numeric:tabular-nums}
+.est-meta{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;color:var(--on-ink)}
+.est-note{font-size:14px;color:var(--on-ink-muted)}
+.shot-open{position:absolute;inset:0;background:transparent;border:0;cursor:zoom-in;width:100%;z-index:2}
+.lb{position:fixed;inset:0;z-index:90;background:rgba(7,14,26,.97);display:none;flex-direction:column;color:var(--on-ink);clip-path:circle(0 at var(--cx,50%) var(--cy,50%));transition:clip-path .7s cubic-bezier(.7,0,.2,1)}
+.lb.open{display:flex}.lb.show{clip-path:circle(150% at var(--cx,50%) var(--cy,50%))}
+.lb-img{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:70px 16px 8px}
+.lb-img img{max-width:100%;max-height:100%;border-radius:14px;object-fit:contain}
+.lb-b{padding:14px var(--gut) 26px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px}
+.lb-b h3{font-size:clamp(24px,3.4vw,44px);font-weight:800;text-transform:uppercase}
+.lb-b .mono{color:var(--yellow)}
+.lb-b p{color:var(--on-ink-muted);font-size:14px;margin-top:6px}
+.lb-x{position:absolute;top:14px;right:14px;width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(238,243,250,.6);background:rgba(10,20,36,.8);color:var(--on-ink);font-size:24px;cursor:pointer;z-index:2}
+@media (prefers-reduced-motion:reduce){.lb{transition:none}.est-out .fl,.est-out .bw{transition:none}}
+
+.plans{background:#EBE7DA}
+#plans{border-radius:34px 34px 0 0;margin-top:-34px;position:relative}
+.plan-row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(270px,1fr);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px var(--gut) 18px;margin:0 calc(var(--gut)*-1);scrollbar-width:thin}
+.plan{scroll-snap-align:center;background:var(--card);border:2px solid var(--text);border-radius:22px;padding:26px;display:flex;flex-direction:column;gap:14px;transition:transform .35s cubic-bezier(.2,.9,.3,1.3),box-shadow .35s}
+.plan:hover{transform:translateY(-8px);box-shadow:0 18px 0 -6px var(--yellow)}
+.plan.top{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
+.plan .tier{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow-ink);font-weight:700}
+.plan.top .tier{color:var(--yellow)}
+.plan h3{font-size:30px;font-weight:800;text-transform:uppercase}
+.plan .rate{font-family:var(--display);font-weight:800;font-size:44px;line-height:1;font-variant-numeric:tabular-nums}
+.plan .rate small{font:600 14px var(--body);opacity:.75;margin-left:6px}
+.plan .best{font-size:14.5px;opacity:.8;min-height:44px}
+.plan ul{list-style:none;margin:0;padding:14px 0 0;border-top:1.5px solid currentColor;display:flex;flex-direction:column;gap:9px;font-size:14.5px;flex:1}
+.plan li{display:flex;gap:10px}
+.plan li b{flex:none;width:74px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.7;padding-top:3px}
+.plan .btn{min-height:48px;font-size:14.5px}
+.plan:not(.top) .btn{background:var(--ink);color:var(--on-ink)}
+.same{margin-top:26px;display:flex;gap:14px;align-items:flex-start;font-weight:600;max-width:720px}
+.same::before{content:"";flex:none;width:14px;height:14px;margin-top:6px;background:var(--yellow);border:2px solid var(--text);transform:rotate(45deg)}
+.cmp{margin-top:26px}
+.cmp summary{border-top:2px solid var(--text)}
+.cmp-x{overflow-x:auto}
+.cmp table{border-collapse:collapse;width:100%;min-width:720px;font-size:14px}
+.cmp th,.cmp td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+.cmp thead th{font-family:var(--display);font-size:16px;border-bottom:2px solid var(--text)}
+.cmp tbody th{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+
+.book{background:var(--yellow);color:#0A1424;position:relative}
+.book-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:36px 64px;align-items:center}
+.book h2{font-size:clamp(38px,6vw,88px);font-weight:800;text-transform:uppercase}
+.book p{font-size:17px;font-weight:600;max-width:460px;margin-top:16px}
+.form{background:var(--ink);color:var(--on-ink);border-radius:24px;padding:clamp(20px,3vw,36px);display:flex;flex-direction:column;gap:14px}
+.form label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:var(--on-ink-muted)}
+.form input{min-height:52px;border-radius:12px;border:1.5px solid rgba(127,166,212,.45);background:var(--ink2);color:var(--on-ink);padding:0 14px;font:600 16px var(--body)}
+.form input::placeholder{color:#7D8DA6}
+.form .err{color:#FFB4A8;font-size:14px;font-weight:700;min-height:20px}
+
+.faq{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:30px 64px}
+details{border-top:2px solid var(--text);padding:4px 0}
+details:last-child{border-bottom:2px solid var(--text)}
+summary{list-style:none;cursor:pointer;min-height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-family:var(--display);font-weight:700;font-size:clamp(17px,1.6vw,21px)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:28px;font-weight:500;transition:transform .3s;flex:none}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--muted);padding:0 0 18px;max-width:60ch}
+
+.foot{background:var(--ink);color:var(--on-ink);padding:clamp(48px,6vw,80px) 0 110px;overflow:hidden}
+.giant{font-family:var(--display);font-weight:800;font-size:clamp(70px,19vw,290px);line-height:.86;letter-spacing:-.04em;text-transform:uppercase;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px var(--yellow);background:linear-gradient(90deg,var(--yellow) var(--fill,0%),transparent var(--fill,0%));-webkit-background-clip:text;background-clip:text;margin-bottom:40px}
+.foot-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:30px 56px}
+.foot h3{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--yellow);margin-bottom:12px;font-weight:700}
+.foot a{display:block;padding:7px 0}
+.foot a:hover{color:var(--yellow)}
+.foot p{color:var(--on-ink-muted)}
+.copy{margin-top:40px;padding-top:20px;border-top:1px solid rgba(127,166,212,.25);font-size:13px;color:var(--on-ink-muted)}
+
+.dock{position:fixed;left:12px;right:12px;bottom:12px;z-index:55;display:flex;gap:8px;padding:8px;border-radius:999px;background:rgba(10,20,36,.94);box-shadow:0 10px 30px rgba(0,0,0,.35);transform:translateY(140%);transition:transform .5s cubic-bezier(.2,.9,.3,1.2);max-width:460px;margin:0 auto}
+.dock.show{transform:none}
+.dock .btn{flex:1;min-height:48px;padding:0 12px;font-size:14.5px}
+@media(min-width:900px){.dock{display:none}.foot{padding-bottom:40px}}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .loader{display:none}
+  .js [data-r],.js h2[data-r]{opacity:1;transform:none;transition:none}
+  .js .hero h1 .ln span{transform:none;transition:none}
+  .hint i,.radar .pulse{animation:none}
+  .hero-win img{transition:opacity .3s}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+<noscript><style>.loader{display:none!important}</style></noscript>
+<div id="site">
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="half t"></div><div class="half b"></div>
+  <div class="mid"><img src="/images/logo.png" alt=""><div class="bar"><i></i></div><span class="mono" id="ldn">000</span></div>
+</div>
+<div class="tape" id="tape" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#home"><img src="/images/logo.png" alt="A-Team Constructions logo"><span><b>A-TEAM CONSTRUCTIONS</b><small>Architect &amp; Interior Designs</small></span></a>
+  <div class="nav-r">
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#process" data-te="పని విధానం">Process</a>
+      <a href="#services" data-te="సేవలు">Services</a>
+      <a href="#plans" data-te="ప్లాన్లు &amp; ఖర్చు">Plans &amp; cost</a>
+      <a href="#work" data-te="మా పనులు">Our work</a>
+      <a href="#reviews" data-te="రివ్యూలు">Reviews</a>
+      <a href="#contact" data-te="సంప్రదించండి">Contact</a>
+    </nav>
+    <button class="lang" id="lang" type="button" aria-label="Switch language to Telugu">తెలుగు</button>
+    <a class="btn btn-y" href="https://wa.me/919866515444">WhatsApp</a>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home" data-pin="hero">
+  <div class="stage">
+    <div class="grid-bg"></div>
+    <div class="hero-win" id="hwin">
+      <div class="zoom" id="hzoom">
+        <img class="on" src="/images/i-59.jpg" alt="Glass-front modern home lit up at dusk">
+        <img src="/images/i-101.jpg" alt="Modern villa elevation in stone and wood" loading="lazy">
+        <img src="/images/i-61.jpg" alt="Modern villa at night with a lit walkway" loading="lazy">
+      </div>
+      <div class="shade" id="hshade"></div>
+      <span class="tag" id="htag" data-te="డిజైన్ ప్రేరణ">Design inspiration</span>
+    </div>
+    <div class="hero-copy" id="hcopy">
+      <span class="eyebrow" data-te="శంకర్‌పల్లి · పశ్చిమ హైదరాబాద్">Shankarpalle · Western Hyderabad</span>
+      <h1 aria-label="We draw it. We build it. You live it.">
+        <span class="ln"><span data-te="మేం గీస్తాం.">We draw it.</span></span>
+        <span class="ln"><span data-te="మేం కడతాం.">We build it.</span></span>
+        <span class="ln"><span data-te="మీరు నివసిస్తారు.">You live it.</span></span>
+      </h1>
+      <p data-te="వాస్తు ప్లాన్, 3D ఎలివేషన్, ఇంటీరియర్స్, పూర్తి నిర్మాణం. అన్నీ ఒకే టీమ్ దగ్గర.">Vastu plans, 3D elevations, interiors and full construction. One team from first drawing to final key.</p>
+      <div class="cta">
+        <a class="btn btn-y" href="https://wa.me/919866515444?text=Hello%20A-Team%20Constructions!%20I%20would%20like%20a%20free%20plot%20consultation." data-te="ఉచిత సలహా పొందండి">Get a free plot consultation</a>
+        <a class="btn btn-o" href="tel:+919866515444">+91 98665 15444</a>
+      </div>
+    </div>
+    <div class="hero-after" id="hafter">
+      <h2 data-te="భూమి పూజ మీరు చేయండి. గృహప్రవేశానికి మేం పిలుస్తాం.">You do the Bhoomi Pooja. We'll call you for the Gruhapravesam.</h2>
+      <div class="stats">
+        <div><b data-count="500" data-suf="+">500+</b><span data-te="క్లయింట్లు">Clients served</span></div>
+        <div><b data-count="12" data-suf="+">12+</b><span data-te="ఏళ్ల సైట్ అనుభవం">Years on site</span></div>
+        <div><b data-count="5" data-dec="1">5.0</b><span data-te="గూగుల్ రేటింగ్">Rating on Google</span></div>
+      </div>
+    </div>
+    <div class="hint" id="hint" aria-hidden="true"><span>Scroll</span><i></i></div>
+  </div>
+</section>
+
+<div class="marq" aria-hidden="true"><div class="marq-t" id="marq"></div></div>
+
+<section class="build" id="process" data-pin="build">
+  <div class="stage">
+    <div class="grid-bg"></div>
+    <div class="build-l">
+      <span class="eyebrow" data-te="మా పని విధానం">How we work</span>
+      <h2 data-te="స్క్రోల్ చేయండి. మీ ఇల్లు కట్టబడుతుంది.">Scroll. Watch your home get built.</h2>
+      <div class="rail" id="rail" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
+      <div class="steps" id="steps">
+        <div class="step on"><span class="n">01</span><h3 data-te="సైట్ విజిట్">Site visit</h3><p data-te="మీ ప్లాట్‌కి వచ్చి కొలతలు, రోడ్డు, దిశ చూసి మీ అవసరాలు వింటాం.">We visit your plot, listen to your needs and note the size, road and direction.</p></div>
+        <div class="step"><span class="n">02</span><h3 data-te="ప్లాన్ &amp; 3D ఎలివేషన్">Plan &amp; 3D elevation</h3><p data-te="వాస్తు ప్రకారం ప్లాన్, 3D ఎలివేషన్. మీకు నచ్చే వరకు మార్పులు చేస్తాం.">A Vastu-friendly plan and a 3D elevation, revised until you are happy.</p></div>
+        <div class="step"><span class="n">03</span><h3 data-te="అనుమతులు">Approvals</h3><p data-te="గ్రామ పంచాయతీ లేదా మున్సిపల్ అనుమతులు మా టీమ్ చూసుకుంటుంది.">Gram Panchayat or municipal permission handled by our team.</p></div>
+        <div class="step"><span class="n">04</span><h3 data-te="నిర్మాణం">Construction</h3><p data-te="దశల వారీగా నిర్మాణం, నిత్య పర్యవేక్షణ, సైట్ నుంచి అప్‌డేట్లు.">Stage-wise building under regular supervision, with updates from the site.</p></div>
+        <div class="step"><span class="n">05</span><h3 data-te="గృహ ప్రవేశం">Handover</h3><p data-te="తుది తనిఖీలు, ఫినిషింగ్, తాళాలు మీ చేతిలో.">Final checks, finishing touches and keys in your hand.</p></div>
+      </div>
+    </div>
+    <div class="build-r">
+      <div class="readout mono"><span id="ro1">Sheet A-01 · Plot survey</span><span id="ro2">000%</span></div>
+      <svg id="house" viewBox="0 0 800 560" role="img" aria-label="A house drawn and built in five stages as you scroll"></svg>
+    </div>
+  </div>
+</section>
+
+<section class="paper sec" id="services">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow dk" data-r data-te="మా సేవలు">What we do</span>
+      <h2 data-r data-te="మీ ఇంటికి కావాల్సినవన్నీ ఒకే చోట.">Everything your home needs, under one roof.</h2>
+      <p data-r data-te="మొదటి వాస్తు ప్లాన్ నుంచి తుది అప్పగింత వరకు డిజైన్, అనుమతులు, నిర్మాణం ఒకే టీమ్.">From the first Vastu plan to the final handover, design, approvals and construction stay with one team.</p>
+    </div>
+    <div class="svcs" id="svcs">
+      <article class="svc" style="--i:0"><div class="svc-b"><span class="n">01 / 05</span><h3 data-te="వాస్తు హౌస్ ప్లాన్లు">Vastu house plans</h3><p data-te="మీ ప్లాట్ సైజు, రోడ్డు దిశ, కుటుంబ అవసరాలకు తగ్గట్టు వాస్తు ప్రకారం ప్లాన్.">Floor plans drawn to Vastu for your plot size, road side and family needs.</p><a href="#contact" data-te="కొటేషన్ అడగండి">Get a quote</a></div><div class="svc-m"><img src="/images/i-101.jpg" alt="Modern villa elevation" loading="lazy"><span class="tag" data-te="డిజైన్ ప్రేరణ">Design inspiration</span></div></article>
+      <article class="svc" style="--i:1"><div class="svc-b"><span class="n">02 / 05</span><h3 data-te="3D ఎలివేషన్">3D elevation</h3><p data-te="మొదటి ఇటుక పెట్టకముందే మీ ఇల్లు ఎలా ఉంటుందో చూడండి.">See your home in full detail before the first brick is laid.</p><a href="#contact" data-te="కొటేషన్ అడగండి">Get a quote</a></div><div class="svc-m"><img src="/images/villa-3d.jpg" alt="3D elevation render of a two-storey villa" loading="lazy"></div></article>
+      <article class="svc" style="--i:2"><div class="svc-b"><span class="n">03 / 05</span><h3 data-te="ఇంటీరియర్ డిజైన్">Interior design</h3><p data-te="సీలింగ్, లైటింగ్, కిచెన్, ఫర్నిచర్ అన్నీ కలిపి ప్లాన్ చేస్తాం.">Ceilings, lighting, kitchens and furniture planned together, so every room feels finished.</p><a href="#contact" data-te="కొటేషన్ అడగండి">Get a quote</a></div><div class="svc-m"><img src="/images/interior-kitchen.jpg" alt="Modular kitchen by A-Team" loading="lazy"></div></article>
+      <article class="svc" style="--i:3"><div class="svc-b"><span class="n">04 / 05</span><h3 data-te="నిర్మాణం &amp; టర్న్‌కీ">Construction &amp; turnkey</h3><p data-te="పునాది నుంచి తాళాల వరకు దశల వారీ నిర్మాణం, నిత్య పర్యవేక్షణ.">Stage-wise building under regular supervision, from foundation to keys in your hand.</p><a href="#contact" data-te="కొటేషన్ అడగండి">Get a quote</a></div><div class="svc-m"><img src="/images/project-duplex-frame.jpg" alt="An A-Team duplex in the finishing stage" loading="lazy"></div></article>
+      <article class="svc" style="--i:4"><div class="svc-b"><span class="n">05 / 05</span><h3 data-te="అనుమతులు &amp; రినోవేషన్">Approvals &amp; renovation</h3><p data-te="గ్రామ పంచాయతీ, మున్సిపల్ అనుమతులు, స్ట్రక్చరల్ డిజైన్, పాత ఇళ్ల రినోవేషన్.">Gram Panchayat and municipal permissions, structural design, and renovation of existing buildings.</p><a href="#contact" data-te="కొటేషన్ అడగండి">Get a quote</a></div><div class="svc-m"><img src="/images/office-front.jpg" alt="A-Team Constructions office in Shankarpalle" loading="lazy"></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="plans sec" id="plans">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow dk" data-r data-te="నిర్మాణ ప్లాన్లు">Construction plans</span>
+      <h2 data-r data-te="నాలుగు ప్లాన్లు. ధర ముందే స్పష్టం.">Four plans. One clear price each.</h2>
+      <p data-r data-te="చదరపు అడుగుకు ధర, ఏ మెటీరియల్ వాడతామో ముందే తెలుస్తుంది.">A price per square foot and the materials you get, written down before work starts.</p>
+    </div>
+    <div class="plan-row" id="plan-row" data-r></div>
+    <p class="same" data-r data-te="ప్రతి ప్లాన్‌లో అదే స్ట్రక్చర్, అదే పర్యవేక్షణ, అదే వాస్తు ప్లాన్. మారేది ఫినిషింగ్ మాత్రమే.">Every plan gets the same structure, the same supervision and the same Vastu plan. Only the finishes change.</p>
+    <details class="cmp" data-r><summary data-te="నాలుగు ప్లాన్లను పోల్చి చూడండి">Compare all four plans</summary><div class="cmp-x" id="cmp"></div></details>
+  </div>
+</section>
+
+<section class="est sec" id="estimate">
+  <div class="grid-bg"></div>
+  <div class="wrap est-g">
+    <div>
+      <div class="head">
+        <span class="eyebrow" data-r data-te="ఖర్చు అంచనా">Cost estimator</span>
+        <h2 data-r data-te="మీ ఇంటికి ఎంత అవుతుంది?">What will your home cost?</h2>
+        <p data-r data-te="ఏరియా, అంతస్తులు, ప్లాన్ ఎంచుకోండి. సుమారు ఖర్చు వెంటనే చూడండి.">Pick the area, floors and plan. See a rough cost straight away.</p>
+      </div>
+      <div class="ctl" data-r>
+        <div><label for="e-area"><span data-te="ఒక్కో అంతస్తు బిల్ట్-అప్ ఏరియా">Built-up area per floor</span><output id="e-area-o" for="e-area">1,000 sq ft</output></label><input type="range" id="e-area" min="400" max="3000" step="50" value="1000"></div>
+        <div><div class="lab"><span data-te="అంతస్తులు">Floors</span></div><div class="seg" id="e-fl" role="group" aria-label="Floors"><button type="button" data-v="1" aria-pressed="false">G</button><button type="button" data-v="2" aria-pressed="true">G+1</button><button type="button" data-v="3" aria-pressed="false">G+2</button></div></div>
+        <div><div class="lab"><span data-te="ప్లాన్">Plan</span></div><div class="seg" id="e-fin" role="group" aria-label="Plan"></div></div>
+      </div>
+    </div>
+    <div class="est-out" data-r>
+      <svg id="e-svg" viewBox="0 0 300 220" role="img" aria-label="A building that grows with the floors and area you pick"></svg>
+      <div class="price" id="e-price" aria-live="polite">₹39.0 lakh</div>
+      <div class="est-meta" id="e-meta">2,000 sq ft total · ₹1,950 per sq ft · Classic</div>
+      <p class="est-note" data-te="ఇది నిర్మాణానికి మాత్రమే సుమారు అంచనా. స్థలం, అనుమతులు, ఇంటీరియర్స్ అదనం. సైట్ విజిట్ తర్వాత ఖచ్చితమైన కొటేషన్.">Rough guide for construction only. Land, approvals and interiors are extra. Final quote after a site visit.</p>
+      <a class="btn btn-y" id="e-send" href="https://wa.me/919866515444" data-te="ఈ అంచనాను వాట్సాప్‌లో పంపండి">Send this estimate on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="work" data-pin="work">
+  <div class="stage">
+    <div class="grid-bg"></div>
+    <div class="work-h"><div style="display:flex;flex-direction:column;gap:12px;position:relative"><span class="eyebrow" data-te="మా పనులు">Our work</span><h2 data-te="మేం కట్టినవి, డిజైన్ చేసినవి.">Built and designed by us.</h2></div><span class="count" id="count">01 / 06</span></div>
+    <div class="track" id="track">
+      <figure class="shot"><img src="/images/project-duplex-frame.jpg" alt="Modern duplex elevation with white frame and wood panels" loading="lazy"><figcaption><b data-te="మోడర్న్ డూప్లెక్స్ ఎలివేషన్">Modern duplex elevation</b><span>Residential</span></figcaption></figure>
+      <figure class="shot"><img src="/images/interior-ceiling.jpg" alt="Designer false ceiling over a dining area" loading="lazy"><figcaption><b data-te="డిజైనర్ సీలింగ్ &amp; డైనింగ్">Designer ceiling &amp; dining</b><span>Interior</span></figcaption></figure>
+      <figure class="shot"><img src="/images/villa-3d.jpg" alt="3D elevation render" loading="lazy"><figcaption><b data-te="3D ఎలివేషన్ డిజైన్">3D elevation design</b><span>3D elevation</span></figcaption></figure>
+      <figure class="shot"><img src="/images/interior-kitchen.jpg" alt="Modular kitchen" loading="lazy"><figcaption><b data-te="మాడ్యులర్ కిచెన్">Modular kitchen</b><span>Interior</span></figcaption></figure>
+      <figure class="shot"><img src="/images/interior-wash-render.jpg" alt="Wash area design with arched niche and backlit mirror" loading="lazy"><figcaption><b data-te="వాష్ ఏరియా డిజైన్">Wash area design</b><span>Interior render</span></figcaption></figure>
+      <div class="shot next"><span class="mono">Next</span><h3 data-te="తర్వాతి ఇల్లు మీదే.">Your home is next.</h3><a class="btn btn-d" href="#contact" data-te="ఉచిత సలహా పొందండి">Get a free plot consultation</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="paper sec" id="reviews">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow dk" data-r data-te="క్లయింట్ రివ్యూలు">Client reviews</span>
+      <h2 data-r data-te="మా క్లయింట్ల మాటల్లో.">Clients say it better.</h2>
+      <a class="gline" data-r href="https://maps.app.goo.gl/MhWLNKNPUPemggkt7"><span data-te="గూగుల్‌లో 5.0 · 16 రివ్యూలు">5.0 on Google · 16 reviews</span></a>
+    </div>
+    <div class="revs">
+      <blockquote class="rev" data-r><span class="stars" aria-label="5 stars"></span><p>“We hired this team for our complete home build and interior fit-out, and they exceeded all our expectations. From the initial architectural phase down to the final interior decor touches, their communication was clear and proactive.”</p><footer><i>R</i><span><b>Rama krishna</b><small>Google review</small></span></footer></blockquote>
+      <blockquote class="rev" data-r><span class="stars" aria-label="5 stars"></span><p>“Absolutely thrilled with the final result. From the initial blueprint consultations to the final walkthrough, their commitment to quality craftsmanship was evident in every detail.”</p><footer><i>H</i><span><b>Harishwar Reddy</b><small>Google review</small></span></footer></blockquote>
+      <blockquote class="rev" data-r><span class="stars" aria-label="5 stars"></span><p>“We got our house construction and interiors done by A-Team Constructions.”</p><footer><i>P</i><span><b>Praveenreddy Bollaram</b><small>Google review</small></span></footer></blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="areas sec" id="areas">
+  <div class="grid-bg"></div>
+  <div class="wrap areas-g">
+    <div>
+      <div class="head">
+        <span class="eyebrow" data-r data-te="మేం పనిచేసే ప్రాంతాలు">Areas we serve</span>
+        <h2 data-r data-te="శంకర్‌పల్లి కేంద్రంగా, పశ్చిమ హైదరాబాద్ అంతటా.">Based in Shankarpalle. Building across western Hyderabad.</h2>
+        <p data-r data-te="మీ ప్లాట్ ఈ ప్రాంతాల్లో ఉంటే మేం సైట్‌కి వచ్చి చూస్తాం.">If your plot is in one of these areas, we come to the site.</p>
+      </div>
+      <div class="chips" data-r><span data-te="శంకర్‌పల్లి">Shankarpalle</span><span data-te="కోకాపేట్">Kokapet</span><span data-te="నార్సింగి">Narsingi</span><span data-te="గచ్చిబౌలి">Gachibowli</span><span data-te="తెల్లాపూర్">Tellapur</span><span data-te="మణికొండ">Manikonda</span><span data-te="మియాపూర్">Miyapur</span><span data-te="హైదరాబాద్">Hyderabad</span></div>
+    </div>
+    <svg class="radar" id="radar" viewBox="0 0 520 300" role="img" aria-label="Sketch map of areas served, east of Shankarpalle. Not to scale."></svg>
+  </div>
+</section>
+
+<section class="book sec" id="contact">
+  <div class="wrap book-g">
+    <div>
+      <span class="eyebrow" data-r data-te="ఉచిత సలహా">Free consultation</span>
+      <h2 data-r style="margin-top:16px" data-te="ప్లాట్ ఉందా? సైజు చెప్పండి.">Got a plot? Tell us its size.</h2>
+      <p data-r data-te="మేం కాల్ చేసి మీ ప్లాట్‌కి తగిన వాస్తు లేఅవుట్ ఐడియా చెప్తాం. మొదటి చర్చ ఉచితం.">We will call you and suggest a Vastu-friendly layout idea for it. No charge for the first discussion.</p>
+    </div>
+    <form class="form" id="form" novalidate data-r>
+      <label for="f-name"><span data-te="మీ పేరు">Your name</span><input id="f-name" name="name" autocomplete="name"></label>
+      <label for="f-phone"><span data-te="10 అంకెల మొబైల్ నంబర్">10-digit mobile number</span><input id="f-phone" name="phone" inputmode="tel" autocomplete="tel" maxlength="16"></label>
+      <label for="f-plot"><span data-te="ప్లాట్ సైజు, ప్రాంతం">Plot size and location</span><input id="f-plot" name="plot" placeholder="150 sq yd, Shankarpalle"></label>
+      <div class="err" id="f-err" role="alert"></div>
+      <a class="btn btn-y" id="f-send" href="https://wa.me/919866515444" data-te="వాట్సాప్‌లో పంపండి">Send on WhatsApp</a>
+    </form>
+  </div>
+</section>
+
+<section class="paper sec" id="faq">
+  <div class="wrap faq">
+    <div class="head" style="margin:0">
+      <span class="eyebrow dk" data-r data-te="ప్రశ్నలు">Questions</span>
+      <h2 data-r data-te="క్లయింట్లు తరచూ అడిగేవి.">Things clients ask us.</h2>
+    </div>
+    <div data-r>
+      <details open><summary data-te="వాస్తు ప్రకారం ప్లాన్ ఇస్తారా?">Do you make Vastu-compliant house plans?</summary><p data-te="అవును. ప్రతి ప్లాన్ వాస్తు ప్రకారం గీస్తాం. మీ ప్లాట్ సైజు, రోడ్డు దిశ, కుటుంబ అవసరాలకు తగ్గట్టు మారుస్తాం.">Yes. Every floor plan we draw follows Vastu principles, and we adjust it to your plot size, road side and family needs.</p></details>
+      <details><summary data-te="అనుమతులు మీరే చూసుకుంటారా?">Do you handle approvals?</summary><p data-te="అవును. గ్రామ పంచాయతీ, మున్సిపల్ అనుమతులు మేమే చూసుకుంటాం.">Yes. We take care of Gram Panchayat and municipal building permissions, so you do not have to run between offices.</p></details>
+      <details><summary data-te="ప్లాన్ మాత్రమే లేదా 3D మాత్రమే తీసుకోవచ్చా?">Can I get only a plan or only a 3D elevation?</summary><p data-te="తీసుకోవచ్చు. ప్లాన్, 3D ఎలివేషన్, స్ట్రక్చరల్ డిజైన్, ఇంటీరియర్స్ విడిగా లేదా పూర్తి నిర్మాణం ఎంచుకోవచ్చు.">Yes. You can take plans, 3D elevation, structural design or interiors on their own, or choose full construction.</p></details>
+      <details><summary data-te="మీ సైట్ ఒకటి చూడవచ్చా?">Can I visit one of your ongoing sites?</summary><p data-te="చూడవచ్చు. అడిగితే సైట్ విజిట్ ఏర్పాటు చేస్తాం.">Yes. Ask us and we will arrange a visit so you can see our work and quality first-hand.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot" id="foot">
+  <div class="wrap">
+    <div class="giant" id="giant" aria-hidden="true">A-TEAM</div>
+    <div class="foot-g">
+      <div><h3 data-te="మాతో మాట్లాడండి">Talk to us</h3><a href="tel:+919866515444">Bharath Reddy · +91 98665 15444</a><a href="tel:+919550595000">Bhargav Reddy · +91 95505 95000</a><a href="https://www.instagram.com/ateamconstructions/">Instagram · @ateamconstructions</a></div>
+      <div><h3 data-te="ఆఫీస్‌కి రండి">Visit the office</h3><p>Shop No 5-144/25/2, BDL X Road, above Universe Bakes &amp; Cakes, Shankarpalle, Telangana 501203</p><a href="https://maps.app.goo.gl/MhWLNKNPUPemggkt7" style="color:var(--yellow);font-weight:800" data-te="గూగుల్ మ్యాప్స్‌లో తెరవండి">Open in Google Maps</a></div>
+      <div><h3>A-Team Constructions</h3><p data-te="శంకర్‌పల్లి, తెలంగాణలో ఆర్కిటెక్చర్, ఇంటీరియర్ డిజైన్, నిర్మాణ సంస్థ.">Architecture, interior design and construction firm in Shankarpalle, Telangana.</p></div>
+    </div>
+    <div class="copy">© 2026 A-Team Constructions. All rights reserved.</div>
+  </div>
+</footer>
+
+<div class="crane" id="crane" aria-hidden="true"><i id="cable"></i><svg id="hook" viewBox="0 0 18 30"><path d="M9 0v8M9 8a4 4 0 1 1-4 4" fill="none" stroke="#FFC81E" stroke-width="2" stroke-linecap="round"/><rect x="2" y="18" width="14" height="10" rx="1.5" fill="#FFC81E"/></svg></div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Project photo">
+  <button class="lb-x" id="lb-x" type="button" aria-label="Close">×</button>
+  <div class="lb-img"><img id="lb-img" src="/images/logo.png" alt=""></div>
+  <div class="lb-b"><div><span class="mono" id="lb-cat"></span><h3 id="lb-t"></h3><p id="lb-n"></p></div><a class="btn btn-y" href="#contact" id="lb-cta" data-te="ఇలాంటిది కట్టించుకోండి">Build one like this</a></div>
+</div>
+
+<div class="dock" id="dock">
+  <a class="btn btn-o" href="tel:+919866515444" data-te="కాల్ చేయండి">Call now</a>
+  <a class="btn btn-y" href="https://wa.me/919866515444" data-te="వాట్సాప్">WhatsApp</a>
+</div>
+
+</div>
+<div id="root"></div>
+
+<script>
+(function(){
+if(document.documentElement.classList.contains('is-admin'))return;
+window.__siteInit=true;
+var root=document.documentElement, $=function(s,c){return (c||document).querySelector(s)}, $$=function(s,c){return [].slice.call((c||document).querySelectorAll(s))};
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var cl=function(v,a,b){return Math.max(a===undefined?0:a,Math.min(b===undefined?1:b,v))};
+var seg=function(p,a,b){return cl((p-a)/(b-a))};
+var ease=function(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2};
+var VH=0,VW=0;
+function size(){var w=window.innerWidth;if(w===VW&&VH)return;VW=w;VH=Math.min(window.innerHeight||800,1400);root.style.setProperty('--vh',VH+'px');layoutWork()}
+
+/* loader */
+var loader=$('#loader'),ldn=$('#ldn');
+function ready(){root.classList.add('ready')}
+if(reduce||!loader){ready()}else{
+  var t0=performance.now();(function tick(now){var k=cl((now-t0)/1300);ldn.textContent=('00'+Math.round(ease(k)*100)).slice(-3);if(k<1)requestAnimationFrame(tick)})(t0);
+  setTimeout(function(){loader.classList.add('done');ready();setTimeout(function(){loader.style.display='none'},1000)},1500);
+}
+
+/* marquee */
+var marq=$('#marq'),words=['Vastu plans','3D elevation','Interior design','Approvals','Construction','Structural design','Turnkey projects'];
+var row='';for(var r=0;r<4;r++)words.forEach(function(w){row+='<span>'+w+'</span>'});marq.innerHTML=row;
+var mx=0,lastY=window.scrollY||0,vel=0;
+
+/* stars */
+$$('.stars').forEach(function(s){var h='';for(var i=0;i<5;i++)h+='<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.6 7.1.8-5.3 4.8 1.5 7L12 17.6 5.7 21.200l1.500-7L1.900 9.400 9 8.600z"/></svg>';s.innerHTML=h});
+
+/* house drawing */
+var NS='http://www.w3.org/2000/svg',house=$('#house');
+function el(tag,at,parent){var e=document.createElementNS(NS,tag);for(var k in at)e.setAttribute(k,at[k]);(parent||house).appendChild(e);return e}
+function R(x,y,w,h,fill,parent,extra){var a={x:x,y:y,width:w,height:h,fill:fill};for(var k in extra)a[k]=extra[k];return el('rect',a,parent)}
+function L(x1,y1,x2,y2,parent,extra){var a={x1:x1,y1:y1,x2:x2,y2:y2};for(var k in extra)a[k]=extra[k];return el('line',a,parent)}
+function C(x,y,r,fill,parent,extra){var a={cx:x,cy:y,r:r,fill:fill};for(var k in extra)a[k]=extra[k];return el('circle',a,parent)}
+var LINE='#7FA6D4',YEL='#FFC81E',MONO='ui-monospace,Menlo,Consolas,monospace',INK='#0A1424';
+function T(x,y,s,str,parent,extra){var a={x:x,y:y,fill:LINE,'font-family':MONO,'font-size':s,'text-anchor':'middle','font-weight':700};for(var k in extra)a[k]=extra[k];var t=el('text',a,parent);t.textContent=str;return t}
+var DR={fill:'none',stroke:LINE,'stroke-width':2.4,'stroke-linecap':'round','stroke-linejoin':'round',pathLength:1,'stroke-dasharray':1,'stroke-dashoffset':1};
+function mix(o,x){var a={};for(var k in o)a[k]=o[k];for(k in x)a[k]=x[k];return a}
+function draw(e,k){e.setAttribute('stroke-dashoffset',1-k)}
+function op(e,k){e.setAttribute('opacity',k)}
+var defs=el('defs',{});
+var sky=el('linearGradient',{id:'sky',x1:0,y1:0,x2:0,y2:1},defs);[[0,'#0B1830'],[.55,'#2A3E6C'],[.8,'#8A6A7A'],[1,'#F2A66B']].forEach(function(s){el('stop',{offset:s[0],'stop-color':s[1]},sky)});
+var glow=el('linearGradient',{id:'glow',x1:0,y1:0,x2:0,y2:1},defs);[[0,'#FFE9A8'],[1,'#FFB52E']].forEach(function(s){el('stop',{offset:s[0],'stop-color':s[1]},glow)});
+var bp=el('pattern',{id:'brick',width:24,height:12,patternUnits:'userSpaceOnUse'},defs);R(0,0,24,12,'#B5563A',bp);el('path',{d:'M0 .5H24M0 6.5H24M6 .5V6.5M18 6.5V12',stroke:'#DDBBA4','stroke-width':1,fill:'none'},bp);
+function clip(id){var c=el('clipPath',{id:id},defs);return el('rect',{x:0,y:0,width:800,height:560},c)}
+var cSky=el('clipPath',{id:'cSky'},defs);el('rect',{x:0,y:0,width:800,height:560,rx:22},cSky);
+var cGhost=clip('cGhost'),cFin=clip('cFin'),cBG=clip('cBG'),cBF=clip('cBF');
+
+/* sky and lawn, shown at handover */
+var gSky=el('g',{'clip-path':'url(#cSky)',opacity:0});R(0,0,800,560,'url(#sky)',gSky);
+[[90,60],[180,110],[300,50],[420,90],[540,44],[600,130],[740,160],[60,170]].forEach(function(s){C(s[0],s[1],1.6,'#FFFFFF',gSky,{opacity:.8})});
+C(668,88,22,'#FFF3C4',gSky);R(0,470,800,90,'#1C4A33',gSky);el('path',{d:'M206 470H286L318 560H170Z',fill:'#B9B3A6'},gSky);
+
+/* base: ground line, compass, tape */
+var gBase=el('g',{});
+var ground=L(40,470,760,470,gBase,DR);
+var gComp=el('g',{opacity:0},gBase);C(704,84,30,'none',gComp,{stroke:LINE,'stroke-width':2});var needle=el('path',{d:'M704 58L713 92L704 86L695 92Z',fill:YEL},gComp);T(704,44,20,'N',gComp);
+var gTape=el('g',{opacity:0},gBase);var tape=R(110,512,0,14,YEL,gTape);L(110,504,110,534,gTape,{stroke:LINE,'stroke-width':2});var tapeEnd=L(690,504,690,534,gTape,{stroke:LINE,'stroke-width':2,opacity:0});var tDim=T(400,502,22,"30'-0\"",gTape,{opacity:0});
+
+/* 01 site visit */
+var gSite=el('g',{});
+var pegs=el('g',{opacity:0},gSite);[110,690].forEach(function(x){L(x,440,x,474,pegs,{stroke:YEL,'stroke-width':4,'stroke-linecap':'round'});el('path',{d:'M'+x+' 440L'+(x+22)+' 447L'+x+' 454Z',fill:YEL},pegs)});
+var string=L(110,462,690,462,gSite,mix(DR,{stroke:YEL,'stroke-width':2}));
+var tri=el('g',{opacity:0},gSite);[[380,470],[400,470],[420,470]].forEach(function(p){L(400,428,p[0],p[1],tri,{stroke:LINE,'stroke-width':3,'stroke-linecap':'round'})});R(386,410,28,18,LINE,tri,{rx:3});C(418,419,5,YEL,tri);
+var sight=L(424,420,690,452,gSite,mix(DR,{stroke:YEL,'stroke-width':1.6}));
+var arc=el('path',mix(DR,{d:'M150 330Q400 110 650 330','stroke-width':1.6}),gSite);
+var sun=C(150,330,13,YEL,gSite,{opacity:0});var tE=T(140,360,20,'E',gSite,{opacity:0}),tW=T(660,360,20,'W',gSite,{opacity:0});
+var checks=["PLOT 30' x 50'",'ROAD SIDE','VASTU DIRECTION','SOIL CHECK'].map(function(s,i){var g=el('g',{opacity:0},gSite);el('path',{d:'M48 '+(58+i*30)+'l7 7l13-15',stroke:YEL,'stroke-width':3.5,fill:'none','stroke-linecap':'round','stroke-linejoin':'round'},g);T(80,66+i*30,19,s,g,{'text-anchor':'start'});return g});
+
+/* 02 plan, then elevation outline */
+var gPlan=el('g',{opacity:0});R(220,100,360,340,'rgba(127,166,212,.08)',gPlan);
+var planEls=[el('rect',mix(DR,{x:220,y:100,width:360,height:340,'stroke-width':6}),gPlan)];
+[[400,100,400,300],[220,300,580,300],[400,230,580,230],[370,300,370,440],[470,300,470,440]].forEach(function(d){planEls.push(L(d[0],d[1],d[2],d[3],gPlan,mix(DR,{'stroke-width':3.5})))});
+for(var sx=482;sx<572;sx+=13)planEls.push(L(sx,312,sx,428,gPlan,mix(DR,{'stroke-width':1.4})));
+planEls.push(el('path',mix(DR,{d:'M300 440A44 44 0 0 1 344 396V440','stroke-width':1.6}),gPlan));
+var planLab=el('g',{opacity:0},gPlan);[[310,195,'HALL'],[490,160,'BED'],[490,184,"12'x12'"],[490,272,'KITCHEN'],[295,378,'BED'],[420,378,'POOJA'],[525,300,'']].forEach(function(t){if(t[2])T(t[0],t[1],18,t[2],planLab)});
+var planCols=el('g',{opacity:0},gPlan);[220,400,580].forEach(function(x){[100,300,440].forEach(function(y){R(x-8,y-8,16,16,YEL,planCols)})});
+var cols=[188,338,488,638];
+var ghostD=[['r',165,456,520,14],['r',165,300,520,14],['r',165,140,520,14],['r',173,314,472,142],['r',173,154,472,146],['r',408,118,286,196],['r',200,84,112,56],['r',214,356,64,100],['r',362,348,232,82],['r',436,160,150,118],['r',214,190,92,72],['r',598,132,82,168]];
+cols.forEach(function(x){ghostD.push(['r',x-7,154,14,316])});
+var gGhost=el('g',{'clip-path':'url(#cGhost)',fill:'none',stroke:LINE,'stroke-width':1.3,'stroke-dasharray':'5 5',opacity:0});ghostD.forEach(function(d){el('rect',{x:d[1],y:d[2],width:d[3],height:d[4]},gGhost)});
+
+/* 04 construction */
+var gCon=el('g',{});var CONC='#9AA3B2',BAM='#C9A26B';
+var mats=el('g',{opacity:0},gCon);el('path',{d:'M52 470Q92 424 134 470Z',fill:'#D8B777'},mats);R(702,446,52,24,'url(#brick)',mats);R(710,434,36,12,'url(#brick)',mats);
+var foots=el('g',{opacity:0},gCon);cols.forEach(function(x){R(x-18,470,36,18,'#7E8796',foots)});
+var plinth=R(165,456,0,14,CONC,gCon);
+var gc=cols.map(function(x){return R(x-7,470,14,0,CONC,gCon)});
+var props1=el('g',{opacity:0,stroke:BAM,'stroke-width':2.2},gCon);for(var px=206;px<660;px+=38)L(px,314,px,456,props1);
+var slab1=R(165,300,0,14,'#A9B1BE',gCon);
+var fc=cols.map(function(x){return R(x-7,300,14,0,CONC,gCon)});
+var props2=el('g',{opacity:0,stroke:BAM,'stroke-width':2.2},gCon);for(px=206;px<660;px+=38)L(px,154,px,300,props2);
+var slab2=R(165,140,0,14,'#A9B1BE',gCon);
+var rebar=el('g',{opacity:0,stroke:'#D07A3E','stroke-width':2},gCon);cols.forEach(function(x){[-4,0,4].forEach(function(o){L(x+o,140,x+o,118,rebar)})});
+var bG=el('g',{'clip-path':'url(#cBG)'},gCon);R(173,314,472,142,'url(#brick)',bG);R(214,356,64,100,INK,bG);R(362,348,232,82,INK,bG);
+var bF=el('g',{'clip-path':'url(#cBF)'},gCon);R(173,154,472,146,'url(#brick)',bF);R(436,160,150,118,INK,bF);R(214,190,92,72,INK,bF);
+var gcTop=el('g',{},gCon);cols.forEach(function(x){R(x-7,154,14,302,CONC,gcTop,{opacity:.0})});
+var fins=el('g',{opacity:0},gCon);R(408,118,286,14,'#A9B1BE',fins);R(408,118,14,196,'#A9B1BE',fins);R(680,118,14,196,'#A9B1BE',fins);R(200,84,112,56,'url(#brick)',fins);
+var scaf=el('g',{opacity:0,stroke:BAM,'stroke-width':2.6,'stroke-linecap':'round'},gCon);
+for(var sx2=156;sx2<=704;sx2+=61)L(sx2,104,sx2,470,scaf);[196,286,376].forEach(function(y){L(150,y,710,y,scaf)});L(156,376,217,286,scaf);L(643,286,704,196,scaf);L(156,196,217,286,scaf);
+
+/* 05 finished home */
+var gFin=el('g',{'clip-path':'url(#cFin)'});var FR='#1B2433';
+function win(x,y,w,h,m){var g=el('g',{},gFin);g.style.filter='drop-shadow(0 0 9px rgba(255,190,40,.75))';R(x,y,w,h,'url(#glow)',g,{stroke:FR,'stroke-width':3});(m||[]).forEach(function(mx){L(mx,y,mx,y+h,g,{stroke:FR,'stroke-width':2.5})});return g}
+R(40,424,122,46,'#E9E2D2',gFin);R(36,418,130,8,'#C9BFA8',gFin);
+L(100,424,100,350,gFin,{stroke:'#6B4423','stroke-width':8});C(100,316,40,'#2F7D4E',gFin);C(72,340,26,'#3E8E5A',gFin);C(130,338,26,'#3E8E5A',gFin);
+[[58,418,13],[84,414,15],[112,418,13],[138,416,12]].forEach(function(s){C(s[0],s[1],s[2],'#3E8E5A',gFin)});
+R(694,408,14,62,'#E9E2D2',gFin);R(708,420,52,50,'none',gFin,{stroke:FR,'stroke-width':3});[721,734,747].forEach(function(x){L(x,420,x,470,gFin,{stroke:FR,'stroke-width':2.5})});
+L(742,470,742,392,gFin,{stroke:'#6B4423','stroke-width':6});C(742,372,26,'#2F7D4E',gFin);
+R(165,456,520,14,'#9A9488',gFin);R(173,314,472,142,'#EEE7D8',gFin);
+R(196,326,100,130,'#7C6F5F',gFin);for(var cy=339;cy<456;cy+=13)L(196,cy,296,cy,gFin,{stroke:'#665A4C','stroke-width':1.5});
+R(173,314,472,9,'rgba(0,0,0,.2)',gFin);
+win(362,348,232,82,[439,516]);
+R(214,356,64,100,'#6B4423',gFin,{stroke:'#4A2E16','stroke-width':3});L(246,356,246,456,gFin,{stroke:'#4A2E16','stroke-width':2});C(252,410,3.5,YEL,gFin);
+for(var gx=216;gx<=276;gx+=6)C(gx,350+5*Math.sin((gx-216)/60*Math.PI),3.6,(gx/6)%2?'#FF9F1C':YEL,gFin);
+R(204,456,84,8,'#D5CEBD',gFin);R(196,463,100,8,'#C4BCA9',gFin);
+R(300,442,16,16,'#B5563A',gFin);C(308,430,14,'#3E8E5A',gFin);
+R(165,300,520,14,'#DDE1E8',gFin);R(173,154,472,146,'#F8F5EE',gFin);R(173,154,235,8,'rgba(0,0,0,.16)',gFin);
+win(214,190,92,72,[260]);
+R(165,140,243,14,'#DDE1E8',gFin);R(173,112,235,28,'rgba(160,200,235,.28)',gFin,{stroke:'#C9D3E0','stroke-width':2});
+R(200,84,112,56,'#EEE7D8',gFin);R(194,78,124,8,'#DDE1E8',gFin);win(236,98,40,26);
+R(408,118,286,196,'#FFFFFF',gFin);R(422,132,258,168,'#2B3445',gFin);
+win(436,160,150,118,[511]);
+R(598,132,82,168,'#A87444',gFin);for(var lx=610;lx<680;lx+=12)L(lx,132,lx,300,gFin,{stroke:'#7A4E2A','stroke-width':3});
+el('ellipse',{cx:478,cy:478,rx:160,ry:9,fill:'rgba(255,200,30,.28)'},gFin);
+
+/* 03 approval stamp */
+var gStamp=el('g',{opacity:0});var gS2=el('g',{transform:'rotate(-12 400 290)'},gStamp);
+R(250,244,300,92,'rgba(10,20,36,.9)',gS2,{rx:10,stroke:YEL,'stroke-width':5});T(400,286,32,'APPROVED',gS2,{fill:YEL,'letter-spacing':5});T(400,316,14,'GRAM PANCHAYAT / MUNICIPAL',gS2,{fill:YEL,'letter-spacing':1.5});
+
+var steps=$$('.step'),rail=$$('#rail b'),ro1=$('#ro1'),ro2=$('#ro2'),sheets=['Sheet A-01 · Site visit','Sheet A-02 · Plan & elevation','Sheet A-03 · Permissions','Site · Under construction','Handover · Keys'],curStep=-1;
+function grow(r,base,full,k){var h=full*k;r.setAttribute('height',h);r.setAttribute('y',base-h)}
+function drawBuild(p){
+  var s0=seg(p,.01,.17),s1=seg(p,.2,.39),s2=seg(p,.41,.57),c=seg(p,.6,.8),s4=seg(p,.82,.97);
+  /* site */
+  draw(ground,seg(s0,0,.2));op(pegs,seg(s0,.1,.25));draw(string,seg(s0,.2,.45));
+  op(tri,seg(s0,.3,.45));draw(sight,seg(s0,.45,.65));
+  tape.setAttribute('width',580*seg(s0,.35,.8));op(gTape,cl(s0*6)*(1-s4*3<0?0:1-s4*3));op(tapeEnd,seg(s0,.78,.82));op(tDim,seg(s0,.8,.95));
+  op(gComp,cl(s0*4)*cl(1-s4*3));needle.setAttribute('transform','rotate('+(-150*(1-ease(seg(s0,.1,.7))))+' 704 84)');
+  draw(arc,seg(s0,.5,.9));var u=seg(s0,.55,1),sx=(1-u)*(1-u)*150+2*(1-u)*u*400+u*u*650,sy=(1-u)*(1-u)*330+2*(1-u)*u*110+u*u*330;
+  sun.setAttribute('cx',sx);sun.setAttribute('cy',sy);op(sun,seg(s0,.5,.6));op(tE,seg(s0,.5,.6));op(tW,seg(s0,.85,.95));
+  checks.forEach(function(g,i){op(g,seg(s0,.3+i*.17,.4+i*.17))});
+  op(gSite,1-cl(s1*5));
+  /* plan */
+  var pa=seg(s1,.02,.5),pb=ease(seg(s1,.52,.76)),sc=1-.68*pb;
+  op(gPlan,cl(s1*8)*cl(1-s4*3));planEls.forEach(function(e,i){draw(e,seg(pa,i/planEls.length*.7,i/planEls.length*.7+.3))});
+  op(planLab,seg(pa,.6,.9));op(planCols,seg(pa,.75,1));
+  gPlan.setAttribute('transform','translate('+((220-176*pb)-220*sc)+' '+((100-64*pb)-100*sc)+') scale('+sc+')');
+  cGhost.setAttribute('width',800*ease(seg(s1,.6,1)));op(gGhost,.75*cl(s1*5)*(1-seg(c,.5,.9)));
+  /* approvals */
+  var st=cl(s2*3)*(1-cl(c*8));op(gStamp,st);gStamp.setAttribute('transform','translate(400 290) scale('+(1.8-.8*ease(cl(s2*3)))+') translate(-400 -290)');
+  /* construction */
+  var out=1-seg(s4,0,.3);
+  op(mats,seg(c,0,.08)*out);op(foots,seg(c,.02,.1));plinth.setAttribute('width',520*seg(c,.05,.14));
+  gc.forEach(function(r,i){grow(r,456,142,seg(c,.1+i*.02,.24+i*.02))});
+  op(props1,seg(c,.24,.3)*(1-seg(c,.52,.6)));slab1.setAttribute('width',520*seg(c,.28,.38));
+  fc.forEach(function(r,i){grow(r,300,146,seg(c,.36+i*.02,.48+i*.02))});
+  op(props2,seg(c,.5,.55)*(1-seg(c,.74,.82)));slab2.setAttribute('width',520*seg(c,.52,.6));
+  op(rebar,seg(c,.58,.64)*out);
+  var kg=seg(c,.58,.76),kf=seg(c,.72,.9);cBG.setAttribute('y',456-142*kg);cBG.setAttribute('height',142*kg+.01);cBF.setAttribute('y',300-146*kf);cBF.setAttribute('height',146*kf+.01);
+  op(fins,seg(c,.88,1));op(scaf,seg(c,.6,.72)*out);
+  /* handover */
+  op(gSky,seg(s4,0,.35));cFin.setAttribute('height',560*seg(s4,.12,.8));op(ground,1-seg(s4,0,.3));
+  var k=Math.min(4,Math.floor(p*5));
+  if(k!==curStep){curStep=k;steps.forEach(function(s,i){s.classList.toggle('on',i===k)});ro1.textContent=sheets[k]}
+  rail.forEach(function(b,i){b.style.transform='scaleX('+seg(p,i*.2,i*.2+.2)+')'});
+  ro2.textContent=('00'+Math.round(p*100)).slice(-3)+'%';
+}
+
+/* radar */
+var radar=$('#radar');
+[50,110,170,240,320,400].forEach(function(r){el('circle',{cx:120,cy:150,r:r,'class':'ring'},radar)});
+el('circle',{cx:120,cy:150,r:22,'class':'pulse'},radar);el('circle',{cx:120,cy:150,r:22,'class':'pulse b'},radar);
+[['Tellapur','తెల్లాపూర్',330,96,1],['Miyapur','మియాపూర్',452,52,1],['Gachibowli','గచ్చిబౌలి',442,128,1],['Kokapet','కోకాపేట్',352,196,1],['Narsingi','నార్సింగి',420,236,1],['Manikonda','మణికొండ',476,182,1]].forEach(function(a){
+  el('line',{x1:120,y1:150,x2:a[2],y2:a[3],'class':'ln'},radar);el('circle',{cx:a[2],cy:a[3],r:5,'class':'dot'},radar);
+  var t=el('text',{x:a[2],y:a[3]-11,'text-anchor':'middle','data-te':a[1]},radar);t.textContent=a[0]});
+el('circle',{cx:120,cy:150,r:9,fill:YEL},radar);
+var rt=el('text',{x:120,y:182,'text-anchor':'middle','data-te':'శంకర్‌పల్లి'},radar);rt.textContent='Shankarpalle';rt.style.fill=YEL;rt.style.fontSize='13px';
+var nt=el('text',{x:510,y:292,'text-anchor':'end','data-te':'స్కేల్ ప్రకారం కాదు'},radar);nt.textContent='Sketch, not to scale';nt.style.fill='#A9BAD1';nt.style.fontWeight='500';nt.style.fontSize='10px';
+
+/* pinned sections */
+var hero=$('[data-pin=hero]'),build=$('[data-pin=build]'),work=$('[data-pin=work]');
+var hwin=$('#hwin'),hzoom=$('#hzoom'),hshade=$('#hshade'),hcopy=$('#hcopy'),hafter=$('#hafter'),htag=$('#htag'),hint=$('#hint');
+var track=$('#track'),shots=$$('.shot',track),count=$('#count'),workMax=0;
+function layoutWork(){if(!track)return;workMax=Math.max(0,track.scrollWidth-window.innerWidth);work.style.height=(VH+workMax)+'px'}
+function prog(s){var r=s.getBoundingClientRect(),d=r.height-VH;return d>0?cl(-r.top/d):0}
+var svcs=$$('.svc'),nav=$('#nav'),tape=$('#tape'),dock=$('#dock'),giant=$('#giant'),foot=$('#foot');
+function frame(){
+  var y=window.scrollY||root.scrollTop||0,doc=root.scrollHeight-window.innerHeight;
+  vel+=((y-lastY)-vel)*.12;lastY=y;
+  var sp=doc>0?cl(y/doc):0;tape.style.transform='scaleX('+sp+')';var ch=70+sp*(window.innerHeight-190);cable.style.height=ch+'px';hook.style.top=ch+'px';crane.style.transform='rotate('+cl(vel*.12,-5,5)+'deg)';
+  nav.classList.toggle('solid',y>30);dock.classList.toggle('show',y>VH*1.2);
+  /* hero */
+  var hp=prog(hero),m=VW<=760,a=ease(seg(hp,0,.6));
+  var t=(m?64:18)*(1-a),rr=(m?5:6)*(1-a),b=(m?4:13)*(1-a),l=(m?5:52)*(1-a);
+  hwin.style.clipPath='inset('+t+'% '+rr+'% '+b+'% '+l+'% round '+(22*(1-a))+'px)';
+  hzoom.style.transform='scale('+(1.12-.12*a)+')';
+  hshade.style.opacity=.62*seg(hp,.35,.75);
+  var co=1-seg(hp,.05,.32);hcopy.style.opacity=co;hcopy.style.transform='translateY('+(-70*seg(hp,0,.32))+'px)';hcopy.style.pointerEvents=co<.3?'none':'auto';
+  var ao=seg(hp,.6,.82);hafter.style.opacity=ao;hafter.style.transform='translateY('+(50*(1-ease(ao)))+'px)';
+  htag.style.opacity=1-seg(hp,0,.2);hint.style.opacity=1-seg(hp,0,.1);
+  if(ao>.3&&!counted){counted=true;runCounts()}
+  /* marquee */
+  var half=marq.scrollWidth/2;mx-=1.1+Math.abs(vel)*.6;if(half>0&&-mx>half)mx+=half;
+  marq.style.transform='translateX('+mx+'px) skewX('+cl(vel*-.25,-9,9)+'deg)';
+  /* build */
+  drawBuild(prog(build));
+  /* services */
+  for(var i=0;i<svcs.length;i++){var c=svcs[i],r=c.getBoundingClientRect();
+    if(svcs[i+1]){var nr=svcs[i+1].getBoundingClientRect(),o=cl(1-(nr.top-r.top)/r.height);c.style.transform='scale('+(1-.07*o)+')';c.style.filter=o>.02?'brightness('+(1-.3*o)+')':'none'}
+    var img=c.querySelector('img');if(r.bottom>0&&r.top<VH)img.style.transform='translateY('+(((r.top+r.height/2)-VH/2)/VH*-7)+'%)'}
+  /* work */
+  var wp=prog(work),x=-wp*workMax;track.style.transform='translateX('+x+'px)';
+  var best=0,bd=1e9;shots.forEach(function(s,i){var r=s.getBoundingClientRect(),cx=r.left+r.width/2-VW/2;var im=s.querySelector('img');if(im)im.style.transform='translateX('+(cx/VW*-9)+'%)';if(Math.abs(cx)<bd){bd=Math.abs(cx);best=i}});
+  count.textContent=('0'+(best+1)).slice(-2)+' / '+('0'+shots.length).slice(-2);
+  /* footer fill */
+  var fr=foot.getBoundingClientRect();giant.style.setProperty('--fill',(cl((VH-fr.top)/(VH*.7))*100)+'%');
+  requestAnimationFrame(frame);
+}
+
+/* counters */
+var counted=false;
+function runCounts(){$$('[data-count]').forEach(function(e){var to=+e.getAttribute('data-count'),dec=+(e.getAttribute('data-dec')||0),suf=e.getAttribute('data-suf')||'',t0=performance.now();
+  if(reduce){return}
+  (function tick(now){var k=cl((now-t0)/1500);e.textContent=(to*(1-Math.pow(1-k,3))).toFixed(dec)+suf;if(k<1)requestAnimationFrame(tick)})(t0)})}
+
+/* reveals */
+var rv=$$('[data-r]');
+if('IntersectionObserver' in window&&!reduce){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.05});rv.forEach(function(e,i){e.style.transitionDelay=(i%4*70)+'ms';io.observe(e)})}
+else rv.forEach(function(e){e.classList.add('in')});
+setTimeout(function(){rv.forEach(function(e){var r=e.getBoundingClientRect();if(r.top<window.innerHeight)e.classList.add('in')})},2500);
+
+/* hero slideshow */
+var slides=$$('#hzoom img'),si=0;
+if(!reduce)setInterval(function(){slides[si].classList.remove('on');si=(si+1)%slides.length;slides[si].classList.add('on')},5200);
+
+/* language */
+var lang='en',lb=$('#lang'),tr=$$('[data-te]');tr.forEach(function(e){e.setAttribute('data-en',e.innerHTML)});
+lb.addEventListener('click',function(){lang=lang==='en'?'te':'en';root.lang=lang;
+  tr.forEach(function(e){e.innerHTML=e.getAttribute(lang==='te'?'data-te':'data-en')});
+  lb.textContent=lang==='te'?'English':'తెలుగు';lb.setAttribute('aria-label',lang==='te'?'Switch language to English':'Switch language to Telugu');
+  $('.hero h1').setAttribute('aria-label',lang==='te'?'మేం గీస్తాం. మేం కడతాం. మీరు నివసిస్తారు.':'We draw it. We build it. You live it.');
+  setTimeout(layoutWork,60)});
+
+/* form to WhatsApp */
+var fn=$('#f-name'),fp=$('#f-phone'),fl=$('#f-plot'),fe=$('#f-err'),fs=$('#f-send');
+function phone(v){var d=String(v).replace(/[^0-9]/g,'').replace(/^(91|0)(?=\d{10}$)/,'');return /^[6-9]\d{9}$/.test(d)?d:null}
+function link(){var ph=phone(fp.value)||fp.value;fs.href='https://wa.me/919866515444?text='+encodeURIComponent('Hello A-Team Constructions! I would like a free plot consultation.\n\nName: '+fn.value+'\nPhone: '+ph+'\nPlot size & location: '+fl.value)}
+[fn,fp,fl].forEach(function(i){i.addEventListener('input',function(){fe.textContent='';link()})});
+fs.addEventListener('click',function(ev){
+  if(!fn.value.trim()||!fl.value.trim()){ev.preventDefault();fe.textContent=lang==='te'?'దయచేసి మూడు వివరాలూ నింపండి.':'Please fill all three fields.';return}
+  if(!phone(fp.value)){ev.preventDefault();fe.textContent=lang==='te'?'సరైన 10 అంకెల మొబైల్ నంబర్ ఇవ్వండి.':'Please enter a valid 10-digit mobile number.';return}
+  link();log({name:fn.value.trim(),phone:phone(fp.value),email:'',service:'Vastu House Plans',message:'FREE PLOT CONSULTATION (website) - plot size / location: '+fl.value.trim()})});
+function log(d){try{if(window.__ateam&&window.__ateam.submitEnquiry)window.__ateam.submitEnquiry(d).catch(function(){})}catch(e){}}
+$('#form').addEventListener('submit',function(ev){ev.preventDefault()});
+
+
+/* plans and cost estimator */
+var ROWS=['Best for','Steel','Cement','Walls','Flooring','Main door','Windows','Paint','Bath fittings','Electrical','Kitchen','Extras'];
+var PLANS=[
+ {n:'Essential',rate:1750,v:['Budget and rental homes','Fe550 TMT, local ISI brand','53 grade, regional brand','Red or fly-ash brick','Vitrified tile, up to ₹45/sq ft','Flush door, veneer','UPVC sliding, economy','Putty and economy emulsion','Economy range','ISI wires, basic switches','Granite top, steel sink','Not included']},
+ {n:'Classic',rate:1950,v:['Family homes','Fe550 TMT, mid brand','53 grade, regional brand','Red brick','Vitrified tile, up to ₹65/sq ft','Teak frame, flush shutter','UPVC sliding with grill','Putty and mid emulsion','Mid range','Branded wires, modular switches','Granite top, dado tiles','3D elevation']},
+ {n:'Premium',rate:2150,v:['Homes with better finishes','Fe550D, top brand','53 grade, national brand','Red brick or AAC block','Large-format tile, up to ₹90/sq ft','Teak frame and teak shutter','UPVC, better profile','Premium emulsion, weatherproof outside','Jaquar-class','Branded wires, premium modular','Better granite, quartz sink','3D elevation, false ceiling in hall']},
+ {n:'Signature',rate:2400,v:['Villas and duplexes','Fe550D, top brand','53 grade, national brand','Wire-cut brick or AAC block','Tile or granite, up to ₹140/sq ft','Designer teak door','UPVC, premium glass','Luxury emulsion, texture on elevation','Jaquar-premium or Kohler-class','Premium modular, extra points','Premium granite or quartz top','3D elevation, false ceiling, elevation lighting']}];
+var nf=function(n){return Math.round(n).toLocaleString('en-IN')};
+var KEY=[4,5,6,7,8,11],SHORT={4:'Floor',5:'Door',6:'Windows',7:'Paint',8:'Bath',11:'Extras'};
+$('#plan-row').innerHTML=PLANS.map(function(pl,i){return '<article class="plan'+(i===3?' top':'')+'"><span class="tier">Plan 0'+(i+1)+'</span><h3>'+pl.n+'</h3><div class="rate">₹'+nf(pl.rate)+'<small>per sq ft</small></div><p class="best">'+pl.v[0]+'</p><ul>'+KEY.map(function(k){return '<li><b>'+SHORT[k]+'</b><span>'+pl.v[k]+'</span></li>'}).join('')+'</ul><a class="btn btn-y" href="#estimate" data-plan="'+i+'">Estimate with '+pl.n+'</a></article>'}).join('');
+$('#cmp').innerHTML='<table><thead><tr><th></th>'+PLANS.map(function(pl){return '<th>'+pl.n+'<br>₹'+nf(pl.rate)+'</th>'}).join('')+'</tr></thead><tbody>'+ROWS.map(function(r,k){return '<tr><th scope="row">'+r+'</th>'+PLANS.map(function(pl){return '<td>'+pl.v[k]+'</td>'}).join('')+'</tr>'}).join('')+'</tbody></table>';
+var eFinBox=$('#e-fin');eFinBox.innerHTML=PLANS.map(function(pl,i){return '<button type="button" data-v="'+i+'" aria-pressed="'+(i===1)+'">'+pl.n+'</button>'}).join('');
+var eA=$('#e-area'),eAO=$('#e-area-o'),eP=$('#e-price'),eM=$('#e-meta'),eS=$('#e-send'),eSvg=$('#e-svg'),eFl=2,eFin=1,eCur=39;
+function money(v){return v>=100?'₹'+(v/100).toFixed(2)+' crore':'₹'+v.toFixed(1)+' lakh'}
+el('line',{x1:10,y1:200,x2:290,y2:200,stroke:LINE,'stroke-width':2},eSvg);
+var bw=el('g',{'class':'bw'},eSvg),eFloors=[0,1,2].map(function(i){var g=el('g',{'class':'fl'},bw),y=154-i*48;
+  R(70,y,160,46,i?'#F8F5EE':'#EEE7D8',g);R(64,y-4,172,6,'#C5CBD6',g);
+  if(i===0){R(92,y+12,24,34,'#6B4423',g);R(136,y+12,72,22,'url(#glow)',g,{stroke:'#1B2433','stroke-width':2})}
+  else{R(88,y+12,44,22,'url(#glow)',g,{stroke:'#1B2433','stroke-width':2});R(156,y+12,56,22,'url(#glow)',g,{stroke:'#1B2433','stroke-width':2})}
+  return g});
+function estimate(animate){
+  var area=+eA.value,tot=area*eFl,pl=PLANS[eFin],val=tot*pl.rate/1e5;
+  eAO.textContent=nf(area)+' sq ft';eM.textContent=nf(tot)+' sq ft total · ₹'+nf(pl.rate)+' per sq ft · '+pl.n;
+  eFloors.forEach(function(g,i){g.classList.toggle('off',i>=eFl)});bw.style.transform='scaleX('+(.6+.6*(area-400)/2600)+')';
+  eS.href='https://wa.me/919866515444?text='+encodeURIComponent('Hello A-Team Constructions! I used the cost estimator on your website.\n\nBuilt-up area per floor: '+nf(area)+' sq ft\nFloors: '+['G','G+1','G+2'][eFl-1]+'\nPlan: '+pl.n+' (₹'+nf(pl.rate)+' per sq ft)\nEstimate shown: about '+money(val)+'\n\nPlease share a detailed quote.');
+  var from=eCur,t0=performance.now();eCur=val;
+  if(!animate||reduce){eP.textContent=money(val);return}
+  (function tick(now){var k=cl((now-t0)/450),e2=1-Math.pow(1-k,3);eP.textContent=money(from+(val-from)*e2);if(k<1&&eCur===val)requestAnimationFrame(tick)})(t0)}
+eA.addEventListener('input',function(){estimate(false)});
+function segSet(box,v){$$('button',box).forEach(function(o){o.setAttribute('aria-pressed',o.getAttribute('data-v')===String(v))})}
+function segInit(box,set){$$('button',box).forEach(function(b){b.addEventListener('click',function(){var v=+b.getAttribute('data-v');segSet(box,v);set(v);estimate(true)})})}
+segInit($('#e-fl'),function(v){eFl=v});segInit(eFinBox,function(v){eFin=v});estimate(false);
+$$('[data-plan]').forEach(function(b){b.addEventListener('click',function(){eFin=+b.getAttribute('data-plan');segSet(eFinBox,eFin);estimate(true)})});
+
+/* project viewer */
+var lbx=$('#lb'),lbImg=$('#lb-img'),lbT=$('#lb-t'),lbC=$('#lb-cat'),lastFocus=null;
+function lbClose(){lbx.classList.remove('show');setTimeout(function(){lbx.classList.remove('open')},reduce?0:650);if(lastFocus)lastFocus.focus()}
+function bindShot(f){var im=f.querySelector('img'),b=document.createElement('button');b.type='button';b.className='shot-open';b.setAttribute('aria-label','Open '+f.querySelector('b').textContent);f.appendChild(b);
+  b.addEventListener('click',function(ev){lastFocus=b;lbImg.src=im.getAttribute('src');lbImg.alt=im.alt;lbT.textContent=f.querySelector('b').textContent;lbC.textContent=f.querySelector('figcaption span').textContent;
+    lbx.style.setProperty('--cx',(ev.clientX||window.innerWidth/2)+'px');lbx.style.setProperty('--cy',(ev.clientY||window.innerHeight/2)+'px');lbx.classList.add('open');requestAnimationFrame(function(){requestAnimationFrame(function(){lbx.classList.add('show')})});$('#lb-x').focus()})}
+$$('figure.shot').forEach(bindShot);
+/* projects added in the admin panel appear first in the gallery */
+window.__ateamAddProjects=function(list){try{(list||[]).filter(function(p){return p&&p.image&&p.title}).slice(0,6).reverse().forEach(function(p){var f=document.createElement('figure');f.className='shot';var im=document.createElement('img');im.src=p.image;im.alt=p.title;im.loading='lazy';var c=document.createElement('figcaption'),t=document.createElement('b'),k=document.createElement('span');t.textContent=p.title;k.textContent=p.category||'Project';c.appendChild(t);c.appendChild(k);f.appendChild(im);f.appendChild(c);track.insertBefore(f,track.firstChild);bindShot(f)});shots=$$('.shot',track);layoutWork()}catch(e){}};
+$('#lb-x').addEventListener('click',lbClose);$('#lb-cta').addEventListener('click',lbClose);
+lbx.addEventListener('click',function(ev){if(ev.target===lbx||ev.target.classList.contains('lb-img'))lbClose()});
+lbx.addEventListener('keydown',function(ev){if(ev.key==='Escape')lbClose()});
+
+/* torch on the grid, and tilt on review cards (mouse only) */
+if(window.matchMedia&&matchMedia('(pointer:fine)').matches&&!reduce){
+  var grids=$$('.grid-bg');
+  document.addEventListener('pointermove',function(ev){grids.forEach(function(g){var r=g.getBoundingClientRect();if(r.bottom<0||r.top>window.innerHeight)return;g.style.setProperty('--mx',(ev.clientX-r.left)+'px');g.style.setProperty('--my',(ev.clientY-r.top)+'px')})},{passive:true});
+  $$('.rev').forEach(function(c){c.addEventListener('pointermove',function(ev){var r=c.getBoundingClientRect(),x=(ev.clientX-r.left)/r.width-.5,y=(ev.clientY-r.top)/r.height-.5;c.style.transitionDelay='0ms';c.style.transform='perspective(900px) rotateY('+(x*9)+'deg) rotateX('+(-y*9)+'deg) translateY(-6px)'});c.addEventListener('pointerleave',function(){c.style.transform=''})});
+}
+var crane=$('#crane'),cable=$('#cable'),hook=$('#hook');
+
+size();window.addEventListener('resize',size);window.addEventListener('load',function(){VW=0;size()});
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(layoutWork);
+requestAnimationFrame(frame);
+})();
+</script>
+</body>
 </html>

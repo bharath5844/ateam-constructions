@@ -1,64 +1,35 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import { MotionConfig } from 'framer-motion';
-import './site.css';
 
-import Navbar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
-import Hero from './components/sections/Hero';
-import Services from './components/sections/Services';
-import Projects from './components/sections/Projects';
-import About from './components/sections/About';
-import Marquee from './components/sections/Marquee';
-import Story from './components/sections/Story';
-import Dream from './components/sections/Dream';
-import Inspo from './components/sections/Inspo';
-import Reviews from './components/sections/Reviews';
-import Cursor from './components/site/Cursor';
-import Intro from './components/site/Intro';
-import useSmoothScroll from './components/site/Smooth';
-import Process from './components/sections/Process';
-import Instagram from './components/sections/Instagram';
-import FAQ from './components/sections/FAQ';
-import FreePlan from './components/sections/FreePlan';
-import Contact from './components/sections/Contact';
-import WhatsAppButton from './components/ui/WhatsAppButton';
-import GoogleMap from './components/ui/GoogleMap';
 import AdminLogin from './components/admin/AdminLogin';
 import AdminDashboard from './components/admin/AdminDashboard';
+import { getProjects, submitEnquiry } from './firebaseService';
 
+// The public home page is plain HTML in public/index.html, so search engines can read it.
+// React only adds the live data: enquiries saved for the admin panel, and admin-added projects.
 function Home() {
-  useSmoothScroll();
   useEffect(() => {
-    document.body.classList.add('site-body');
-    return () => document.body.classList.remove('site-body');
+    window.__ateam = { submitEnquiry };
+    let cancelled = false;
+    getProjects()
+      .then(list => { if (!cancelled && window.__ateamAddProjects) window.__ateamAddProjects(list); })
+      .catch(() => {});
+    return () => { cancelled = true; };
   }, []);
-  return (
-    <div className="site">
-      <Navbar />
-      <Intro />
-      <Cursor />
-      <Hero />
-      <Marquee />
-      <Story />
-      <Dream />
-      <Inspo />
-      <Services />
-      <Projects />
-      <Reviews />
-      <Process />
-      <Instagram />
-      <About />
-      <FAQ />
-      <FreePlan />
-      <Contact />
-      <GoogleMap />
-      <Footer />
-      <WhatsAppButton />
-    </div>
-  );
+  return null;
+}
+
+// Keeps the static home page hidden on /admin and visible everywhere else.
+function SiteVisibility() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    const admin = pathname.startsWith('/admin');
+    document.documentElement.classList.toggle('is-admin', admin);
+    if (!admin && !window.__siteInit) window.location.reload();
+  }, [pathname]);
+  return null;
 }
 
 function ProtectedRoute({ children }) {
@@ -84,9 +55,9 @@ function AppRoutes() {
 
 export default function App() {
   return (
-    <MotionConfig reducedMotion="user">
     <BrowserRouter>
       <AuthProvider>
+        <SiteVisibility />
         <Toaster position="top-right" toastOptions={{
           style: { background:'#1a1a1a', color:'#fff', border:'1px solid rgba(255,215,0,0.2)' },
           success: { iconTheme: { primary:'#FFD700', secondary:'#000' } }
@@ -94,6 +65,5 @@ export default function App() {
         <AppRoutes />
       </AuthProvider>
     </BrowserRouter>
-    </MotionConfig>
   );
 }
