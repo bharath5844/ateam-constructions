@@ -276,6 +276,9 @@ figure{margin:0}
 .plan .rate{font-family:var(--display);font-weight:800;font-size:44px;line-height:1;font-variant-numeric:tabular-nums}
 .plan .rate small{font:600 14px var(--body);opacity:.75;margin-left:6px}
 .plan .best{font-size:14.5px;opacity:.8;min-height:44px}
+.plan .g1{font-size:13.5px;font-weight:600;margin:8px 0 10px;opacity:.85;line-height:1.45}.plan .g1 b{font-weight:800}
+.est-gnote{display:none;margin-top:8px;font-size:14px;font-weight:600;color:#F5B700;line-height:1.5}.est-gnote.on{display:block}
+#cmp th small{display:block;font-weight:600;opacity:.75;font-size:12px;margin-top:2px}
 .plan ul{list-style:none;margin:0;padding:14px 0 0;border-top:1.5px solid currentColor;display:flex;flex-direction:column;gap:9px;font-size:14.5px;flex:1}
 .plan li{display:flex;gap:10px}
 .plan li b{flex:none;width:74px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.7;padding-top:3px}
@@ -477,6 +480,7 @@ html[lang=te] #site .giant,html[lang=te] #site .brand b,html[lang=te] #site .bra
       <svg id="e-svg" viewBox="0 0 300 220" role="img" aria-label="A building that grows with the floors and area you pick"></svg>
       <div class="price" id="e-price" aria-live="polite">₹39.0 lakh</div>
       <div class="est-meta" id="e-meta">2,000 sq ft total · ₹1,950 per sq ft · Classic</div>
+      <p class="est-gnote" id="e-gnote"></p>
       <p class="est-note" data-te="ఇది నిర్మాణానికి మాత్రమే సుమారు అంచనా. స్థలం, అనుమతులు, ఇంటీరియర్స్ అదనం. సైట్ విజిట్ తర్వాత ఖచ్చితమైన కొటేషన్.">Rough guide for construction only. Land, approvals and interiors are extra. Final quote after a site visit.</p>
       <a class="btn btn-y" id="e-send" href="https://wa.me/919866515444" data-te="ఈ అంచనాను వాట్సాప్‌లో పంపండి">Send this estimate on WhatsApp</a>
     </div>
@@ -850,21 +854,21 @@ $('#form').addEventListener('submit',function(ev){ev.preventDefault()});
 var ROWS=['Best for','Steel','Cement','Walls','Flooring','Main door','Windows','Paint','Bath fittings','Electrical','Kitchen','Extras'];
 var ROWS_TE=['ఎవరికి అనుకూలం','స్టీల్','సిమెంట్','గోడలు','ఫ్లోరింగ్','మెయిన్ డోర్','కిటికీలు','పెయింట్','బాత్ ఫిట్టింగ్స్','ఎలక్ట్రికల్','కిచెన్','అదనంగా'];
 var PLANS=[
- {n:'Essential',te:'ఎసెన్షియల్',rate:1750,v:['Budget and rental homes','Fe550 TMT, local ISI brand','53 grade, regional brand','Red or fly-ash brick','Vitrified tile, up to ₹45/sq ft','Flush door, veneer','UPVC sliding, economy','Putty and economy emulsion','Economy range','ISI wires, basic switches','Granite top, steel sink','Not included'],
+ {n:'Essential',te:'ఎసెన్షియల్',rate:1750,g:2200,v:['Budget and rental homes','Fe550 TMT, local ISI brand','53 grade, regional brand','Red or fly-ash brick','Vitrified tile, up to ₹45/sq ft','Flush door, veneer','UPVC sliding, economy','Putty and economy emulsion','Economy range','ISI wires, basic switches','Granite top, steel sink','Not included'],
   t:['బడ్జెట్, అద్దె ఇళ్లకు','Fe550 TMT, లోకల్ ISI బ్రాండ్','53 గ్రేడ్, ప్రాంతీయ బ్రాండ్','ఎర్ర ఇటుక లేదా ఫ్లై-యాష్ ఇటుక','విట్రిఫైడ్ టైల్, చ.అ.కు ₹45 వరకు','ఫ్లష్ డోర్, వెనీర్','UPVC స్లైడింగ్, ఎకానమీ','పుట్టీ, ఎకానమీ ఎమల్షన్','ఎకానమీ రేంజ్','ISI వైర్లు, బేసిక్ స్విచ్‌లు','గ్రానైట్ టాప్, స్టీల్ సింక్','లేదు']},
- {n:'Classic',te:'క్లాసిక్',rate:1950,v:['Family homes','Fe550 TMT, mid brand','53 grade, regional brand','Red brick','Vitrified tile, up to ₹65/sq ft','Teak frame, flush shutter','UPVC sliding with grill','Putty and mid emulsion','Mid range','Branded wires, modular switches','Granite top, dado tiles','3D elevation'],
+ {n:'Classic',te:'క్లాసిక్',rate:1950,g:2400,v:['Family homes','Fe550 TMT, mid brand','53 grade, regional brand','Red brick','Vitrified tile, up to ₹65/sq ft','Teak frame, flush shutter','UPVC sliding with grill','Putty and mid emulsion','Mid range','Branded wires, modular switches','Granite top, dado tiles','3D elevation'],
   t:['కుటుంబ ఇళ్లకు','Fe550 TMT, మిడ్ బ్రాండ్','53 గ్రేడ్, ప్రాంతీయ బ్రాండ్','ఎర్ర ఇటుక','విట్రిఫైడ్ టైల్, చ.అ.కు ₹65 వరకు','టేకు ఫ్రేమ్, ఫ్లష్ షట్టర్','UPVC స్లైడింగ్, గ్రిల్‌తో','పుట్టీ, మిడ్ ఎమల్షన్','మిడ్ రేంజ్','బ్రాండెడ్ వైర్లు, మాడ్యులర్ స్విచ్‌లు','గ్రానైట్ టాప్, డాడో టైల్స్','3D ఎలివేషన్']},
- {n:'Premium',te:'ప్రీమియం',rate:2150,v:['Homes with better finishes','Fe550D, top brand','53 grade, national brand','Red brick or AAC block','Large-format tile, up to ₹90/sq ft','Teak frame and teak shutter','UPVC, better profile','Premium emulsion, weatherproof outside','Jaquar-class','Branded wires, premium modular','Better granite, quartz sink','3D elevation, false ceiling in hall'],
+ {n:'Premium',te:'ప్రీమియం',rate:2150,g:2600,v:['Homes with better finishes','Fe550D, top brand','53 grade, national brand','Red brick or AAC block','Large-format tile, up to ₹90/sq ft','Teak frame and teak shutter','UPVC, better profile','Premium emulsion, weatherproof outside','Jaquar-class','Branded wires, premium modular','Better granite, quartz sink','3D elevation, false ceiling in hall'],
   t:['మెరుగైన ఫినిషింగ్ కోరేవారికి','Fe550D, టాప్ బ్రాండ్','53 గ్రేడ్, నేషనల్ బ్రాండ్','ఎర్ర ఇటుక లేదా AAC బ్లాక్','పెద్ద సైజు టైల్, చ.అ.కు ₹90 వరకు','టేకు ఫ్రేమ్, టేకు షట్టర్','UPVC, మెరుగైన ప్రొఫైల్','ప్రీమియం ఎమల్షన్, బయట వెదర్‌ప్రూఫ్','జాగ్వార్ స్థాయి','బ్రాండెడ్ వైర్లు, ప్రీమియం మాడ్యులర్','మెరుగైన గ్రానైట్, క్వార్ట్జ్ సింక్','3D ఎలివేషన్, హాల్‌లో ఫాల్స్ సీలింగ్']},
- {n:'Signature',te:'సిగ్నేచర్',rate:2400,v:['Villas and duplexes','Fe550D, top brand','53 grade, national brand','Wire-cut brick or AAC block','Tile or granite, up to ₹140/sq ft','Designer teak door','UPVC, premium glass','Luxury emulsion, texture on elevation','Jaquar-premium or Kohler-class','Premium modular, extra points','Premium granite or quartz top','3D elevation, false ceiling, elevation lighting'],
+ {n:'Signature',te:'సిగ్నేచర్',rate:2400,g:2850,v:['Villas and duplexes','Fe550D, top brand','53 grade, national brand','Wire-cut brick or AAC block','Tile or granite, up to ₹140/sq ft','Designer teak door','UPVC, premium glass','Luxury emulsion, texture on elevation','Jaquar-premium or Kohler-class','Premium modular, extra points','Premium granite or quartz top','3D elevation, false ceiling, elevation lighting'],
   t:['విల్లాలు, డూప్లెక్స్‌లకు','Fe550D, టాప్ బ్రాండ్','53 గ్రేడ్, నేషనల్ బ్రాండ్','వైర్-కట్ ఇటుక లేదా AAC బ్లాక్','టైల్ లేదా గ్రానైట్, చ.అ.కు ₹140 వరకు','డిజైనర్ టేకు డోర్','UPVC, ప్రీమియం గ్లాస్','లగ్జరీ ఎమల్షన్, ఎలివేషన్‌పై టెక్స్చర్','జాగ్వార్ ప్రీమియం లేదా కోహ్లర్ స్థాయి','ప్రీమియం మాడ్యులర్, అదనపు పాయింట్లు','ప్రీమియం గ్రానైట్ లేదా క్వార్ట్జ్ టాప్','3D ఎలివేషన్, ఫాల్స్ సీలింగ్, ఎలివేషన్ లైటింగ్']}];
 var nf=function(n){return Math.round(n).toLocaleString('en-IN')};
 var KEY=[4,5,6,7,8,11],SHORT={4:'Floor',5:'Door',6:'Windows',7:'Paint',8:'Bath',11:'Extras'},SHORT_TE={4:'ఫ్లోర్',5:'డోర్',6:'కిటికీలు',7:'పెయింట్',8:'బాత్',11:'అదనం'};
 var eFinBox=$('#e-fin'),eFin=1;
 function pname(pl){return lang==='te'?pl.te:pl.n}
 function renderPlans(){var te=lang==='te',rows=te?ROWS_TE:ROWS,sh=te?SHORT_TE:SHORT,per=te?'చ.అ.కు':'per sq ft';
-  $('#plan-row').innerHTML=PLANS.map(function(pl,i){var v=te?pl.t:pl.v,nm=pname(pl);return '<article class="plan'+(i===3?' top':'')+'"><span class="tier">'+(te?'ప్లాన్':'Plan')+' 0'+(i+1)+'</span><h3>'+nm+'</h3><div class="rate">₹'+nf(pl.rate)+'<small>'+per+'</small></div><p class="best">'+v[0]+'</p><ul>'+KEY.map(function(k){return '<li><b>'+sh[k]+'</b><span>'+v[k]+'</span></li>'}).join('')+'</ul><a class="btn btn-y" href="#estimate" data-plan="'+i+'">'+(te?nm+' ప్లాన్‌తో అంచనా':'Estimate with '+nm)+'</a></article>'}).join('');
-  $('#cmp').innerHTML='<table><thead><tr><th></th>'+PLANS.map(function(pl){return '<th>'+pname(pl)+'<br>₹'+nf(pl.rate)+'</th>'}).join('')+'</tr></thead><tbody>'+rows.map(function(r,k){return '<tr><th scope="row">'+r+'</th>'+PLANS.map(function(pl){return '<td>'+(te?pl.t:pl.v)[k]+'</td>'}).join('')+'</tr>'}).join('')+'</tbody></table>';
+  $('#plan-row').innerHTML=PLANS.map(function(pl,i){var v=te?pl.t:pl.v,nm=pname(pl);return '<article class="plan'+(i===3?' top':'')+'"><span class="tier">'+(te?'ప్లాన్':'Plan')+' 0'+(i+1)+'</span><h3>'+nm+'</h3><div class="rate">₹'+nf(pl.rate)+'<small>'+per+'</small></div><p class="g1">'+(te?'G+1 ఆపైన · గ్రౌండ్ ఫ్లోర్ మాత్రమే అయితే <b>చ.అ.కు ₹'+nf(pl.g)+'</b>':'G+1 and above · Ground floor only <b>₹'+nf(pl.g)+'/sq ft</b>')+'</p><p class="best">'+v[0]+'</p><ul>'+KEY.map(function(k){return '<li><b>'+sh[k]+'</b><span>'+v[k]+'</span></li>'}).join('')+'</ul><a class="btn btn-y" href="#estimate" data-plan="'+i+'">'+(te?nm+' ప్లాన్‌తో అంచనా':'Estimate with '+nm)+'</a></article>'}).join('');
+  $('#cmp').innerHTML='<table><thead><tr><th></th>'+PLANS.map(function(pl){return '<th>'+pname(pl)+'<br>₹'+nf(pl.rate)+'<small>'+(te?'G మాత్రమే ₹':'G only ₹')+nf(pl.g)+'</small></th>'}).join('')+'</tr></thead><tbody>'+rows.map(function(r,k){return '<tr><th scope="row">'+r+'</th>'+PLANS.map(function(pl){return '<td>'+(te?pl.t:pl.v)[k]+'</td>'}).join('')+'</tr>'}).join('')+'</tbody></table>';
   eFinBox.innerHTML=PLANS.map(function(pl,i){return '<button type="button" data-v="'+i+'" aria-pressed="'+(i===eFin)+'">'+pname(pl)+'</button>'}).join('')}
 renderPlans();
 var eA=$('#e-area'),eAO=$('#e-area-o'),eP=$('#e-price'),eM=$('#e-meta'),eS=$('#e-send'),eSvg=$('#e-svg'),eFl=2,eCur=39;
@@ -876,10 +880,11 @@ var bw=el('g',{'class':'bw'},eSvg),eFloors=[0,1,2].map(function(i){var g=el('g',
   else{R(88,y+12,44,22,'url(#glow)',g,{stroke:'#1B2433','stroke-width':2});R(156,y+12,56,22,'url(#glow)',g,{stroke:'#1B2433','stroke-width':2})}
   return g});
 function estimate(animate){
-  var area=+eA.value,tot=area*eFl,pl=PLANS[eFin],val=tot*pl.rate/1e5;
-  if(lang==='te'){eAO.textContent=nf(area)+' చ.అ.';eM.textContent='మొత్తం '+nf(tot)+' చ.అ. · చ.అ.కు ₹'+nf(pl.rate)+' · '+pl.te}else{eAO.textContent=nf(area)+' sq ft';eM.textContent=nf(tot)+' sq ft total · ₹'+nf(pl.rate)+' per sq ft · '+pl.n}
+  var area=+eA.value,tot=area*eFl,pl=PLANS[eFin],rt=eFl===1?pl.g:pl.rate,val=tot*rt/1e5;
+  if(lang==='te'){eAO.textContent=nf(area)+' చ.అ.';eM.textContent='మొత్తం '+nf(tot)+' చ.అ. · చ.అ.కు ₹'+nf(rt)+' · '+pl.te}else{eAO.textContent=nf(area)+' sq ft';eM.textContent=nf(tot)+' sq ft total · ₹'+nf(rt)+' per sq ft · '+pl.n}
+  var gn=$('#e-gnote');gn.classList.toggle('on',eFl===1);gn.textContent=lang==='te'?'గ్రౌండ్ ఫ్లోర్ మాత్రమే అయితే రేటు ఎక్కువ: ఒకే అంతస్తు ఇంటికి ఫౌండేషన్, బేస్‌మెంట్, స్లాబ్ ఖర్చు తక్కువ ఏరియాపై పడుతుంది.':'Ground-floor-only homes cost more per sq ft: the full foundation, basement and roof cost falls on fewer square feet.'
   eFloors.forEach(function(g,i){g.classList.toggle('off',i>=eFl)});bw.style.transform='scaleX('+(.6+.6*(area-400)/2600)+')';
-  eS.href='https://wa.me/919866515444?text='+encodeURIComponent('Hello A-Team Constructions! I used the cost estimator on your website.\n\nBuilt-up area per floor: '+nf(area)+' sq ft\nFloors: '+['G','G+1','G+2'][eFl-1]+'\nPlan: '+pl.n+' (₹'+nf(pl.rate)+' per sq ft)\nEstimate shown: about '+money(val,true)+'\n\nPlease share a detailed quote.');
+  eS.href='https://wa.me/919866515444?text='+encodeURIComponent('Hello A-Team Constructions! I used the cost estimator on your website.\n\nBuilt-up area per floor: '+nf(area)+' sq ft\nFloors: '+['G','G+1','G+2'][eFl-1]+'\nPlan: '+pl.n+' (₹'+nf(rt)+' per sq ft'+(eFl===1?', ground floor only':'')+')\nEstimate shown: about '+money(val,true)+'\n\nPlease share a detailed quote.');
   var from=eCur,t0=performance.now();eCur=val;
   if(!animate||reduce){eP.textContent=money(val);return}
   (function tick(now){var k=cl((now-t0)/450),e2=1-Math.pow(1-k,3);eP.textContent=money(from+(val-from)*e2);if(k<1&&eCur===val)requestAnimationFrame(tick)})(t0)}
